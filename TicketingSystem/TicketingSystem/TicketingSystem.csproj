@@ -65,6 +65,7 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="SQL\TicketingSystem.sql" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
