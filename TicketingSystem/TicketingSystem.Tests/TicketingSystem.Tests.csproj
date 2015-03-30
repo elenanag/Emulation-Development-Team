@@ -3,7 +3,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{C262A23D-AF9D-46F4-8E0C-7ED3C36435F5}</ProjectGuid>
+    <ProjectGuid>{A96B619F-3340-4D69-8D45-70736622BA50}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>TicketingSystem.Tests</RootNamespace>
@@ -53,7 +53,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\TicketingSystem\TicketingSystem.csproj">
-      <Project>{50B8FDCE-BD33-47E6-A6D0-83F69B2E53DD}</Project>
+      <Project>{DE0C06F1-FD19-47D3-914E-839204574C48}</Project>
       <Name>TicketingSystem</Name>
     </ProjectReference>
   </ItemGroup>
