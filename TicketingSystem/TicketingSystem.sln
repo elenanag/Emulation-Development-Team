@@ -8,6 +8,9 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TicketingSystem.Tests", "TicketingSystem.Tests\TicketingSystem.Tests.csproj", "{A96B619F-3340-4D69-8D45-70736622BA50}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SQL", "SQL", "{E2678A34-6413-40C7-B795-C8B2FC780655}"
+	ProjectSection(SolutionItems) = preProject
+		..\..\..\..\Documents\SQL Server Management Studio\TicketingSystem.sql = ..\..\..\..\Documents\SQL Server Management Studio\TicketingSystem.sql
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
