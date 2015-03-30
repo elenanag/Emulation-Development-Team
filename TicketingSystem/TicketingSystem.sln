@@ -10,6 +10,7 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SQL", "SQL", "{E2678A34-6413-40C7-B795-C8B2FC780655}"
 	ProjectSection(SolutionItems) = preProject
 		..\..\..\..\Documents\SQL Server Management Studio\TicketingSystem.sql = ..\..\..\..\Documents\SQL Server Management Studio\TicketingSystem.sql
+		..\..\..\..\Desktop\TicketingSystemSQL.txt = ..\..\..\..\Desktop\TicketingSystemSQL.txt
 	EndProjectSection
 EndProject
 Global
