@@ -74,6 +74,9 @@ AssigneeID INT FOREIGN KEY REFERENCES tbUser(UserID),
 TicketID INT FOREIGN KEY REFERENCES tbTicket(TicketID)
 )
 GO
+INSERT INTO tbTicketComment VALUES ('I started working on reset of the password.', GETDATE(), 10, 2)
+
+GO
 CREATE TABLE tbTimeSpentOnTicket
 (
 TimeSpentOnTicketID INT IDENTITY (1,1) PRIMARY KEY,
@@ -114,3 +117,4 @@ SELECT * FROM tbUserAccessLevel
 SELECT * FROM tbUser
 SELECT * FROM tbDevice
 SELECT * FROM tbTicketCategory
+SELECT * FROM tbTicketComment
