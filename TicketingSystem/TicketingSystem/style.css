@@ -15,9 +15,9 @@ ul{
 /* ----------------- top navigation start --------------------- */
 #topNav{
 	width:100%;
-	margin:0 auto; padding:8px 0 0 50px;}
+	margin:0 auto;}
 #topNav img{
-	border:none; float:left; margin:0 34px 0 0;}
+	border:none; float:left; margin:0 34px 0 20px;}
 #topNav ul{
 	background:url(images/top_ul_bg.gif) repeat-x 0 8px;
 	width:503px; height:23px; padding:8px 0 0 8px; margin:0 0 0 217px; padding-left:600px}
@@ -53,7 +53,10 @@ ul{
 /* ----------------- shadow end --------------------------- */
 /* ----------------- body start --------------------------- */
 #body{
-	width:100%; margin:0 auto; padding-top:70px; padding-left:30px; position:relative;}
+	width:90%; margin:0 auto; padding-top:70px; padding-left:30px; position:relative;
+    top: 0px;
+    left: 0px;
+}
 #bodyPannel{
 	background:url(images/midle_bg.gif) repeat-y 0 0 #FDF9EE; color:#4E4628;
 	width:1074px; 
