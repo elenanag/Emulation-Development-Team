@@ -9,7 +9,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TicketingSystem.Tests", "Ti
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DAL_Project", "DAL_Project\DAL_Project.csproj", "{E3026510-5B06-4FF2-816B-3F06CBE5F7DF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EmulationGroupProject", "..\..\..\..\Documents\Visual Studio 2013\Projects\FOURTH PART MODULE\EmulationGroupProject\EmulationGroupProject\EmulationGroupProject.csproj", "{E45C0E6D-D1E1-4A99-B6D9-467BC003C17F}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EmulationGroupProject", "EmulationGroupProject\EmulationGroupProject\EmulationGroupProject.csproj", "{E45C0E6D-D1E1-4A99-B6D9-467BC003C17F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
