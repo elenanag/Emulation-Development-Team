@@ -57,6 +57,7 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="FirstMaster.Master" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -65,10 +66,68 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="AboutUs.aspx" />
+    <Content Include="Global.asax" />
+    <Content Include="images\bg.gif" />
+    <Content Include="images\boeder.gif" />
+    <Content Include="images\bottom_shadow.gif" />
+    <Content Include="images\contact_bottom.gif" />
+    <Content Include="images\contact_h2_bg.gif" />
+    <Content Include="images\contact_midle.gif" />
+    <Content Include="images\contact_top.gif" />
+    <Content Include="images\event_link_bg.gif" />
+    <Content Include="images\footer.jpg" />
+    <Content Include="images\logo_text.gif" />
+    <Content Include="images\midle_bg.gif" />
+    <Content Include="images\more_bg.gif" />
+    <Content Include="images\more_bg_h.gif" />
+    <Content Include="images\newsletter_bottom.gif" />
+    <Content Include="images\newsletter_h2_bg.gif" />
+    <Content Include="images\newsletter_midle.gif" />
+    <Content Include="images\newsletter_top.gif" />
+    <Content Include="images\picture.gif" />
+    <Content Include="images\red_arrow.gif" />
+    <Content Include="images\red_bullet.gif" />
+    <Content Include="images\robertson.jpeg" />
+    <Content Include="images\search_h2_bg.gif" />
+    <Content Include="images\submit_bg.gif" />
+    <Content Include="images\top_btn_h.gif" />
+    <Content Include="images\top_shadow.gif" />
+    <Content Include="images\top_ul_bg.gif" />
+    <Content Include="LoginPage.aspx" />
+    <Content Include="MainPage.aspx" />
     <Content Include="SQL\TicketingSystem.sql" />
+    <Content Include="style.css" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AboutUs.aspx.cs">
+      <DependentUpon>AboutUs.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="AboutUs.aspx.designer.cs">
+      <DependentUpon>AboutUs.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="FirstMaster.Master.cs">
+      <DependentUpon>FirstMaster.Master</DependentUpon>
+    </Compile>
+    <Compile Include="FirstMaster.Master.designer.cs">
+      <DependentUpon>FirstMaster.Master</DependentUpon>
+    </Compile>
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="LoginPage.aspx.cs">
+      <DependentUpon>LoginPage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="LoginPage.aspx.designer.cs">
+      <DependentUpon>LoginPage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="MainPage.aspx.cs">
+      <DependentUpon>MainPage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="MainPage.aspx.designer.cs">
+      <DependentUpon>MainPage.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
