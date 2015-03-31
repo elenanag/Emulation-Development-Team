@@ -1,4 +1,4 @@
-GO
+﻿GO
 USE MASTER
 GO
 DROP DATABASE dbTicketingSystem
@@ -42,7 +42,7 @@ GO
 CREATE TABLE tbTicketCategory
 (
 TicketCategoryID  INT IDENTITY (1,1) PRIMARY KEY,
-CategoryName Varchar(50)NOT NULL
+CategoryName VARCHAR(50)NOT NULL
 )
 GO
 INSERT INTO  tbTicketCategory(CategoryName) VALUES ('E-MAIL ISSUE'),('PASSWORD RESET'),('NETWORK RELATED'),('COMPUTER RELATED')
@@ -118,3 +118,700 @@ SELECT * FROM tbUser
 SELECT * FROM tbDevice
 SELECT * FROM tbTicketCategory
 SELECT * FROM tbTicketComment
+
+
+
+
+
+-- Select from User Access Level table
+
+GO
+CREATE PROCEDURE spGetUserAccessLevel
+AS
+BEGIN
+	SELECT * FROM tbUserAccessLevel
+END
+
+GO
+EXEC spGetUserAccessLevel
+
+-- Insert information into User Access Level table
+GO
+CREATE PROCEDURE spInsertUserAccessLevel
+(
+	@AccessLevelName VARCHAR(5)
+)
+AS
+BEGIN
+	INSERT INTO tbUserAccessLevel (AccessLevelName) VALUES (@AccessLevelName)
+END
+GO
+EXEC spInsertUserAccessLevel @AccessLevelName = 'admin'
+
+
+-- Update information from User Access Level table
+
+GO
+CREATE PROCEDURE spUpdateUserAccessLevel
+(
+	@AccessLevelID INT,
+	@AccessLevelName VARCHAR(5)
+)
+AS
+BEGIN
+	UPDATE tbUserAccessLevel SET AccessLevelName=@AccessLevelName WHERE AccessLevelID=@AccessLevelID
+END
+GO
+EXEC spUpdateUserAccessLevel @AccessLevelName = 'admin', @AccessLevelID=2
+
+
+-- Delere record from the User Access Level table
+
+GO
+CREATE PROCEDURE spDeleteUserAccessLevel
+(
+	@AccessLevelID INT
+)
+AS
+BEGIN
+	DELETE FROM tbUserAccessLevel WHERE AccessLevelID=@AccessLevelID
+END
+--GO
+--EXEC spDeleteUserAccessLevel @AccessLevelID = 1
+
+
+--Store procedure for Login
+
+GO
+CREATE PROCEDURE spLogin
+(
+	@Email VARCHAR(100),
+	@Password VARCHAR(20) 
+)
+AS
+BEGIN
+	SELECT * FROM tbUser c
+
+	JOIN tbUserAccessLevel u ON c.AccessLevelID = u.AccessLevelID
+
+	WHERE Email = @Email AND Password = @Password
+END
+GO
+--EXEC spLogin @Email=maria, @Password=mi88new
+
+
+---------------------------------tbUser-------------------------------------------------------------------------------------------
+
+-- Show the User information
+
+GO
+CREATE PROCEDURE spGetUser
+(
+	@UserID INT = NULL
+)
+AS
+BEGIN
+	SELECT * FROM tbUser
+			WHERE UserID = ISNULL(@UserID,UserID)
+END
+GO
+EXEC spGetUser
+
+　
+--Insert new User into the table
+GO
+CREATE PROCEDURE spInsertUser
+(
+	@FirstName VARCHAR(35),
+	@LastName VARCHAR(35),
+	@Title VARCHAR(35),
+	@Phone VARCHAR(35),
+	@Email VARCHAR(100),
+	@Password VARCHAR(20),
+	@AccessLevelID INT 
+)
+AS
+BEGIN
+		INSERT INTO tbUser (FirstName, LastName,Title, Phone,Email,Password,AccessLevelID) VALUES
+		(@FirstName,@LastName,@Title, @Phone, @Email, @Password,@AccessLevelID)
+		--SELECT @@IDENTITY AS [Newest UserID]
+END
+--GO
+--EXEC spInsertUser @FirstName='John', @LastName='Donlop',@Title='teacher', @Phone='(204)-344-9870', @Email='jdonlop@yahoo.com', @Password='john99', @AccessLevelID = 0
+
+　
+
+--Update customer information
+
+GO
+CREATE PROCEDURE spUpdateUser
+
+(
+	@UserID INT,
+	@FirstName VARCHAR(35),
+	@LastName VARCHAR(35),
+	@Title VARCHAR(35),
+	@Phone VARCHAR(35),
+	@Email VARCHAR(100),
+	@Password VARCHAR(20),
+	@AccessLevelID INT 
+)
+AS
+BEGIN
+	UPDATE tbUser SET FirstName=@FirstName, LastName=@LastName, Title=@Title, Phone=@Phone, Email=@Email,
+	 Password=@Password, AccessLevelID=@AccessLevelID
+	WHERE UserID=@UserID
+END
+--GO
+--EXEC spUpdateUser @FirstName='Dimitar', @LastName='Dimitrov', @Phone='(349)-212-8798', @Title = 'assignee',
+--					@Email='idimitrov@gmail.com', @Password='ivan95', @AccessLevelID=2, @UserID=9
+
+　
+
+--Delete user
+
+GO
+CREATE PROCEDURE spDeleteUser
+(
+	@UserID INT
+)
+AS
+BEGIN
+	DELETE FROM tbUser WHERE UserID=@UserID
+END
+--GO
+--EXEC spDeleteUser @UserID=10
+
+
+-------------------------------------tbTicketCategory---------------------------------------------------------------------
+
+--Show Ticket category
+
+GO
+CREATE PROCEDURE spGetTicketCategory
+(
+	@TicketCategoryID INT = NULL
+)
+AS
+BEGIN
+SELECT * FROM tbTicketCategory
+	WHERE TicketCategoryID = ISNULL(@TicketCategoryID,TicketCategoryID)
+END
+--GO
+--EXEC spGetTicketCategory
+
+
+--Insert information into Ticket category table
+
+GO
+CREATE PROCEDURE spInsertTicketCategory
+(
+	@CategoryName VARCHAR(50)
+)
+AS
+BEGIN
+	INSERT INTO tbTicketCategory VALUES (@CategoryName)
+END
+--GO
+--EXEC spInsertTicketCategory @CategoryName='TV issue'
+
+
+--Update Ticket category
+
+GO
+CREATE PROCEDURE spUpdateTicketCategory
+(
+	@TicketCategoryID INT,
+	@CategoryName VARCHAR(50)
+)
+AS
+BEGIN
+		UPDATE tbTicketCategory
+		SET CategoryName=@CategoryName
+		WHERE TicketCategoryID=@TicketCategoryID
+END
+--GO
+--EXEC spUpdateTicketCategory @CategoryName='E-mail issues', @TicketCategoryID=3
+
+
+--Delete Ticket category
+
+GO
+CREATE PROCEDURE spDeleteTicketCategory
+(
+	@TicketCategoryID INT
+)
+AS
+BEGIN
+	DELETE FROM tbTicketCategory WHERE TicketCategoryID=@TicketCategoryID
+END
+--GO
+--EXEC spDeleteTicketCategory @TicketCategoryID=3
+
+
+　
+-----------------------------tbTicket---------------------------------------------------------------------
+
+
+--Get Ticket/s from the table tbTicket
+GO
+CREATE PROCEDURE spGetTicket
+(
+	@TicketID INT = NULL
+)
+AS
+BEGIN
+	SELECT * FROM tbTicket
+	WHERE TicketID = ISNULL(TicketID,@TicketID)
+END
+GO
+EXEC spGetTicket
+
+
+--Insert ticket into Ticket table
+GO
+CREATE PROCEDURE spInsertTicket
+(
+	@Summary VARCHAR(250),
+	@Description VARCHAR(MAX),
+	@DateCreated DATETIME ,
+	@Priority VARCHAR(15),
+	@Status VARCHAR(25),
+	@TicketCategoryID INT ,
+	@ClientID INT ,
+	@AssigneeID INT 
+	)
+AS
+BEGIN
+	INSERT INTO tbTicket VALUES (@Summary,@Description,@DateCreated,@Priority,@Status,@TicketCategoryID,@ClientID,@AssigneeID)
+END
+--GO
+--EXEC spInsertTicket @Summary='Computer issues', @Description='The Big Problem with computer',@DateCreated='4/4/15',@Priority=' ',
+--	@Status='opened',@TicketCategoryID=1,@ClientID=10,@AssigneeID=8
+
+
+　
+
+--Update Ticket
+
+GO
+CREATE PROCEDURE spUpdateTicket
+(
+	@TicketID INT,
+	@Summary VARCHAR(250),
+	@Description VARCHAR(MAX),
+	@DateCreated DATETIME ,
+	@Priority VARCHAR(15),
+	@Status VARCHAR(25),
+	@TicketCategoryID INT ,
+	@ClientID INT ,
+	@AssigneeID INT
+)
+AS
+BEGIN
+		UPDATE tbTicket
+		SET Summary=@Summary, Description=@Description, DateCreated=@DateCreated,
+	Priority=@Priority,Status=@Status,TicketCategoryID=@TicketCategoryID,ClientID=@ClientID,AssigneeID=@AssigneeID
+		WHERE TicketID=@TicketID
+END
+--GO
+--EXEC spUpdateTicket @Summary='broken screen', @Description='student laptop screen broke',@DateCreated='3/23/15',@Priority='hign',
+--	@Status='unassigned', @TicketCategoryID=3,@ClientID=9,@AssigneeID=7,@TicketID=3
+
+　
+
+--Delete from tbTicket
+
+GO
+CREATE PROCEDURE spDeleteTicket
+(
+	@TicketID INT
+)
+AS
+BEGIN
+	DELETE FROM tbTicket WHERE TicketID=@TicketID
+END
+--GO
+--EXEC spDeleteTicket @TicketID=3
+　
+
+--Search for product
+
+GO
+CREATE PROCEDURE spSearchTicket
+(
+	@Description VARCHAR(MAX)
+)
+AS
+BEGIN
+	SELECT * FROM tbTicket WHERE Description LIKE '%' + @Description + '%'
+END
+GO
+EXEC spSearchTicket @Description='com'
+
+　
+-----------------------------tbTicketComment---------------------------------------------------------------------
+
+
+--Get TicketComment/s from the table tbTicket
+GO
+CREATE PROCEDURE spGetTicketComment
+(
+	@TicketCommentID  INT = NULL
+)
+AS
+BEGIN
+	SELECT * FROM tbTicketComment 
+	WHERE 	TicketCommentID= ISNULL(TicketCommentID,@TicketCommentID)
+END
+GO
+EXEC spGetTicketComment
+
+
+--Insert ticket into TicketComment table
+GO
+CREATE PROCEDURE spInsertTicketComment
+(
+	@Comments VARCHAR(MAX),
+	@DateOfComments DATETIME ,
+	@AssigneeID INT,
+	@TicketID INT
+	)
+AS
+BEGIN
+	INSERT INTO tbTicketComment VALUES (@Comments,@DateOfComments,	@AssigneeID,@TicketID)
+END
+--GO
+--EXEC  spInsertTicketComment @Comments='Computer issues', @DateOfComments='5/4/15',@AssigneeID=8,@TicketID= 14
+
+
+--Update TicketComment
+
+GO
+CREATE PROCEDURE spUpdateTicketComment
+(
+		@TicketCommentID INT ,
+		@Comments VARCHAR(MAX),
+		@DateOfComments DATETIME ,
+		@AssigneeID INT ,
+		@TicketID INT
+
+)
+AS
+BEGIN
+		UPDATE tbTicketComment
+		SET Comments=@Comments, DateOfComments=@DateOfComments,
+	TicketID=@TicketID,AssigneeID=@AssigneeID
+		WHERE TicketCommentID=@TicketCommentID
+END
+--GO
+--EXEC spUpdateTicketComment @Comments ='broken screen', @DateOfComments='3/23/15',
+--	 @TicketCommentID=3,@AssigneeID=7,@TicketID=3
+
+　
+
+--Delete from tbTicket
+
+GO
+CREATE PROCEDURE spDeleteTicketComment
+(
+	@TicketCommentID INT
+)
+AS
+BEGIN
+	DELETE FROM tbTicketComment WHERE @TicketCommentID=@TicketCommentID
+END
+--GO
+--EXEC spDeleteTicket @TicketID=3
+　
+
+
+
+------------------------------tbTimeSpentOnTicket---------------------------------------------------------------------
+
+--Get time spent from table tbTimeSpentOnTicket
+
+GO
+CREATE PROCEDURE spGetTimeSpentOnTicket
+(
+	@TimeSpentOnTicketID INT = NULL
+)
+AS
+BEGIN
+	SELECT * FROM tbTimeSpentOnTicket
+	WHERE TimeSpentOnTicketID = ISNULL(@TimeSpentOnTicketID,TimeSpentOnTicketID)
+END
+--GO
+--EXEC spGetTimeSpentOnTicket
+　
+
+--Insert Time Spent On Ticket
+GO
+CREATE PROCEDURE spInsertTimeSpentOnTicket
+(
+	@TimeSpentOnTicket TIME,
+	@DateWorkedOnTicket DATE,
+	@AssigneeID INT,
+	@TicketID INT
+)
+AS
+BEGIN
+	INSERT INTO tbTimeSpentOnTicket VALUES (@TimeSpentOnTicket,@DateWorkedOnTicket,@AssigneeID,@TicketID)
+END
+--GO
+--EXEC spInsertTimeSpentOnTicket @TimeSpentOnTicket='20:40', @DateWorkedOnTicket='8/26/15',@AssigneeID='8', @TicketID = 
+　
+
+--Update Time Spent On Ticket
+GO
+CREATE PROCEDURE spUpdateTimeSpentOnTicket
+(
+	@TimeSpentOnTicketID INT,
+	@TimeSpentOnTicket TIME,
+	@DateWorkedOnTicket DATE,
+	@AssigneeID INT,
+	@TicketID INT
+)
+AS
+BEGIN
+	UPDATE tbTimeSpentOnTicket
+	SET TimeSpentOnTicket=@TimeSpentOnTicket, DateWorkedOnTicket=@DateWorkedOnTicket, AssigneeID=@AssigneeID,
+	TicketID=@TicketID
+	WHERE TimeSpentOnTicketID=@TimeSpentOnTicketID
+END
+--GO
+--EXEC spUpdateTimeSpentOnTicket @TimeSpentOnTicket='20:40', @DateWorkedOnTicket='8/26/15',@AssigneeID='8', @TicketID = 3, @TimeSpentOnTicketID = 1
+
+
+--Delete from tbTimeSpentOnTicket
+GO
+CREATE PROCEDURE spTimeSpentOnTicket
+(
+	@TimeSpentOnTicketID INT
+)
+AS
+BEGIN
+DELETE FROM tbTimeSpentOnTicket WHERE TimeSpentOnTicketID=@TimeSpentOnTicketID
+END
+--GO
+--EXEC spTimeSpentOnTicket @TimeSpentOnTicketID=1
+
+　
+
+　-----------------------------tbDevice---------------------------------------------------------------------
+
+
+
+--Get Device/s from the table tbTicket
+GO
+CREATE PROCEDURE spGetDevice
+(
+	@DeviceID INT = NULL
+)
+AS
+BEGIN
+	SELECT * FROM tbDevice
+	WHERE DeviceID = ISNULL(DeviceID ,@DeviceID)
+END
+GO
+EXEC spGetDevice
+
+
+--Insert Devices into Device table
+GO
+CREATE PROCEDURE spInsertDevice
+	(
+	@DeviceName VARCHAR(50)
+	)
+AS
+BEGIN
+	INSERT INTO tbDevice VALUES (@DeviceName)
+END
+--GO
+--EXEC spInsertDevice @DeviceName='Computer'
+
+　
+
+--Update Ticket
+
+GO
+CREATE PROCEDURE spUpdateDevice
+(
+		@DeviceID INT ,
+		@DeviceName VARCHAR(50)
+)
+AS
+BEGIN
+		UPDATE tbDevice
+		SET DeviceName=@DeviceName 
+		WHERE DeviceID =@DeviceID 
+END
+--GO
+--EXEC spUpdateDevice @DeviceName='Laptop', @DeviceID ='5'
+　
+
+--Delete from tbTicket
+
+GO
+CREATE PROCEDURE spDeleteDevice
+(
+	@DeviceID INT
+)
+AS
+BEGIN
+	DELETE FROM tbDevice WHERE DeviceID=@DeviceID
+END
+--GO
+--EXEC spDeleteDevice @DeviceID=3
+　
+
+
+-----------------------------tbDeviceBooking---------------------------------------------------------------------
+--DeviceBookingID INT IDENTITY (1,1) PRIMARY KEY,
+--DateStart DATETIME NOT NULL,
+--DateEnd DATETIME NOT NULL,
+--DeviceID INT FOREIGN KEY REFERENCES tbDevice(DeviceID),
+--ClientID INT 
+
+
+--Get DeviceBooking/s from the table tbDeviceBooking
+GO
+CREATE PROCEDURE spGetDeviceBooking
+(
+	@DeviceBookingID INT = NULL
+)
+AS
+BEGIN
+	SELECT * FROM tbDeviceBooking
+	WHERE DeviceBookingID = ISNULL(DeviceBookingID ,@DeviceBookingID)
+END
+GO
+EXEC spGetDeviceBooking
+
+
+--Insert DevicesBooking into Device table
+GO
+CREATE PROCEDURE spInsertDeviceBooking
+	(
+		@DateStart DATETIME ,
+		@DateEnd DATETIME,
+		@DeviceID INT ,
+		@ClientID INT 
+
+	)
+AS
+BEGIN
+	INSERT INTO tbDeviceBooking VALUES (@DateStart,@DateEnd,@DeviceID,@ClientID)
+END
+--GO
+--EXEC spInsertDeviceBooking @DateStart='3/4/15',@DateEnd='4/4/15',@DeviceID=4,@ClientID=10
+
+　
+
+--Update DevicesBooking
+
+GO
+CREATE PROCEDURE spUpdateDeviceBooking
+(
+		@DeviceBookingID INT,
+		@DateStart DATETIME ,
+		@DateEnd DATETIME,
+		@DeviceID INT ,
+		@ClientID INT 
+
+)
+AS
+BEGIN
+		UPDATE tbDeviceBooking
+		SET DateStart=@DateStart,DateEnd=@DateEnd,DeviceID=@DeviceID,ClientID =@ClientID 
+		WHERE DeviceBookingID =@DeviceBookingID
+END
+--GO
+--EXEC spUpdateDeviceBooking  @DateStart='3/4/15',@DateEnd='4/4/15',@DeviceID=4,@ClientID=10,@DeviceBookingID=3
+
+　
+
+--Delete from tbDeviceBooking
+
+GO
+CREATE PROCEDURE spDeleteDeviceBooking
+(
+	@DeviceBookingID INT
+)
+AS
+BEGIN
+	DELETE FROM tbDeviceBooking WHERE DeviceBookingID =@DeviceBookingID 
+END
+GO
+EXEC spDeleteDeviceBooking @DeviceBookingID=3
+　
+
+---------------------------------tbTicketAttachment-------------------------------------------------------------------------------------------
+-- Show the Ticket Attachment information
+GO
+CREATE PROCEDURE spGetTicketAttachment
+(
+	@TicketAttachmentID INT = NULL
+)
+AS
+BEGIN
+	SELECT * FROM tbTicketAttachment
+	WHERE TicketAttachmentID = ISNULL(@TicketAttachmentID,TicketAttachmentID)
+END
+--GO
+--EXEC spGetTicketAttachment
+　
+
+--Insert new Ticket Attachment into the table
+GO
+CREATE PROCEDURE spInsertTicketAttachment
+(
+	@ImagePath VARCHAR(MAX),
+	@ClientID INT,
+	@TicketID INT,
+	@DateOfAttachment DATE
+)
+AS
+BEGIN
+INSERT INTO tbTicketAttachment VALUES (@ImagePath, @ClientID, @TicketID, @DateOfAttachment)
+END
+--GO
+--EXEC spInsertTicketAttachment @ImagePath='\attachment\', @ClientID=8, @TicketID=3, @DateOfAttachment='9/24/15'
+　
+
+--Update Ticket Attachment
+GO
+CREATE PROCEDURE spUpdateTicketAttachment
+(
+	@TicketAttachmentID INT,
+	@ImagePath VARCHAR(MAX),
+	@ClientID INT,
+	@TicketID INT,
+	@DateOfAttachment DATE
+)
+AS
+BEGIN
+	UPDATE tbTicketAttachment SET ImagePath=@ImagePath, ClientID=@ClientID, TicketID=@TicketID,DateOfAttachment=@DateOfAttachment
+	WHERE TicketAttachmentID=@TicketAttachmentID
+END
+GO
+--EXEC spUpdateTicketAttachment @ImagePath='\attachment\', @ClientID=9,@TicketID = 4, @DateOfAttachment='6/23/15', @TicketAttachmentID=1
+　
+
+--Delete Ticket Attachment
+GO
+CREATE PROCEDURE spDeleteTicketAttachment
+(
+	@TicketAttachmentID INT
+)
+AS
+BEGIN
+	DELETE FROM tbTicketAttachment WHERE TicketAttachmentID=@TicketAttachmentID
+END
+--GO
+--EXEC spDeleteTicketAttachment @TicketAttachmentID=3
+
+　
+
+　
+
