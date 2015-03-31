@@ -21,7 +21,7 @@ UserID INT IDENTITY (1,1) PRIMARY KEY,
 FirstName VARCHAR(35) NOT NULL,
 LastName VARCHAR(35) NOT NULL,
 Title VARCHAR(35) NOT NULL,
-Phone VARCHAR(35) ,
+Phone VARCHAR(35),
 Email VARCHAR(100) NOT NULL,
 Password VARCHAR(20) NOT NULL,
 AccessLevelID INT FOREIGN KEY REFERENCES tbUserAccessLevel(AccessLevelID)
@@ -35,9 +35,43 @@ INSERT INTO tbUser VALUES('Elena','Nagberi', 'admin', '204-345-4567', 'elena.nag
 						('Rick','Monias', 'admin', '204-345-4567', 'rick.monias@robertsoncollege.net', '12345', 1),
 						('John','Smith', 'client', '204-345-4567', 'jsmith@robertsoncollege.net', '12345', 0),
 						('Martin','Johnson', 'client', '204-345-4567', 'mjohnson@robertsoncollege.net', '12345', 0),
+						('Jeremy','Cline', 'client', '204-230-1234', 'jCline@robertsoncollege.net', '12345', 0),
+						('laine','North', 'client', '204-345-4567', 'lnorth@robertsoncollege.net', '12345', 0),
+						('Paul','Clark', 'client', '204-575-3284', 'pclark@robertsoncollege.net', '12345', 0),
+						('Linda','Babe', 'client', '204-222-8763', 'lbabe@robertsoncollege.net', '12345', 0),
+						('Belinda','Cook', 'client', '204-232-9876', 'bcook@robertsoncollege.net', '12345', 0),
+					    ('Wendy','Ross', 'client', '204-898-2121', 'wross@robertsoncollege.net', '12345', 0),						
+						('Helen','Thomas', 'client', '204-212-3432', 'hthomas@robertsoncollege.net', '12345', 0),
+						('Selena','Clark', 'client', '204-243-2222', 'sclark@robertsoncollege.net', '12345', 0),
+						('Ralph','Black', 'client', '204-212-3245', 'rblack@robertsoncollege.net', '12345', 0),
+						('Ellen','Esteban', 'client', '204-230-3131', 'eesteban@robertsoncollege.net', '12345', 0),
+						('Emily','Mask', 'client', '204-989-0833', 'emask@robertsoncollege.net', '12345', 0),
+						('Ernest','Wolf', 'client', '204-962-3244', 'ewolf@robertsoncollege.net', '12345', 0),
+						('Trello','Works', 'client', '204-453-2736', 'tworks@robertsoncollege.net', '12345', 0),
+						('Robert','Son', 'client', '204-312-3232', 'rson@robertsoncollege.net', '12345', 0),
 						('Johanee','Paul', 'assignee', '204-345-4567', 'jpaul@robertsoncollege.net', '12345', 2),
-						('Ronald','Moris', 'assignee', '204-345-4567', 'rmoris@robertsoncollege.net', '12345', 2)
-
+						('Ronald','Moris', 'assignee', '204-345-4567', 'rmoris@robertsoncollege.net', '12345', 2),
+						('Walter','Mckay','assignee','204-414-3123','wmckay@robertsoncollege.net','12345',2),
+						('Brian','Mcleod','assignee','204-583-8766','bmcleod@robertsoncollege.net','12345',2),
+						('Stacy','Ross','assignee','204-423-8765','sross@robertsoncollege.net','12345',2),
+						('Winston','Katch','assignee','204-676-2222','wkatch@robertsoncollege.net','12345',2),
+						('Quinton','Frost','assignee','204-898-2134','qfrost@robertsoncollege.net','12345',2),
+						('Trent','Spice','assignee','204-222-2345','tSpice@robertsoncollege.net','12345',2),
+						('Carl','Draft','assignee','204-211-2133','cdraft@robertsoncollege.net','12345',2),
+						('Alex','Blacksmith','assignee','204-222-3131','ablacksmith@robertsoncollege.net','12345',2),
+						('Erin','Mcintosh','assignee','204-414-2311','emcintosh@robertsoncollege.net','12345',2),
+						('Veverly','Wormly','assignee','204-989-4653','vwormly@robertsoncollege.net','12345',2),
+						('Tim','Smith','assignee','204-323-8764','tsmith@robertsoncollege.net','12345',2),
+						('Mark','Abigail','assignee','204-234-0983','mAbigail@robertsoncollege.net','12345',2),
+						('Fred','West','assignee','204-978-2133','fwest@robertsoncollege.net','12345',2),
+						('Tilly','Graham','assignee','204-898-2134','tgraham@robertsoncollege.net','12345',2),
+						('Disney','North','assignee','204-453-3261','dnorth@robertsoncollege.net','12345',2),
+						('Dugald','Drive','assignee','204-978-2133','ddrive@robertsoncollege.net','12345',2),
+						('Felix','Spence','assignee','204-414-3131','fspence@robertsoncollege.net','12345',2),
+						('Stacy','Traverse','assignee','204-898-3535','straverse@robertsoncollege.net','12345',2),
+						('Dinah','Michaels','assignee','204-999-2334','dmichaels@robertsoncollege.net','12345',2),
+						('Dredge','Reaper','assignee','204-241-3245','dreaper@robertsoncollege.net','12345',2),
+						('Tara','Young','assignee','204-898-2344','tyoung@robertsoncollege.net','12345',2)				
 GO
 CREATE TABLE tbTicketCategory
 (
@@ -63,7 +97,8 @@ GO
 INSERT INTO tbTicket VALUES ('Computer crashed', 'One of my students computer chrashed', GETDATE(), '','unassigned', 4, 7, 9),
 							('Password not working', 'One of my students password is not working', GETDATE(), '','open', 2, 8, 10),
 							('E-mail not working', 'One of my students e-mail is not working', GETDATE(), '','unassigned', 1, 7, 10),
-							('Internet not working', 'Problem with the internet', GETDATE(), '','open', 3, 8, 9)
+							('Internet not working', 'Problem with the internet', GETDATE(), '','open', 3, 8, 9),
+							('Computer will not start', 'Used laptop will not start', GETDATE(), '','open', 4, 15, 9),											
 GO
 CREATE TABLE tbTicketComment
 (
@@ -101,7 +136,7 @@ DeviceID INT IDENTITY (1,1) PRIMARY KEY,
 DeviceName VARCHAR(50) NOT NULL
 )
 GO
-INSERT INTO tbDevice(DeviceName) VALUES ('MOBILE PROJECTORS'),('COMPUTER ON WHEELS'),('SPEEKERS'),('TV MOVES')
+INSERT INTO tbDevice(DeviceName) VALUES ('MOBILE PROJECTORS'),('COMPUTER ON WHEELS'),('SPEAKERS'),('TV MOVES')
 GO
 CREATE TABLE tbDeviceBooking
 (
