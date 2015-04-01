@@ -68,6 +68,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Global.asax" />
+    <Content Include="images\about_us.jpg" />
     <Content Include="images\bg.gif" />
     <Content Include="images\boeder.gif" />
     <Content Include="images\bottom_shadow.gif" />
