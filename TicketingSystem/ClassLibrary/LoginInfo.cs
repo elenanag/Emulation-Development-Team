@@ -9,15 +9,15 @@ namespace ClassLibrary
     public class LoginInfo
     {
         public int UserID { get; set; }
-        public int AccessLevelName { get; set; }
+        public int AccessLevelID { get; set; }
         public string Email { get; set; }
 
         public LoginInfo() { }
 
-        public LoginInfo(int userID, int accessLevelName, string email)
+        public LoginInfo(int userID, int accessLevelID, string email)
         {
             this.UserID = userID;
-            this.AccessLevelName = accessLevelName;
+            this.AccessLevelID = accessLevelID;
             this.Email = email;
         }
     }

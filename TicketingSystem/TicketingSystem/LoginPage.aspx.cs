@@ -34,23 +34,23 @@ namespace EmulationGroupProject
                 
                 string email = ds.Tables[0].Rows[0]["Email"].ToString();
                 string userId = ds.Tables[0].Rows[0]["UserID"].ToString();
-                string userAccess = ds.Tables[0].Rows[0]["AccessLevelName"].ToString();
+                int userAccessID =Convert.ToInt32(ds.Tables[0].Rows[0]["AccessLevelID"]);
                
-                LoginInfo user = new LoginInfo(Convert.ToInt32(userId), Convert.ToInt32(userAccess),email);
+                LoginInfo user = new LoginInfo(Convert.ToInt32(userId), userAccessID,email);
                 
-                lblMessage.Text = String.Format("Welcome back {0}! You're user ID {1} and you have access as an {2}.", email, userId, userAccess);
+                lblMessage.Text = String.Format("Welcome back {0}! You're user ID {1} and you have access as an {2}.", email, userId, userAccessID);
                 lblMessage.ForeColor = Color.Green;
 
                 Session["user"] = user;
 
-                if (userAccess == "1")
+                if (userAccessID == 1)
                 {
-                    Response.Redirect("AdminWelcome.aspx");
+                   // Response.Redirect("AdminWelcome.aspx");
                 }
                 else if
-                      (userAccess == "2")
+                      (userAccessID == 2)
                 {
-                    Response.Redirect("AdminWelcome.aspx");
+                   // Response.Redirect("AdminWelcome.aspx");
                 }
                 //else
                 //{
