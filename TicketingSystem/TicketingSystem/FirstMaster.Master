@@ -11,11 +11,12 @@
 <body>
 	<!-- top navigation start -->
 	<div id="topNav">
-		<a href="index.html" title="Flash Web"><img src="images/robertson.jpeg" alt="Flash Web" width="179" height="75" border="0" /></a>
+		<a href="index.html" title="Flash Web"><img src="images/robertson.jpeg"
+             alt="Flash Web" width="179" height="75" border="0" /></a>
 		<ul>
-			<li><a href="#" title="Home" class="hover">Home</a></li>
-			<li><a href="#" title="About us">About Us</a></li>
-			<li><a href="#" title="Support">Support</a></li>
+			<li><a href="LoginPage.aspx" title="Home" class="hover">Home</a></li>
+			<li><a href="AboutUs.aspx" title="About us">About Us</a></li>
+			<li><a href="Support.aspx" title="Support">Support</a></li>
 			<li><a href="#" title="FAQs">FAQs</a></li>
 			<li><a href="#" title="Login">Login</a></li>
 			<li><a href="#" title="Register">Sign up!</a></li>
