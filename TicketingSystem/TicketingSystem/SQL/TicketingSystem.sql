@@ -217,7 +217,7 @@ END
 GO
 EXEC spGetUser
 
-　
+
 --Insert new User into the table
 GO
 CREATE PROCEDURE spInsertUser
@@ -239,7 +239,7 @@ END
 --GO
 --EXEC spInsertUser @FirstName='John', @LastName='Donlop',@Title='teacher', @Phone='(204)-344-9870', @Email='jdonlop@yahoo.com', @Password='john99', @AccessLevelID = 0
 
-　
+
 
 --Update customer information
 
@@ -266,7 +266,7 @@ END
 --EXEC spUpdateUser @FirstName='Dimitar', @LastName='Dimitrov', @Phone='(349)-212-8798', @Title = 'assignee',
 --					@Email='idimitrov@gmail.com', @Password='ivan95', @AccessLevelID=2, @UserID=9
 
-　
+
 
 --Delete user
 
@@ -349,7 +349,7 @@ END
 --EXEC spDeleteTicketCategory @TicketCategoryID=3
 
 
-　
+
 -----------------------------tbTicket---------------------------------------------------------------------
 
 
@@ -390,7 +390,7 @@ END
 --	@Status='opened',@TicketCategoryID=1,@ClientID=10,@AssigneeID=8
 
 
-　
+
 
 --Update Ticket
 
@@ -418,7 +418,7 @@ END
 --EXEC spUpdateTicket @Summary='broken screen', @Description='student laptop screen broke',@DateCreated='3/23/15',@Priority='hign',
 --	@Status='unassigned', @TicketCategoryID=3,@ClientID=9,@AssigneeID=7,@TicketID=3
 
-　
+
 
 --Delete from tbTicket
 
@@ -433,7 +433,7 @@ BEGIN
 END
 --GO
 --EXEC spDeleteTicket @TicketID=3
-　
+
 
 --Search for product
 
@@ -449,7 +449,7 @@ END
 GO
 EXEC spSearchTicket @Description='com'
 
-　
+
 -----------------------------tbTicketComment---------------------------------------------------------------------
 
 
@@ -508,7 +508,6 @@ END
 --EXEC spUpdateTicketComment @Comments ='broken screen', @DateOfComments='3/23/15',
 --	 @TicketCommentID=3,@AssigneeID=7,@TicketID=3
 
-　
 
 --Delete from tbTicket
 
@@ -523,7 +522,6 @@ BEGIN
 END
 --GO
 --EXEC spDeleteTicket @TicketID=3
-　
 
 
 
@@ -543,7 +541,7 @@ BEGIN
 END
 --GO
 --EXEC spGetTimeSpentOnTicket
-　
+
 
 --Insert Time Spent On Ticket
 GO
@@ -560,7 +558,7 @@ BEGIN
 END
 --GO
 --EXEC spInsertTimeSpentOnTicket @TimeSpentOnTicket='20:40', @DateWorkedOnTicket='8/26/15',@AssigneeID='8', @TicketID = 
-　
+
 
 --Update Time Spent On Ticket
 GO
@@ -596,7 +594,6 @@ END
 --GO
 --EXEC spTimeSpentOnTicket @TimeSpentOnTicketID=1
 
-　
 
 　-----------------------------tbDevice---------------------------------------------------------------------
 
@@ -630,7 +627,6 @@ END
 --GO
 --EXEC spInsertDevice @DeviceName='Computer'
 
-　
 
 --Update Ticket
 
@@ -662,8 +658,7 @@ BEGIN
 	DELETE FROM tbDevice WHERE DeviceID=@DeviceID
 END
 --GO
---EXEC spDeleteDevice @DeviceID=3
-　
+--EXEC spDeleteDevice @DeviceID=3　
 
 
 -----------------------------tbDeviceBooking---------------------------------------------------------------------
@@ -706,7 +701,7 @@ END
 --GO
 --EXEC spInsertDeviceBooking @DateStart='3/4/15',@DateEnd='4/4/15',@DeviceID=4,@ClientID=10
 
-　
+
 
 --Update DevicesBooking
 
@@ -729,7 +724,6 @@ END
 --GO
 --EXEC spUpdateDeviceBooking  @DateStart='3/4/15',@DateEnd='4/4/15',@DeviceID=4,@ClientID=10,@DeviceBookingID=3
 
-　
 
 --Delete from tbDeviceBooking
 
@@ -744,7 +738,7 @@ BEGIN
 END
 GO
 EXEC spDeleteDeviceBooking @DeviceBookingID=3
-　
+
 
 ---------------------------------tbTicketAttachment-------------------------------------------------------------------------------------------
 -- Show the Ticket Attachment information
@@ -760,7 +754,7 @@ BEGIN
 END
 --GO
 --EXEC spGetTicketAttachment
-　
+
 
 --Insert new Ticket Attachment into the table
 GO
@@ -777,7 +771,7 @@ INSERT INTO tbTicketAttachment VALUES (@ImagePath, @ClientID, @TicketID, @DateOf
 END
 --GO
 --EXEC spInsertTicketAttachment @ImagePath='\attachment\', @ClientID=8, @TicketID=3, @DateOfAttachment='9/24/15'
-　
+
 
 --Update Ticket Attachment
 GO
@@ -796,7 +790,7 @@ BEGIN
 END
 GO
 --EXEC spUpdateTicketAttachment @ImagePath='\attachment\', @ClientID=9,@TicketID = 4, @DateOfAttachment='6/23/15', @TicketAttachmentID=1
-　
+
 
 --Delete Ticket Attachment
 GO
@@ -811,7 +805,6 @@ END
 --GO
 --EXEC spDeleteTicketAttachment @TicketAttachmentID=3
 
-　
 
-　
+
 
