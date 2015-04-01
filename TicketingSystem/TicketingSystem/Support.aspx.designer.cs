@@ -11,7 +11,7 @@ namespace TicketingSystem
 {
 
 
-    public partial class AboutUs
+    public partial class Support
     {
     }
 }

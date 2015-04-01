@@ -7,7 +7,7 @@ using System.Web.UI.WebControls;
 
 namespace TicketingSystem
 {
-    public partial class AboutUs : System.Web.UI.Page
+    public partial class Support : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {

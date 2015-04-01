@@ -57,6 +57,7 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="AboutUs.aspx" />
     <Content Include="FirstMaster.Master" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -66,7 +67,6 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="AboutUs.aspx" />
     <Content Include="Global.asax" />
     <Content Include="images\bg.gif" />
     <Content Include="images\boeder.gif" />
@@ -98,6 +98,7 @@
     <Content Include="MainPage.aspx" />
     <Content Include="SQL\TicketingSystem.sql" />
     <Content Include="style.css" />
+    <Content Include="Support.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -133,6 +134,13 @@
       <DependentUpon>MainPage.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Support.aspx.cs">
+      <DependentUpon>Support.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Support.aspx.designer.cs">
+      <DependentUpon>Support.aspx</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\ClassLibrary\ClassLibrary.csproj">
