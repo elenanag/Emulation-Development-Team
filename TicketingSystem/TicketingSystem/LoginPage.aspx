@@ -10,7 +10,8 @@
                     E-mail:
                 </td>
                 <td style="height: 27px">
-                    <input id="txtEmail" type="text" required />
+                   <%-- <input id="txtEmail" type="text" required />--%>
+                    <asp:TextBox ID="txtEmail" runat="server"></asp:TextBox>
                 </td>
             </tr>
             <tr>
@@ -18,15 +19,16 @@
                     Password:
                 </td>
                 <td>
-                    <input id="txtPassword" type="text" required />
+                   <%-- <input id="txtPassword" type="text" required />--%><asp:TextBox ID="txtPassword" runat="server"></asp:TextBox>
                 </td>
             </tr>
             <tr>
                 <td>&nbsp;</td>
                 <td style="text-align:right">
-                    <asp:Button ID="btnSubmit" runat="server" Text="Login" Height="24px" Width="87px" />
+                    <asp:Button ID="btnSubmit" runat="server" Text="Login" Height="24px" Width="87px" OnClick="btnSubmit_Click" />
                 </td>
             </tr>
         </table>
+        <asp:Label ID="lblMessage" runat="server" Text=""></asp:Label>
     </div>
 </asp:Content>

@@ -196,7 +196,7 @@ BEGIN
 
 	WHERE Email = @Email AND Password = @Password
 END
-GO
+--GO
 --EXEC spLogin @Email=maria, @Password=mi88new
 
 
@@ -644,7 +644,7 @@ BEGIN
 END
 --GO
 --EXEC spUpdateDevice @DeviceName='Laptop', @DeviceID ='5'
-　
+
 
 --Delete from tbTicket
 
