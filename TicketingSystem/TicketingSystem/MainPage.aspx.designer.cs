@@ -40,6 +40,51 @@ namespace EmulationGroupProject {
         protected global::System.Web.UI.WebControls.GridView gvTicket;
         
         /// <summary>
+        /// lblTicketNumber control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblTicketNumber;
+        
+        /// <summary>
+        /// ImgBtnEdit control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.ImageButton ImgBtnEdit;
+        
+        /// <summary>
+        /// ImgBtnClose control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.ImageButton ImgBtnClose;
+        
+        /// <summary>
+        /// ImgBtnCloseDupelicate control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.ImageButton ImgBtnCloseDupelicate;
+        
+        /// <summary>
+        /// ImgBtnPrint control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.ImageButton ImgBtnPrint;
+        
+        /// <summary>
         /// imgResponse control.
         /// </summary>
         /// <remarks>

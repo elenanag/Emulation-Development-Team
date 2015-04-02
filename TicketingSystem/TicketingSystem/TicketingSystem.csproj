@@ -72,10 +72,13 @@
     <Content Include="images\bg.gif" />
     <Content Include="images\boeder.gif" />
     <Content Include="images\bottom_shadow.gif" />
+    <Content Include="images\Close as duplicate.jpg" />
+    <Content Include="images\close.jpg" />
     <Content Include="images\contact_bottom.gif" />
     <Content Include="images\contact_h2_bg.gif" />
     <Content Include="images\contact_midle.gif" />
     <Content Include="images\contact_top.gif" />
+    <Content Include="images\edit.jpg" />
     <Content Include="images\event_link_bg.gif" />
     <Content Include="images\footer.jpg" />
     <Content Include="images\logo_text.gif" />
@@ -87,6 +90,7 @@
     <Content Include="images\newsletter_midle.gif" />
     <Content Include="images\newsletter_top.gif" />
     <Content Include="images\picture.gif" />
+    <Content Include="images\print.jpg" />
     <Content Include="images\red_arrow.gif" />
     <Content Include="images\red_bullet.gif" />
     <Content Include="images\robertson.jpeg" />
