@@ -30,7 +30,14 @@
     </div>
     
     <br />
-    <br />
+    <div id ="ticketOptions">
+        Ticket #<asp:Label ID="lblTicketNumber" runat="server" Text="####"></asp:Label>
+        <br />
+        <asp:ImageButton ID="ImgBtnEdit" ImageUrl="images/edit.jpg" Height="35px" Width="50px" runat="server" />
+        <asp:ImageButton ID="ImgBtnClose" ImageUrl="images/Close.jpg" Height="35px" Width="50px" runat="server" />
+        <asp:ImageButton ID="ImgBtnCloseDupelicate" ImageUrl="images/Close as duplicate.jpg" Height="35px" Width="100px" runat="server" />
+        <asp:ImageButton ID="ImgBtnPrint" ImageUrl="images/print.jpg" Height="35px" Width="50px" runat="server" />
+    </div>
     <div>
         <asp:ImageButton ID="imgResponse" ImageUrl="images/response.jpg" runat="server" Height="34px" Width="86px" />
             &nbsp&nbsp
