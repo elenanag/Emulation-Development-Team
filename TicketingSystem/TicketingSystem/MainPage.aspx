@@ -30,31 +30,39 @@
     </div>
     
     <br />
-    <div id ="ticketOptions">
+    <div id ="ticketOptions" >
         Ticket #<asp:Label ID="lblTicketNumber" runat="server" Text="####"></asp:Label>
-        <br />
-        <asp:ImageButton ID="ImgBtnEdit" ImageUrl="images/edit.jpg" Height="35px" Width="50px" runat="server" />
-        <asp:ImageButton ID="ImgBtnClose" ImageUrl="images/Close.jpg" Height="35px" Width="50px" runat="server" />
-        <asp:ImageButton ID="ImgBtnCloseDupelicate" ImageUrl="images/Close as duplicate.jpg" Height="35px" Width="100px" runat="server" />
-        <asp:ImageButton ID="ImgBtnPrint" ImageUrl="images/print.jpg" Height="35px" Width="50px" runat="server" />
+        <br /><Br />
+        <div>
+            <table border="1">
+                <tr>
+                    <td> <asp:ImageButton ID="ImgBtnEdit" ImageUrl="images/edit.jpg" Height="26px" Width="65px" runat="server" /></td>
+                    <td><asp:ImageButton ID="ImgBtnClose" ImageUrl="images/Close.jpg" Height="24px" Width="54px" runat="server" /></td>
+                    <td><asp:ImageButton ID="ImgBtnCloseDupelicate" ImageUrl="images/Close as duplicate.jpg" Height="23px" Width="115px" runat="server" /></td>
+                    <td><asp:ImageButton ID="ImgBtnPrint" ImageUrl="images/print.jpg" Height="26px" Width="59px" runat="server" /></td>
+                </tr>
+            </table>
+        </div>
     </div>
+    <br /><br />
     <div>
         <asp:ImageButton ID="imgResponse" ImageUrl="images/response.jpg" runat="server" Height="34px" Width="86px" />
             &nbsp&nbsp
         <asp:ImageButton ID="imgNotes" ImageUrl="images/notes.jpg" runat="server" Height="34px" Width="86px" />
         <br /><br />
         <%--<asp:TextBox ID="txtReponse" Placeholder="Please type your reponse here" TextMode="MultiLine" runat="server" Height="28px" Width="238px"></asp:TextBox>--%>
-        <textarea class="txt" type="text"
-        value="Some Text Some Text Some Text" /></textarea>
+        <%--<textarea class="txt" type="text"
+        value="Some Text Some Text Some Text" /></textarea>--%>
+        <asp:TextBox ID="txtPost" runat="server" TextMode="MultiLine"></asp:TextBox>
     </div>
     <div style="text-align:center">
         <table style="height: 69px; width: 256px">
             <tr>
                 <td>
-                    <asp:CheckBox ID="chkClosed" Visible="false" Text="Close ticket" runat="server" />
+                    <asp:CheckBox ID="chkClosed" Visible="true" Text="Close ticket" runat="server" />
                 </td>
                 <td>
-                     <asp:Button ID="btnPost" runat="server" Visible="false" Text="Post" Height="23px" Width="70px" />
+                     <asp:Button ID="btnPost" runat="server" Visible="true" Text="Post" Height="23px" Width="70px" />
                 </td>
             </tr>
         </table>
@@ -67,8 +75,12 @@
         </asp:DataList>
     </div>
  <script type="text/javascript">
+
      $(function () {
-         $(".txt").focus(function () {
+         $("#ContentPlaceHolder1_chkClosed, label[for='ContentPlaceHolder1_chkClosed']").hide();
+         $("#ContentPlaceHolder1_btnPost").hide();
+
+         $("#ContentPlaceHolder1_txtPost").focus(function () {
              $(this).animate({           
                  width: '200px',
                  height: '40px'
@@ -78,21 +90,13 @@
              .animate({
                  width: '720px',
                  height: '130px'
+                      },
+                "slow");
+             $("#ContentPlaceHolder1_chkClosed, label[for='ContentPlaceHolder1_chkClosed']").show();
 
-             },
-                 "slow"
-             );
+             $("#ContentPlaceHolder1_btnPost").show();
          });
-         $("#chkClosed").show(function () {
-             $(this).show({
-                 visible: false
-             })
-         });
-         $("#btnPost").show(function () {
-             $(this).show({
-                 visible: false
-             })
-         });
+         
      });
      </script>
 </asp:Content>
