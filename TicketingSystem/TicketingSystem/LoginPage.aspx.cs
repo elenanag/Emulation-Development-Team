@@ -38,7 +38,7 @@ namespace EmulationGroupProject
                
                 LoginInfo user = new LoginInfo(Convert.ToInt32(userId), userAccessID,email);
                 
-                lblMessage.Text = String.Format("Welcome back {0}! You're user ID {1} and you have access as an {2}.", email, userId, userAccessID);
+                lblMessage.Text = String.Format("Welcome back {0}!", email);
                 lblMessage.ForeColor = Color.Green;
 
                 Session["user"] = user;
