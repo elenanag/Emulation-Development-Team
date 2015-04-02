@@ -23,7 +23,7 @@ namespace EmulationGroupProject
         private void PopulateTicketGrid()
         {
             DAL d = new DAL(connString);
-            DataSet ds = d.ExecuteProcedure("spGetTicket");
+            DataSet ds = d.ExecuteProcedure("spGetTicketInfo");
 
             gvTicket.DataSource = ds;
             gvTicket.DataBind();
