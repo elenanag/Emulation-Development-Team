@@ -120,7 +120,14 @@ GO
 INSERT INTO tbTicket VALUES ('Computer crashed', 'One of my students computer chrashed', GETDATE(), 2,2, 4, 7, 9),
 							('Password not working', 'One of my students password is not working', GETDATE(), 1,1, 2, 8, 10),
 							('E-mail not working', 'One of my students e-mail is not working', GETDATE(), 3,3, 1, 7, 10),
-							('Internet not working', 'Problem with the internet', GETDATE(), 1,1, 3, 8, 9)
+							('Internet not working', 'Problem with the internet', GETDATE(), 1,1, 3, 8, 9),
+							('Computer will not start', 'Used laptop will not start', GETDATE(), 3,1, 4, 15, 9),
+							('Computer is running slow', 'All the computers in my class is slow', GETDATE(), 2,2, 4, 15, 9),
+							('student e-mail issue', 'I am unable to send or receive email?', GETDATE(), 3,2, 1, 19, 3),
+							('Email conflict', 'I can not receive any email attachments?', GETDATE(), 1,1, 1, 22, 10),
+							('email contact issue', 'Are spaces allowed in email addresses?', GETDATE(), 2,1, 1, 18, 10),
+							('Network reject user', 'I can not connect to my network drive anymore?', GETDATE(), 3,2, 4, 15, 9),
+							('Computer will not start', 'Used laptop will not start', GETDATE(), 3,1, 4, 15, 9)
 							------------
 GO
 CREATE TABLE tbTicketComment
