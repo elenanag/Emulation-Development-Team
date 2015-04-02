@@ -204,6 +204,7 @@ END
 
 --Store procedure for Login
 
+
 GO
 CREATE PROCEDURE spLogin
 (
@@ -261,8 +262,6 @@ END
 --GO
 --EXEC spInsertUser @FirstName='John', @LastName='Donlop',@Title='teacher', @Phone='(204)-344-9870', @Email='jdonlop@yahoo.com', @Password='john99', @AccessLevelID = 0
 
-　
-
 --Update customer information
 
 GO
@@ -288,7 +287,8 @@ END
 --EXEC spUpdateUser @FirstName='Dimitar', @LastName='Dimitrov', @Phone='(349)-212-8798', @Title = 'assignee',
 --					@Email='idimitrov@gmail.com', @Password='ivan95', @AccessLevelID=2, @UserID=9
 
-　
+
+
 
 --Delete user
 
@@ -321,6 +321,7 @@ SELECT * FROM tbTicketCategory
 END
 --GO
 --EXEC spGetTicketCategory
+
 
 
 --Insert information into Ticket category table
