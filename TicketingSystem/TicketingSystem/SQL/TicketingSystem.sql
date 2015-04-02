@@ -17,6 +17,7 @@ INSERT INTO tbUserAccessLevel (AccessLevelName) VALUES ('client'),('admin'),('as
 GO
 CREATE TABLE tbUser
 (
+
 UserID INT IDENTITY (1,1) PRIMARY KEY,
 FirstName VARCHAR(35) NOT NULL,
 LastName VARCHAR(35) NOT NULL,
