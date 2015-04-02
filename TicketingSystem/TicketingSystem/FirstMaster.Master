@@ -20,7 +20,7 @@
 			<li><a href="LoginPage.aspx" title="Home" class="hover">Home</a></li>
 			<li><a href="AboutUs.aspx" title="About us">About Us</a></li>
 			<li><a href="Support.aspx" title="Support">Support</a></li>
-			<li><a href="#" title="FAQs">FAQs</a></li>
+			<li><a href="FAQs.aspx" title="FAQs">FAQs</a></li>
 			<li><a href="#" title="Login">Login</a></li>
 		</ul>
 	</div>
