@@ -98,12 +98,18 @@ INSERT INTO tbTicket VALUES ('Computer crashed', 'One of my students computer ch
 							('Password not working', 'One of my students password is not working', GETDATE(), '','open', 2, 8, 10),
 							('E-mail not working', 'One of my students e-mail is not working', GETDATE(), '','unassigned', 1, 7, 10),
 							('Internet not working', 'Problem with the internet', GETDATE(), '','open', 3, 8, 9),
-							('Computer will not start', 'Used laptop will not start', GETDATE(), '','open', 4, 15, 9),											
+							('Computer will not start', 'Used laptop will not start', GETDATE(), '','open', 4, 15, 9),
+							('Computer is running slow', 'All the computers in my class is slow', GETDATE(), '','open', 4, 15, 9),
+							('student e-mail issue', 'I am unable to send or receive email?', GETDATE(), '','Assigned', 1, 19, 3),
+							('Email conflict', 'I can not receive any email attachments?', GETDATE(), '','open', 1, 22, 10),
+							('email contact issue', 'Are spaces allowed in email addresses?', GETDATE(), '','open', 1, 18, 10),
+							('Network reject user', 'I can not connect to my network drive anymore?', GETDATE(), '','open', 4, 15, 9),
+							('Computer will not start', 'Used laptop will not start', GETDATE(), '','open', 4, 15, 9)																										
 GO
 CREATE TABLE tbTicketComment
 (
 TicketCommentID INT IDENTITY (1,1) PRIMARY KEY,
-Comments VARCHAR(MAX),
+Comments VARCHAR(MAX),HGCX 
 DateOfComments DATETIME NOT NULL,
 AssigneeID INT FOREIGN KEY REFERENCES tbUser(UserID),
 TicketID INT FOREIGN KEY REFERENCES tbTicket(TicketID)
@@ -124,7 +130,8 @@ GO
 CREATE TABLE tbTicketAttachment
 (
 TicketAttachmentID INT IDENTITY (1,1) PRIMARY KEY,
-ImagePath VARCHAR(MAX),
+ImagePath VARCHAR(MAX),69
+
 ClientID INT FOREIGN KEY REFERENCES tbUser(UserID),
 TicketID INT FOREIGN KEY REFERENCES tbTicket(TicketID),
 DateOfAttachment DATE
