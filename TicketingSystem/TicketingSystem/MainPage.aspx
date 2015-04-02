@@ -6,15 +6,15 @@
         <h2 style="font-size:20px">Details</h2> 
     </div>
     <div style="text-align:center">
-        <asp:GridView ID="gvTicket" runat="server" CellPadding="4" ForeColor="#333333" GridLines="None" Height="196px" Width="716px" AutoGenerateColumns="False">
+        <asp:GridView ID="gvTicket" runat="server" CellPadding="4"  ForeColor="#333333" GridLines="None" Height="196px" Width="716px" AutoGenerateColumns="False">
             <AlternatingRowStyle BackColor="White" />
             <Columns>
                 <asp:BoundField DataField="TicketID" HeaderText="Ticket No." />
                 <asp:BoundField DataField="Summary" HeaderText="Issue/Problem" />
                 <asp:BoundField DataField="DateCreated" DataFormatString="{0:d}" HeaderText="Date Created" />
-                <asp:BoundField DataField="Priority" HeaderText="Priority" NullDisplayText="-" />
-                <asp:BoundField DataField="Status" HeaderText="Status" />
-                <asp:BoundField DataField="TicketCategoryID" HeaderText="Category" />
+                <asp:BoundField DataField="TicketPriorityName" HeaderText="Priority" NullDisplayText="-" />
+                <asp:BoundField DataField="TicketStatusName" HeaderText="Status" />
+                <%--<asp:BoundField DataField="TicketCategoryID" HeaderText="Category" />--%>
             </Columns>
             <FooterStyle BackColor="#990000" Font-Bold="True" ForeColor="White" />
             <HeaderStyle BackColor="#990000" Font-Bold="True" ForeColor="White" />
