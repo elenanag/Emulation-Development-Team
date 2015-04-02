@@ -22,6 +22,7 @@
 			<li><a href="AboutUs.aspx" title="About us">About Us</a></li>
 			<li><a href="Support.aspx" title="Support">Support</a></li>
 			<li><a href="FAQs.aspx" title="FAQs">FAQs</a></li>
+            <li><a href="#" title="Contact">Contact</a></li>
 			<li><a href="LoginPage.aspx" title="Login">Login</a></li>
 		</ul>
 	</div>
@@ -39,10 +40,8 @@
 	<!-- footer start -->
 	<div id="footer">
 	<ul>
-			<li><a href="#" title="Works">Works</a>|</li>
-			<li><a href="#" title="Ideas">Ideas</a>|</li>
-			<li><a href="#" title="Profits">Profits</a>|</li>
-			<li><a href="#" title="Contact">Contact</a></li>
+			
+			
 		</ul><br class="spacer" />
 		<p>©Robertson College. All rights reserved.</p><br class="spacer" />
 	  <p class="tworld">Designed By : <a href="http://techsmartly.net/freePS3.php" target="_blank">Emulation Development Team</a></p>

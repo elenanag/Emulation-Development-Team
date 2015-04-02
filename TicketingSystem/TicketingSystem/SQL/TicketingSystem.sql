@@ -91,7 +91,7 @@ CREATE TABLE tbTicketStatus
 TicketStatusID INT IDENTITY(1,1) PRIMARY KEY,
 TicketStatusName VARCHAR(35)
 )
-INSERT INTO  tbTicketStatus Values('Opened'),('Unassigned'),('Closed')
+INSERT INTO  tbTicketStatus Values('Open'),('Unassigned'),('Closed')
 -------------------------------
 CREATE TABLE tbTicketPriority
 (

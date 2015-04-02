@@ -17,11 +17,29 @@
 
 
 <div id="accordion">
+    
+    <h2 style="color:red; font-weight:bold;">What is Ticket System?</h2>
+  <div>
+    <p>
+    The Support Ticket System is a mailing list that allows us to track support incidents for our products. 
+     A support staff member will be assigned to each ticket. New tickets appear in the system as [Open]. 
+     Dialog between the customer and the assigned staff member is tracked in our system until the issue has been solved to the customer's 
+     satisfaction, or it is determined that it can't be solved. The ticket is then marked [Closed]. Replying to a closed ticket will automatically reopen it.
+    </p>
+  </div>
+
+    <h2 style="color:red; font-weight:bold;">Do I have to be a customer to use this system?</h2>
+  <div>
+    <p>
+        Yes. Registered customer requests will be higher priority and get solved much sooner. <br /> 
+        However, questions will also be answered, if possible, by contacting us.
+    </p>
+  </div>
 
   <h2 style="color:red; font-weight:bold;">Monitor out of adjustment?</h2>
   <div>
     <p>
-    It may be that your Monitor is simply out of adjustment if you are experiencing any of the following symptoms: <br />
+    It may be that your Monitor is simply out of adjustment if you are experiencing any of the following symptoms: <br /><br />
     •Excessive black areas around the picture <br />
     •Parts of the picture are missing around the edges <br />
     •Picture scrolls up and down <br />
@@ -56,13 +74,31 @@
    <h2 style="color:red; font-weight:bold;">USB device does not appear in "Safely Remove Hardware"?</h2>
   <div>
     <p>
-        According to Microsoft the problem occurs when either of the two scenarios apply: <br />
+        According to Microsoft the problem occurs when either of the two scenarios apply: <br /><br />
         •The USB device contains an embedded USB hub. <br />
-        •The embedded USB hub detects a device that is connected to the USB hub as being a non-removable device. <br />
-        The work-a-round for this issue is to shut your system down before you remove the USB device.
+        •The embedded USB hub detects a device that is connected to the USB hub as being a non-removable device.
+         The work-a-round for this issue is to shut your system down before you remove the USB device.
     </p>
   </div>
 
+
+     <h2 style="color:red; font-weight:bold;">USB drive is not recognized?</h2>
+  <div>
+    <p>
+       There are two methods that I have seen work for this issue: <br />
+         Method #1: <br />
+        Go to Start ->
+        In the Search field, type in: device manager ->
+        Open device manager and navigate to your USB controller ->
+        Right click the drive and select Properties ->
+        Be sure that the option for "Write Caching" is enabled
+        <br />
+        Method #2: <br />
+        Navigate to Device Manager using the above instructions ->
+        Right click and Delete all of your USB controllers ->
+        Reboot Vista
+    </p>
+  </div>
 </div>
 
 </asp:Content>
