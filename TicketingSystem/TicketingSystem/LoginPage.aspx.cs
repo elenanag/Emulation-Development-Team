@@ -38,21 +38,21 @@ namespace EmulationGroupProject
                
                 LoginInfo user = new LoginInfo(Convert.ToInt32(userId), userAccessID,email);
                 
-                lblMessage.Text = String.Format("Welcome back {0}!", email);
-                lblMessage.ForeColor = Color.Green;
+                //lblMessage.Text = String.Format("Welcome back {0}!", email);
+                //lblMessage.ForeColor = Color.Green;
 
                 Session["user"] = user;
 
                 if (userAccessID == 1)
                 {
-                   // Response.Redirect("AdminWelcome.aspx");
+                    Response.Redirect("MainPage.aspx");
                 }
                 else if
                       (userAccessID == 2)
                 {
-                   // Response.Redirect("AdminWelcome.aspx");
+                     Response.Redirect("MainPage.aspx");
                 }
-                //else
+               // else
                 //{
                 //    Response.Redirect("LoginPage.aspx");
                 //}
