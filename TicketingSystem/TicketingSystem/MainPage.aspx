@@ -1,20 +1,21 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/FirstMaster.Master" AutoEventWireup="true" CodeBehind="MainPage.aspx.cs" Inherits="EmulationGroupProject.MainPage" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    <asp:Label ID="lblBoard" runat="server" Font-Bold="true" Font-Names="Arial" Font-Size="Large" Text="Ticket Board"></asp:Label> &nbsp&nbsp 
-     <asp:DropDownList ID="ddlTicketStatus" runat="server" Height="28px" Width="89px"></asp:DropDownList> <br /><br />
+    
     <div id="rightSideBar">
         <h2 style="font-size:20px">Details</h2> 
     </div>
-    <div style="text-align:center">
-        <asp:GridView ID="gvTicket" runat="server" CellPadding="4" ForeColor="#333333" GridLines="None" Height="196px" Width="716px" AutoGenerateColumns="False">
+    <div style="text-align:center" >
+        <asp:Label ID="lblBoard" runat="server" Font-Bold="true" Font-Names="Arial" Font-Size="Large" Text="Ticket Board"></asp:Label> &nbsp&nbsp 
+        <asp:DropDownList ID="ddlTicketStatus" runat="server" Height="28px" Width="105px"></asp:DropDownList> <br /><br />
+        <asp:GridView ID="gvTicket" BorderStyle="Solid" runat="server" CellPadding="4" ForeColor="#333333" GridLines="None" Height="134px" Width="812px" AutoGenerateColumns="False">
             <AlternatingRowStyle BackColor="White" />
             <Columns>
                 <asp:BoundField DataField="TicketID" HeaderText="Ticket No." />
                 <asp:BoundField DataField="Summary" HeaderText="Issue/Problem" />
                 <asp:BoundField DataField="DateCreated" DataFormatString="{0:d}" HeaderText="Date Created" />
-                <asp:BoundField DataField="Priority" HeaderText="Priority" NullDisplayText="-" />
-                <asp:BoundField DataField="Status" HeaderText="Status" />
-                <asp:BoundField DataField="TicketCategoryID" HeaderText="Category" />
+                <asp:BoundField DataField="TicketPriorityName" HeaderText="Priority" NullDisplayText="-" />
+                <asp:BoundField DataField="TicketStatusName" HeaderText="Status" />
+                <asp:BoundField DataField="Email" HeaderText="Ticket Sender" />
             </Columns>
             <FooterStyle BackColor="#990000" Font-Bold="True" ForeColor="White" />
             <HeaderStyle BackColor="#990000" Font-Bold="True" ForeColor="White" />
@@ -26,10 +27,8 @@
             <SortedDescendingCellStyle BackColor="#FCF6C0" />
             <SortedDescendingHeaderStyle BackColor="#820000" />
         </asp:GridView>
-        
     </div>
-    
-    <br />
+    <br /><br />
     <div id ="ticketOptions" >
         Ticket #<asp:Label ID="lblTicketNumber" runat="server" Text="####"></asp:Label>
         <br /><Br />
@@ -50,9 +49,6 @@
             &nbsp&nbsp
         <asp:ImageButton ID="imgNotes" ImageUrl="images/notes.jpg" runat="server" Height="34px" Width="86px" />
         <br /><br />
-        <%--<asp:TextBox ID="txtReponse" Placeholder="Please type your reponse here" TextMode="MultiLine" runat="server" Height="28px" Width="238px"></asp:TextBox>--%>
-        <%--<textarea class="txt" type="text"
-        value="Some Text Some Text Some Text" /></textarea>--%>
         <asp:TextBox ID="txtPost" runat="server" TextMode="MultiLine"></asp:TextBox>
     </div>
     <div style="text-align:center">

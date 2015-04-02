@@ -7,6 +7,7 @@ using System.Web.UI.WebControls;
 using System.Configuration;
 using System.Data;
 using DAL_Project;
+using System.Data.SqlClient;
 
 namespace EmulationGroupProject
 {
@@ -18,12 +19,31 @@ namespace EmulationGroupProject
             if (!IsPostBack)
             {
                 PopulateTicketGrid();
+                PopulateTicketDropDown();
             }
         }
+
+        private void PopulateTicketDropDown()
+        {
+            SqlConnection connect = new SqlConnection("Data Source=localhost;Initial Catalog=dbTicketingSystem;Integrated Security=True");
+            SqlDataAdapter adapt = new SqlDataAdapter("SELECT * FROM tbTicketPriority", connect);
+            DataSet dataset = new DataSet();
+
+            connect.Open();
+            adapt.Fill(dataset);
+            connect.Close();
+
+            ddlTicketStatus.DataTextField = "TicketPriorityName";
+            ddlTicketStatus.DataValueField = "TicketPriorityID";
+            ddlTicketStatus.DataSource = dataset;
+            ddlTicketStatus.DataBind();
+
+            ddlTicketStatus.Items.Insert(0, "Priority level");
+        } 
         private void PopulateTicketGrid()
         {
             DAL d = new DAL(connString);
-            DataSet ds = d.ExecuteProcedure("spGetTicket");
+            DataSet ds = d.ExecuteProcedure("spGetTicketInfo");
 
             gvTicket.DataSource = ds;
             gvTicket.DataBind();
