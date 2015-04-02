@@ -5,7 +5,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-namespace EmulationGroupProject
+namespace TicketingSystem
 {
     public partial class AboutUs : System.Web.UI.Page
     {

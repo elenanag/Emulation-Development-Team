@@ -57,6 +57,7 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="AboutUs.aspx" />
     <Content Include="FirstMaster.Master" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -66,8 +67,8 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="AboutUs.aspx" />
     <Content Include="Global.asax" />
+    <Content Include="images\about_us.jpg" />
     <Content Include="images\bg.gif" />
     <Content Include="images\boeder.gif" />
     <Content Include="images\bottom_shadow.gif" />
@@ -98,17 +99,20 @@
     <Content Include="MainPage.aspx" />
     <Content Include="SQL\TicketingSystem.sql" />
     <Content Include="style.css" />
+    <Content Include="Support.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AboutUs.aspx.cs">
       <DependentUpon>AboutUs.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="AboutUs.aspx.designer.cs">
       <DependentUpon>AboutUs.aspx</DependentUpon>
     </Compile>
     <Compile Include="FirstMaster.Master.cs">
       <DependentUpon>FirstMaster.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="FirstMaster.Master.designer.cs">
       <DependentUpon>FirstMaster.Master</DependentUpon>
@@ -118,19 +122,32 @@
     </Compile>
     <Compile Include="LoginPage.aspx.cs">
       <DependentUpon>LoginPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="LoginPage.aspx.designer.cs">
       <DependentUpon>LoginPage.aspx</DependentUpon>
     </Compile>
     <Compile Include="MainPage.aspx.cs">
       <DependentUpon>MainPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="MainPage.aspx.designer.cs">
       <DependentUpon>MainPage.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Support.aspx.cs">
+      <DependentUpon>Support.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Support.aspx.designer.cs">
+      <DependentUpon>Support.aspx</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\ClassLibrary\ClassLibrary.csproj">
+      <Project>{0a83a069-b075-4c20-9277-d54aa83c391c}</Project>
+      <Name>ClassLibrary</Name>
+    </ProjectReference>
     <ProjectReference Include="..\DAL_Project\DAL_Project.csproj">
       <Project>{e3026510-5b06-4ff2-816b-3f06cbe5f7df}</Project>
       <Name>DAL_Project</Name>

@@ -7,11 +7,11 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace EmulationGroupProject
+namespace TicketingSystem
 {
 
 
-    public partial class MainPage
+    public partial class Support
     {
     }
 }
