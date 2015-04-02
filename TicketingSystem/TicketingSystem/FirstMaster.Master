@@ -6,8 +6,11 @@
 <title>Flash Web</title>
 <link href="style.css" rel="stylesheet" type="text/css" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-</head>
 
+     <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+     <script src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script> 
+</head>
+       
 <body>
 	<!-- top navigation start -->
 	<div id="topNav">
@@ -19,7 +22,6 @@
 			<li><a href="Support.aspx" title="Support">Support</a></li>
 			<li><a href="#" title="FAQs">FAQs</a></li>
 			<li><a href="#" title="Login">Login</a></li>
-			<li><a href="#" title="Register">Sign up!</a></li>
 		</ul>
 	</div>
 	<!-- top navigation end -->

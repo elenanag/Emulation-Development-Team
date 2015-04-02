@@ -31,13 +31,13 @@ namespace EmulationGroupProject {
         protected global::System.Web.UI.WebControls.DropDownList ddlTicketStatus;
         
         /// <summary>
-        /// GridView1 control.
+        /// gvTicket control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView GridView1;
+        protected global::System.Web.UI.WebControls.GridView gvTicket;
         
         /// <summary>
         /// imgResponse control.
@@ -58,15 +58,6 @@ namespace EmulationGroupProject {
         protected global::System.Web.UI.WebControls.ImageButton imgNotes;
         
         /// <summary>
-        /// txtReponse control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtReponse;
-        
-        /// <summary>
         /// chkClosed control.
         /// </summary>
         /// <remarks>
@@ -83,5 +74,14 @@ namespace EmulationGroupProject {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnPost;
+        
+        /// <summary>
+        /// DataList1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DataList DataList1;
     }
 }
