@@ -27,6 +27,7 @@ Password VARCHAR(20) NOT NULL,
 AccessLevelID INT FOREIGN KEY REFERENCES tbUserAccessLevel(AccessLevelID)
 )
 GO
+
 INSERT INTO tbUser VALUES('Elena','Nagberi', 'admin', '204-345-4567', 'elena.nagberi@robertsoncollege.net', 'elena', 1),
 						('Kulwinder','Brar', 'admin', '204-999-4789', 'kulwinder.brar@robertsoncollege.net', 'brar', 1),
 						('Justine','Dela Cruz', 'admin', '204-345-4567', 'justine.dela_cruz@robertsoncollege.net', '12345', 1),
@@ -46,24 +47,45 @@ CategoryName VARCHAR(50)NOT NULL
 )
 GO
 INSERT INTO  tbTicketCategory(CategoryName) VALUES ('E-MAIL ISSUE'),('PASSWORD RESET'),('NETWORK RELATED'),('COMPUTER RELATED')
+
+-----------------------------tbTicketStatus
 GO
+CREATE TABLE tbTicketStatus
+(
+TicketStatusID INT IDENTITY(1,1) PRIMARY KEY,
+TicketStatusName VARCHAR(35)
+)
+INSERT INTO  tbTicketStatus Values('Opened'),('Unassigned'),('Closed')
+-------------------------------
+CREATE TABLE tbTicketPriority
+(
+TicketPriorityID INT IDENTITY(1,1) PRIMARY KEY,
+TicketPriorityName VARCHAR(35)
+)
+INSERT INTO  tbTicketPriority Values('High'),('Medium'),('Low')
+--------------------
+
+
+GO
+
 CREATE TABLE tbTicket
 (
 TicketID INT IDENTITY (1,1) PRIMARY KEY,
 Summary VARCHAR(250) NOT NULL,
 Description VARCHAR(MAX),
 DateCreated DATETIME NOT NULL,
-Priority VARCHAR(15),
-Status VARCHAR(25),
+TicketPriorityID INT FOREIGN KEY REFERENCES tbTicketPriority(TicketPriorityID),
+TicketStatusID INT FOREIGN KEY REFERENCES tbTicketStatus(TicketStatusID),
 TicketCategoryID INT FOREIGN KEY REFERENCES tbTicketCategory(TicketCategoryID),
 ClientID INT FOREIGN KEY REFERENCES tbUser(UserID),
 AssigneeID INT FOREIGN KEY REFERENCES tbUser(UserID)
 )
 GO
-INSERT INTO tbTicket VALUES ('Computer crashed', 'One of my students computer chrashed', GETDATE(), '','unassigned', 4, 7, 9),
-							('Password not working', 'One of my students password is not working', GETDATE(), '','open', 2, 8, 10),
-							('E-mail not working', 'One of my students e-mail is not working', GETDATE(), '','unassigned', 1, 7, 10),
-							('Internet not working', 'Problem with the internet', GETDATE(), '','open', 3, 8, 9)
+INSERT INTO tbTicket VALUES ('Computer crashed', 'One of my students computer chrashed', GETDATE(), 2,2, 4, 7, 9),
+							('Password not working', 'One of my students password is not working', GETDATE(), 1,1, 2, 8, 10),
+							('E-mail not working', 'One of my students e-mail is not working', GETDATE(), 3,3, 1, 7, 10),
+							('Internet not working', 'Problem with the internet', GETDATE(), 1,1, 3, 8, 9)
+							------------
 GO
 CREATE TABLE tbTicketComment
 (
@@ -196,7 +218,7 @@ BEGIN
 
 	WHERE Email = @Email AND Password = @Password
 END
---GO
+GO
 --EXEC spLogin @Email=maria, @Password=mi88new
 
 
@@ -217,7 +239,7 @@ END
 GO
 EXEC spGetUser
 
-
+　
 --Insert new User into the table
 GO
 CREATE PROCEDURE spInsertUser
@@ -239,7 +261,7 @@ END
 --GO
 --EXEC spInsertUser @FirstName='John', @LastName='Donlop',@Title='teacher', @Phone='(204)-344-9870', @Email='jdonlop@yahoo.com', @Password='john99', @AccessLevelID = 0
 
-
+　
 
 --Update customer information
 
@@ -266,7 +288,7 @@ END
 --EXEC spUpdateUser @FirstName='Dimitar', @LastName='Dimitrov', @Phone='(349)-212-8798', @Title = 'assignee',
 --					@Email='idimitrov@gmail.com', @Password='ivan95', @AccessLevelID=2, @UserID=9
 
-
+　
 
 --Delete user
 
@@ -349,6 +371,10 @@ END
 --EXEC spDeleteTicketCategory @TicketCategoryID=3
 
 
+　
+
+
+
 
 -----------------------------tbTicket---------------------------------------------------------------------
 
@@ -375,22 +401,22 @@ CREATE PROCEDURE spInsertTicket
 	@Summary VARCHAR(250),
 	@Description VARCHAR(MAX),
 	@DateCreated DATETIME ,
-	@Priority VARCHAR(15),
-	@Status VARCHAR(25),
+	@TicketPriorityID INT,
+	@TicketStatusID INT,
 	@TicketCategoryID INT ,
 	@ClientID INT ,
 	@AssigneeID INT 
 	)
 AS
 BEGIN
-	INSERT INTO tbTicket VALUES (@Summary,@Description,@DateCreated,@Priority,@Status,@TicketCategoryID,@ClientID,@AssigneeID)
+	INSERT INTO tbTicket VALUES (@Summary,@Description,@DateCreated,@TicketPriorityID,@TicketStatusID,@TicketCategoryID,@ClientID,@AssigneeID)
 END
 --GO
---EXEC spInsertTicket @Summary='Computer issues', @Description='The Big Problem with computer',@DateCreated='4/4/15',@Priority=' ',
---	@Status='opened',@TicketCategoryID=1,@ClientID=10,@AssigneeID=8
+--EXEC spInsertTicket @Summary='Computer issues', @Description='The Big Problem with computer',@DateCreated='4/4/15',@TicketPriorityID=2,
+--	@TicketStatusID=2,@TicketCategoryID=1,@ClientID=10,@AssigneeID=8
 
 
-
+　
 
 --Update Ticket
 
@@ -401,8 +427,8 @@ CREATE PROCEDURE spUpdateTicket
 	@Summary VARCHAR(250),
 	@Description VARCHAR(MAX),
 	@DateCreated DATETIME ,
-	@Priority VARCHAR(15),
-	@Status VARCHAR(25),
+	@TicketPriorityID INT,
+	@TicketStatusID INT,
 	@TicketCategoryID INT ,
 	@ClientID INT ,
 	@AssigneeID INT
@@ -411,14 +437,14 @@ AS
 BEGIN
 		UPDATE tbTicket
 		SET Summary=@Summary, Description=@Description, DateCreated=@DateCreated,
-	Priority=@Priority,Status=@Status,TicketCategoryID=@TicketCategoryID,ClientID=@ClientID,AssigneeID=@AssigneeID
+		TicketPriorityID=@TicketPriorityID,TicketStatusID=@TicketStatusID,TicketCategoryID=@TicketCategoryID,ClientID=@ClientID,AssigneeID=@AssigneeID
 		WHERE TicketID=@TicketID
 END
 --GO
---EXEC spUpdateTicket @Summary='broken screen', @Description='student laptop screen broke',@DateCreated='3/23/15',@Priority='hign',
---	@Status='unassigned', @TicketCategoryID=3,@ClientID=9,@AssigneeID=7,@TicketID=3
+--EXEC spUpdateTicket @Summary='broken screen', @Description='student laptop screen broke',@DateCreated='3/23/15',@TicketPriorityID=2,
+--	@TicketStatusID=2, @TicketCategoryID=3,@ClientID=9,@AssigneeID=7,@TicketID=3
 
-
+　
 
 --Delete from tbTicket
 
@@ -433,7 +459,7 @@ BEGIN
 END
 --GO
 --EXEC spDeleteTicket @TicketID=3
-
+　
 
 --Search for product
 
@@ -449,7 +475,7 @@ END
 GO
 EXEC spSearchTicket @Description='com'
 
-
+　
 -----------------------------tbTicketComment---------------------------------------------------------------------
 
 
@@ -508,6 +534,7 @@ END
 --EXEC spUpdateTicketComment @Comments ='broken screen', @DateOfComments='3/23/15',
 --	 @TicketCommentID=3,@AssigneeID=7,@TicketID=3
 
+　
 
 --Delete from tbTicket
 
@@ -522,6 +549,7 @@ BEGIN
 END
 --GO
 --EXEC spDeleteTicket @TicketID=3
+　
 
 
 
@@ -541,7 +569,7 @@ BEGIN
 END
 --GO
 --EXEC spGetTimeSpentOnTicket
-
+　
 
 --Insert Time Spent On Ticket
 GO
@@ -558,7 +586,7 @@ BEGIN
 END
 --GO
 --EXEC spInsertTimeSpentOnTicket @TimeSpentOnTicket='20:40', @DateWorkedOnTicket='8/26/15',@AssigneeID='8', @TicketID = 
-
+　
 
 --Update Time Spent On Ticket
 GO
@@ -594,6 +622,7 @@ END
 --GO
 --EXEC spTimeSpentOnTicket @TimeSpentOnTicketID=1
 
+　
 
 　-----------------------------tbDevice---------------------------------------------------------------------
 
@@ -627,6 +656,7 @@ END
 --GO
 --EXEC spInsertDevice @DeviceName='Computer'
 
+　
 
 --Update Ticket
 
@@ -644,7 +674,7 @@ BEGIN
 END
 --GO
 --EXEC spUpdateDevice @DeviceName='Laptop', @DeviceID ='5'
-
+　
 
 --Delete from tbTicket
 
@@ -658,7 +688,8 @@ BEGIN
 	DELETE FROM tbDevice WHERE DeviceID=@DeviceID
 END
 --GO
---EXEC spDeleteDevice @DeviceID=3　
+--EXEC spDeleteDevice @DeviceID=3
+　
 
 
 -----------------------------tbDeviceBooking---------------------------------------------------------------------
@@ -701,7 +732,7 @@ END
 --GO
 --EXEC spInsertDeviceBooking @DateStart='3/4/15',@DateEnd='4/4/15',@DeviceID=4,@ClientID=10
 
-
+　
 
 --Update DevicesBooking
 
@@ -724,6 +755,7 @@ END
 --GO
 --EXEC spUpdateDeviceBooking  @DateStart='3/4/15',@DateEnd='4/4/15',@DeviceID=4,@ClientID=10,@DeviceBookingID=3
 
+　
 
 --Delete from tbDeviceBooking
 
@@ -738,7 +770,7 @@ BEGIN
 END
 GO
 EXEC spDeleteDeviceBooking @DeviceBookingID=3
-
+　
 
 ---------------------------------tbTicketAttachment-------------------------------------------------------------------------------------------
 -- Show the Ticket Attachment information
@@ -754,7 +786,7 @@ BEGIN
 END
 --GO
 --EXEC spGetTicketAttachment
-
+　
 
 --Insert new Ticket Attachment into the table
 GO
@@ -771,7 +803,7 @@ INSERT INTO tbTicketAttachment VALUES (@ImagePath, @ClientID, @TicketID, @DateOf
 END
 --GO
 --EXEC spInsertTicketAttachment @ImagePath='\attachment\', @ClientID=8, @TicketID=3, @DateOfAttachment='9/24/15'
-
+　
 
 --Update Ticket Attachment
 GO
@@ -790,7 +822,7 @@ BEGIN
 END
 GO
 --EXEC spUpdateTicketAttachment @ImagePath='\attachment\', @ClientID=9,@TicketID = 4, @DateOfAttachment='6/23/15', @TicketAttachmentID=1
-
+　
 
 --Delete Ticket Attachment
 GO
@@ -806,5 +838,17 @@ END
 --EXEC spDeleteTicketAttachment @TicketAttachmentID=3
 
 
+--------------------------------------------------------------------------------------------
+GO
+CREATE PROCEDURE spGetTicketInfo
+AS
+BEGIN
+	SELECT t.TicketID,t.Summary,ts.TicketStatusName, u.Email, tp.TicketPriorityName,t.DateCreated 
+	FROM tbTicket t JOIN tbTicketStatus ts ON ts.TicketStatusID = t.TicketStatusID
+	JOIN tbTicketPriority tp ON tp.TicketPriorityID = t.TicketPriorityID
+	JOIN tbUser u ON u.UserID = t.ClientID
+END
+GO
+EXEC spGetTicketInfo
 
 
