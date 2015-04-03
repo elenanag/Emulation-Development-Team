@@ -1,8 +1,7 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/FirstMaster.Master" AutoEventWireup="true" CodeBehind="LoginPage.aspx.cs" Inherits="EmulationGroupProject.LoginPage" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    <link href="style.css" rel="stylesheet" />
     <div style="text-align:center"><asp:Label ID="lblTicketingSystem" runat="server" Text="TICKETING SYSTEM" Font-Bold="True" Font-Size="X-Large"></asp:Label></div>
-    <br />
+    <br /> <br />
     <div style="border-color:red; border-style:solid; border-radius:10px; background-color:#E1DBC7; margin:auto; width: 506px; padding-left:10px; padding-top:5px; text-align:center; height: 171px;">
         <h3>Please login: </h3><br />
         <table  style="height: 140px; width: 459px;">
@@ -26,7 +25,7 @@
             <tr>
                 <td>&nbsp;</td>
                 <td style="text-align:right">
-                    <asp:Button ID="btnSubmit" runat="server" Text="Login"  Height="27px" Width="95px" OnClick="btnSubmit_Click" BackColor="#CC0000"/>
+                    <asp:Button ID="btnSubmit" runat="server" Text="Login" Height="27px" Width="95px" OnClick="btnSubmit_Click" BackColor="#CC0000" BorderColor="#CC0000" Font-Bold="True"/>
                 </td>
             </tr>
         </table>
