@@ -750,7 +750,7 @@ BEGIN
 	WHERE DeviceBookingID = ISNULL(DeviceBookingID ,@DeviceBookingID)
 END
 GO
-EXEC spGetDeviceBooking
+--EXEC spGetDeviceBooking
 
 
 --Insert DevicesBooking into Device table
@@ -811,6 +811,7 @@ EXEC spDeleteDeviceBooking @DeviceBookingID=3
 　
 
 ---------------------------------tbTicketAttachment-------------------------------------------------------------------------------------------
+
 -- Show the Ticket Attachment information
 GO
 CREATE PROCEDURE spGetTicketAttachment
@@ -874,6 +875,128 @@ BEGIN
 END
 --GO
 --EXEC spDeleteTicketAttachment @TicketAttachmentID=3
+
+
+
+------------------------------------tbTicketPriority-----------------------------------------
+
+GO
+CREATE PROCEDURE spGetProirity
+(
+	@TicketPriorityID INT = NULL
+)
+AS
+BEGIN
+	SELECT * FROM tbTicketPriority
+			WHERE TicketPriorityID = ISNULL(@TicketPriorityID,TicketPriorityID)
+END
+GO
+EXEC spGetProirity
+
+
+--Insert new Proirity into the table
+GO
+CREATE PROCEDURE spInsertProirity
+(
+	@TicketPriorityName VARCHAR(35)
+)
+AS
+BEGIN
+		INSERT INTO tbTicketPriority (TicketPriorityName) VALUES (@TicketPriorityName)
+END
+--GO
+--EXEC spInsertProirity @TicketPriorityName='Urgent'
+
+
+--Update Proirity 
+GO
+CREATE PROCEDURE spUpdateProirity
+
+(
+	@TicketPriorityID INT,
+	@TicketPriorityName VARCHAR(35)
+)
+AS
+BEGIN
+	UPDATE tbTicketPriority SET TicketPriorityName=@TicketPriorityName WHERE TicketPriorityID=@TicketPriorityID
+END
+--GO
+--EXEC spUpdateProirity @TicketPriorityName='Urgent', @TicketPriorityID=3
+
+
+--Delete Proirity
+GO
+CREATE PROCEDURE spDeleteProirity
+(
+	@TicketPriorityID INT
+)
+AS
+BEGIN
+	DELETE FROM tbTicketPriority WHERE TicketPriorityID=@TicketPriorityID
+END
+--GO
+--EXEC spDeleteProirity @TicketPriorityID=2
+
+
+-----------------------------------tbTicketStatus-----------------------------------------
+
+-- Get ticket status
+GO
+CREATE PROCEDURE spGetStatus
+(
+	@TicketStatusID INT = NULL
+)
+AS
+BEGIN
+	SELECT * FROM tbTicketStatus
+			WHERE TicketStatusID = ISNULL(@TicketStatusID,TicketStatusID)
+END
+GO
+EXEC spGetStatus
+
+
+--Insert new Status into the table
+GO
+CREATE PROCEDURE spInsertStatus
+(
+	@TicketStatusName VARCHAR(35)
+)
+AS
+BEGIN
+		INSERT INTO tbTicketStatus (TicketStatusName) VALUES (@TicketStatusName)
+END
+--GO
+--EXEC spInsertStatus @TicketStatusName='NotOpen'
+
+
+--Update Status 
+GO
+CREATE PROCEDURE spUpdateStatus
+
+(
+	@TicketStatusID INT,
+	@TicketStatusName VARCHAR(35)
+)
+AS
+BEGIN
+	UPDATE tbTicketStatus SET TicketStatusName=@TicketStatusName WHERE TicketStatusID=@TicketStatusID
+END
+--GO
+--EXEC spUpdateStatus @TicketStatusName='NotOpen', @TicketStatusID=3
+
+
+--Delete Status
+GO
+CREATE PROCEDURE spDeleteStatus
+(
+	@TicketStatusID INT
+)
+AS
+BEGIN
+	DELETE FROM tbTicketStatus WHERE TicketStatusID=@TicketStatusID
+END
+--GO
+--EXEC spDeleteStatus @TicketStatusID=2
 
 
 --------------------------------------------------------------------------------------------
