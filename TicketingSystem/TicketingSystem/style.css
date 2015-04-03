@@ -342,3 +342,8 @@ padding:0 0 0 70px; float:left;
 #rightSideBar a.more:hover{
 	background-color:#454545; color:#B6B6B5;
 	}
+
+
+#btnSubmit {
+    border-radius: 15px;
+}

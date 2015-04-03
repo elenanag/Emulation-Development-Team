@@ -59,7 +59,7 @@ namespace EmulationGroupProject
             }
             else
             {
-                lblMessage.Text = "Sorry, incorrect username/password !";
+                lblMessage.Text = "Sorry, incorrect username/password!";
                 lblMessage.ForeColor = Color.Red;
             }
         }
