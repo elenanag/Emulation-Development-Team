@@ -39,7 +39,7 @@
   <h2 style="color:red; font-weight:bold;">Monitor out of adjustment?</h2>
   <div>
     <p>
-    It may be that your Monitor is simply out of adjustment if you are experiencing any of the following symptoms: <br /><br />
+    It may be that your Monitor is simply out of adjustment if you are experiencing any of the following symptoms: <br />
     •Excessive black areas around the picture <br />
     •Parts of the picture are missing around the edges <br />
     •Picture scrolls up and down <br />
@@ -62,7 +62,35 @@
     </p>
   </div>
 
-  <h2 style="color:red; font-weight:bold;">My USB flash drive won't work on one machine but works fine on another?</h2>
+
+    <h2 style="color:red; font-weight:bold;">Receive out of memory error with plenty of memory?</h2>
+  <div>
+    <p>
+        May not be enough conventional memory not system memory. The computers memory is broken into different sections. 
+        While you may have enough memory which the program requires you may not have enough conventional, upper, high or extended memory.
+
+    </p>
+  </div>
+
+
+    <h2 style="color:red; font-weight:bold;">I am getting a memory parity error when I boot up?</h2>
+  <div>
+    <p>
+        •If it crashes as soon as you turn it on, you are probably trying to run non-parity memory in a parity system. Replace it.  <br />
+        •Make sure parity checking wasn't accidentally turned on in BIOS with non-parity memory in the slots.
+    </p>
+  </div>
+
+    <h2 style="color:red; font-weight:bold;">I am getting parity errors during normal operation of the PC?</h2>
+  <div>
+    <p>
+        If you just get them every once in a while, i wouldn't fret over it. Sometimes little errors occur in memory. <br />
+        If you seem to be getting these associated with random lockups, I would check the rest of the system because many things could be bad. 
+        Sometimes improper cooling, for example, can cause random errors that may look like something else is awry. It is starts to happen a lot and these other things aren't a factor, then you probably need to replace your memory.
+    </p>
+  </div>
+
+    <h2 style="color:red; font-weight:bold;">My USB flash drive won't work on one machine but works fine on another?</h2>
   <div>
     <p>
         1. Go to Start>> Right click My Computer>> Manage>> Disk Management <br />
