@@ -25,17 +25,12 @@ namespace EmulationGroupProject
 
         private void PopulateTicketDropDown()
         {
-            SqlConnection connect = new SqlConnection("Data Source=localhost;Initial Catalog=dbTicketingSystem;Integrated Security=True");
-            SqlDataAdapter adapt = new SqlDataAdapter("SELECT * FROM tbTicketPriority", connect);
-            DataSet dataset = new DataSet();
-
-            connect.Open();
-            adapt.Fill(dataset);
-            connect.Close();
+            DAL d = new DAL(connString);
+            DataSet ds = d.ExecuteProcedure("spGetProirity");
 
             ddlTicketStatus.DataTextField = "TicketPriorityName";
             ddlTicketStatus.DataValueField = "TicketPriorityID";
-            ddlTicketStatus.DataSource = dataset;
+            ddlTicketStatus.DataSource = ds;
             ddlTicketStatus.DataBind();
 
             ddlTicketStatus.Items.Insert(0, "Priority level");
