@@ -2,7 +2,7 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <div style="text-align:center"><asp:Label ID="lblTicketingSystem" runat="server" Text="TICKETING SYSTEM" Font-Bold="True" Font-Size="X-Large"></asp:Label></div>
     <br /> <br />
-    <div style="border-color:red; border-style:solid; border-radius:10px; background-color:#E1DBC7; margin:auto; width: 506px; padding-left:10px; padding-top:5px; text-align:center; height: 171px;">
+    <div style="border-color:red; border-style:solid; border-radius:7px; background-color:#E1DBC7; margin:auto; width: 506px; padding-left:10px; padding-top:5px; text-align:center; height: 171px;">
         <h3>Please login: </h3><br />
         <table  style="height: 140px; width: 459px;">
             <tr>
@@ -11,7 +11,7 @@
                 </td>
                 <td style="height: 27px">
                    <%-- <input id="txtEmail" type="text" required />--%>
-                    <asp:TextBox ID="txtEmail" runat="server"></asp:TextBox>
+                    <asp:TextBox ID="txtEmail" runat="server" TextMode="Email"></asp:TextBox>
                 </td>
             </tr>
             <tr>
@@ -19,16 +19,16 @@
                     Password:
                 </td>
                 <td>
-                   <%-- <input id="txtPassword" type="text" required />--%><asp:TextBox ID="txtPassword" runat="server"></asp:TextBox>
+                   <%-- <input id="txtPassword" type="text" required />--%><asp:TextBox ID="txtPassword" runat="server" TextMode="Password"></asp:TextBox>
                 </td>
             </tr>
             <tr>
                 <td>&nbsp;</td>
                 <td style="text-align:right">
-                    <asp:Button ID="btnSubmit" runat="server" Text="Login" Height="27px" Width="95px" OnClick="btnSubmit_Click" BackColor="#CC0000" BorderColor="#CC0000" Font-Bold="True"/>
+                    <asp:Button ID="btnSubmit" runat="server" Text="Login" Height="27px" Width="95px" OnClick="btnSubmit_Click" BackColor="#CC0000" BorderColor="#CC0000" Font-Bold="True" ForeColor="White"/>
                 </td>
             </tr>
         </table>
-        <asp:Label ID="lblMessage" runat="server" Font-Bold="True" ></asp:Label>
+        <asp:Label ID="lblMessage" runat="server" Font-Bold="True" ForeColor="#CCCCCC" ></asp:Label>
     </div>
 </asp:Content>
