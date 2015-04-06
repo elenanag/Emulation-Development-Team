@@ -6,9 +6,13 @@
     <div style="text-align:center" >
         <asp:Label ID="lblBoard" runat="server" Font-Bold="true" Font-Names="Arial" Font-Size="Large" Text="Ticket Board"></asp:Label> &nbsp&nbsp 
         <asp:DropDownList ID="ddlTicketStatus" runat="server" Height="28px" Width="105px" AutoPostBack="True" OnSelectedIndexChanged="ddlTicketStatus_SelectedIndexChanged"></asp:DropDownList> <br /><br />
-        <asp:GridView ID="gvTicket" BorderStyle="Solid" runat="server" CellPadding="4" ForeColor="#333333" GridLines="None" Height="134px" Width="812px" AutoGenerateColumns="False">
+        <asp:GridView ID="gvTicket" BorderStyle="Solid" runat="server" CellPadding="4" ForeColor="#333333" GridLines="None" Height="134px" Width="812px" 
+                        AutoGenerateColumns="False" OnRowCommand="gvTicket_RowCommand" DataKeyNames="TicketID">
             <AlternatingRowStyle BackColor="White" />
             <Columns>
+                <asp:ButtonField CommandName="SelectTicket" HeaderText="Select" Text="Select">
+                <ItemStyle ForeColor="#EC3C2D" />
+                </asp:ButtonField>
                 <asp:BoundField DataField="TicketID" HeaderText="Ticket No." />
                 <asp:BoundField DataField="Summary" HeaderText="Issue/Problem" />
                 <asp:BoundField DataField="DateCreated" DataFormatString="{0:d}" HeaderText="Date Created" />
@@ -20,7 +24,7 @@
             <HeaderStyle BackColor="#EC3C2D" Font-Bold="True" ForeColor="White" />
             <PagerStyle BackColor="#FFCC66" ForeColor="#333333" HorizontalAlign="Center" />
             <RowStyle BackColor="#FFFBD6" ForeColor="#333333" />
-            <SelectedRowStyle BackColor="#FFCC66" Font-Bold="True" ForeColor="Navy" />
+            <SelectedRowStyle BackColor="lightgray" Font-Bold="True" ForeColor="#EC3C2D" />
             <SortedAscendingCellStyle BackColor="#FDF5AC" />
             <SortedAscendingHeaderStyle BackColor="#4D0000" />
             <SortedDescendingCellStyle BackColor="#FCF6C0" />
@@ -29,7 +33,14 @@
     </div>
     <br /><br />
     <div id ="ticketOptions" >
-        Ticket #<asp:Label ID="lblTicketNumber" runat="server" Text="####"></asp:Label>
+        <%--Ticket #<asp:Label ID="lblTicketNumber" runat="server" Text=""></asp:Label>--%>
+        <asp:DataList ID="dlTicketInfo" runat="server">
+            <ItemTemplate>    
+                <p style="text-align:center;margin:0;padding-bottom:10px; padding-right:50px; color:black">
+                Ticket # <%# Eval("TicketID")%> : 
+                <%#Eval("Summary")%>
+                 </ItemTemplate>
+        </asp:DataList>
         <br /><Br />
         <div>
             <table border="1">

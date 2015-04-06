@@ -8,6 +8,7 @@ using System.Configuration;
 using System.Data;
 using DAL_Project;
 using System.Data.SqlClient;
+using System.Drawing;
 
 namespace EmulationGroupProject
 {
@@ -59,5 +60,23 @@ namespace EmulationGroupProject
                 PopulateTicketGrid();
             }
         }
+
+        protected void gvTicket_RowCommand(object sender, GridViewCommandEventArgs e)
+        {
+            gvTicket.SelectedIndex = Convert.ToInt32(e.CommandArgument);
+            if (e.CommandName == "SelectTicket")
+            {
+                string ticketID = gvTicket.SelectedDataKey.Value.ToString();
+                DAL d = new DAL(connString);
+                DataSet ds = new DataSet();
+                d.AddParam("@TicketID", ticketID);
+                ds = d.ExecuteProcedure("spTicketIdAndSummary");
+
+                dlTicketInfo.DataSource = ds;
+                dlTicketInfo.DataBind();
+            }
+        }
+
+        
     }
 }

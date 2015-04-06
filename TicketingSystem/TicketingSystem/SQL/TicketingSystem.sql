@@ -1012,4 +1012,33 @@ END
 GO
 EXEC spGetTicketInfo
 
+--------------------------------------------
 
+GO
+CREATE PROCEDURE spGetTicketByStatusName
+(
+ @TicketStatusName VARCHAR(35) = NULL
+)
+AS
+BEGIN
+	SELECT t.TicketID,t.Summary,ts.TicketStatusName, u.Email, tp.TicketPriorityName,t.DateCreated 
+	FROM tbTicket t JOIN tbTicketStatus ts ON ts.TicketStatusID = t.TicketStatusID
+	JOIN tbTicketPriority tp ON tp.TicketPriorityID = t.TicketPriorityID
+	JOIN tbUser u ON u.UserID = t.ClientID
+	WHERE TicketStatusName = ISNULL(@TicketStatusName,TicketStatusName)
+END
+--GO
+--EXEC spGetTicketByStatusName @TicketStatusName='open'
+
+
+GO
+CREATE PROCEDURE spTicketIdAndSummary
+(
+	@TicketID INT
+)
+AS
+BEGIN
+	SELECT TicketID, Summary FROM tbTicket WHERE TicketID = @TicketID
+END
+--GO 
+--EXEC spTicketIdAndSummary @TicketID=3
