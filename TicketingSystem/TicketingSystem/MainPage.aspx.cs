@@ -63,9 +63,9 @@ namespace EmulationGroupProject
 
         protected void gvTicket_RowCommand(object sender, GridViewCommandEventArgs e)
         {
-            gvTicket.SelectedIndex = Convert.ToInt32(e.CommandArgument);
             if (e.CommandName == "SelectTicket")
             {
+                gvTicket.SelectedIndex = Convert.ToInt32(e.CommandArgument);
                 string ticketID = gvTicket.SelectedDataKey.Value.ToString();
                 DAL d = new DAL(connString);
                 DataSet ds = new DataSet();
@@ -75,8 +75,6 @@ namespace EmulationGroupProject
                 dlTicketInfo.DataSource = ds;
                 dlTicketInfo.DataBind();
             }
-        }
-
-        
+        }  
     }
 }
