@@ -21,9 +21,21 @@ namespace EmulationGroupProject
             {
                 PopulateTicketGrid();
                 PopulateTicketDropDown();
+
+                Session["SortColumn"] = "TicketID";
+                Session["SortDirection"] = "ASC";
+
+                RefreshSortedTicketToGrid();
             }
         }
-
+        private void RefreshSortedTicketToGrid()
+        {
+            DAL d = new DAL(connString);
+            d.AddParam("SortColumn", Session["SortColumn"].ToString());
+            d.AddParam("SortDirection", Session["SortDirection"].ToString());
+            gvTicket.DataSource = d.ExecuteProcedure("spSortedTicket");
+            gvTicket.DataBind();
+        }
         private void PopulateTicketDropDown()
         {
             DAL d = new DAL(connString);
@@ -63,6 +75,9 @@ namespace EmulationGroupProject
 
         protected void gvTicket_RowCommand(object sender, GridViewCommandEventArgs e)
         {
+            if (e.CommandName != "Sort")
+            {
+                gvTicket.SelectedIndex = Convert.ToInt32(e.CommandArgument);
             if (e.CommandName == "SelectTicket")
             {
                 gvTicket.SelectedIndex = Convert.ToInt32(e.CommandArgument);
@@ -75,6 +90,8 @@ namespace EmulationGroupProject
                 dlTicketInfo.DataSource = ds;
                 dlTicketInfo.DataBind();
             }
-        }  
+        }
+
+        
     }
 }
