@@ -5,7 +5,7 @@
     </div>
     <div style="text-align:center" >
         <asp:Label ID="lblBoard" runat="server" Font-Bold="true" Font-Names="Arial" Font-Size="Large" Text="Ticket Board"></asp:Label> &nbsp&nbsp 
-        <asp:DropDownList ID="ddlTicketStatus" runat="server" Height="28px" Width="105px"></asp:DropDownList> <br /><br />
+        <asp:DropDownList ID="ddlTicketStatus" runat="server" Height="28px" Width="105px" AutoPostBack="True" OnSelectedIndexChanged="ddlTicketStatus_SelectedIndexChanged"></asp:DropDownList> <br /><br />
         <asp:GridView ID="gvTicket" BorderStyle="Solid" runat="server" CellPadding="4" ForeColor="#333333" GridLines="None" Height="134px" Width="812px" AutoGenerateColumns="False">
             <AlternatingRowStyle BackColor="White" />
             <Columns>

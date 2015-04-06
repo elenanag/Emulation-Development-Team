@@ -26,14 +26,14 @@ namespace EmulationGroupProject
         private void PopulateTicketDropDown()
         {
             DAL d = new DAL(connString);
-            DataSet ds = d.ExecuteProcedure("spGetProirity");
+            DataSet ds = d.ExecuteProcedure("spGetStatus");
 
-            ddlTicketStatus.DataTextField = "TicketPriorityName";
-            ddlTicketStatus.DataValueField = "TicketPriorityID";
+            ddlTicketStatus.DataTextField = "TicketStatusName";
+            ddlTicketStatus.DataValueField = "TicketStatusID";
             ddlTicketStatus.DataSource = ds;
             ddlTicketStatus.DataBind();
 
-            ddlTicketStatus.Items.Insert(0, "Priority level");
+            ddlTicketStatus.Items.Insert(0, "Ticket Status");
         } 
         private void PopulateTicketGrid()
         {
@@ -42,6 +42,22 @@ namespace EmulationGroupProject
 
             gvTicket.DataSource = ds;
             gvTicket.DataBind();
+        }
+
+        protected void ddlTicketStatus_SelectedIndexChanged(object sender, EventArgs e) 
+        {
+            string ticketStatus = ddlTicketStatus.SelectedItem.Text.ToString();
+            DAL d = new DAL(connString);
+            DataSet ds = new DataSet();
+            d.AddParam("@TicketStatusName", ticketStatus);
+            ds = d.ExecuteProcedure("spGetTicketByStatusName");
+            gvTicket.DataSource = ds;
+            gvTicket.DataBind();
+
+            if (ddlTicketStatus.SelectedItem.Text.ToString() == "Ticket Status")
+            {
+                PopulateTicketGrid();
+            }
         }
     }
 }
