@@ -47,7 +47,7 @@ namespace EmulationGroupProject
             ddlTicketStatus.DataBind();
 
             ddlTicketStatus.Items.Insert(0, "Ticket Status");
-        }
+        } 
         private void PopulateTicketGrid()
         {
             DAL d = new DAL(connString);
@@ -57,7 +57,7 @@ namespace EmulationGroupProject
             gvTicket.DataBind();
         }
 
-        protected void ddlTicketStatus_SelectedIndexChanged(object sender, EventArgs e)
+        protected void ddlTicketStatus_SelectedIndexChanged(object sender, EventArgs e) 
         {
             string ticketStatus = ddlTicketStatus.SelectedItem.Text.ToString();
             DAL d = new DAL(connString);
@@ -78,19 +78,52 @@ namespace EmulationGroupProject
             if (e.CommandName != "Sort")
             {
                 gvTicket.SelectedIndex = Convert.ToInt32(e.CommandArgument);
-                if (e.CommandName == "SelectTicket")
-                {
-                    gvTicket.SelectedIndex = Convert.ToInt32(e.CommandArgument);
-                    string ticketID = gvTicket.SelectedDataKey.Value.ToString();
-                    DAL d = new DAL(connString);
-                    DataSet ds = new DataSet();
-                    d.AddParam("@TicketID", ticketID);
-                    ds = d.ExecuteProcedure("spTicketIdAndSummary");
+            if (e.CommandName == "SelectTicket")
+            {
+                gvTicket.SelectedIndex = Convert.ToInt32(e.CommandArgument);
+                string ticketID = gvTicket.SelectedDataKey.Value.ToString();
+                DAL d = new DAL(connString);
+                DataSet ds = new DataSet();
+                d.AddParam("@TicketID", ticketID);
+                ds = d.ExecuteProcedure("spTicketIdAndSummary");
 
-                    dlTicketInfo.DataSource = ds;
-                    dlTicketInfo.DataBind();
-                }
+                dlTicketInfo.DataSource = ds;
+                dlTicketInfo.DataBind();
             }
+        }
+
+        }
+        protected void gvTicket_Sorting(object sender, GridViewSortEventArgs e)
+        {
+            if (e.SortExpression == Session["SortColumn"].ToString())
+            {
+                SwitchDirectionSort();
+            }
+            else
+            {
+                Session["SortColumn"] = e.SortExpression;
+                Session["SortDirection"] = "ASC";
+            }
+            RefreshSortedTicketToGrid();
+        }
+        private void SwitchDirectionSort()
+        {
+            if (Session["SortDirection"].ToString() == "ASC")
+            {
+                Session["SortDirection"] = "DESC";
+            }
+            else
+            {
+                Session["SortDirection"] = "ASC";
+            }
+        }
+
+        protected void gvTicket_PageIndexChanging(object sender, GridViewPageEventArgs e)
+        {
+            RefreshSortedTicketToGrid();
+
+            gvTicket.PageIndex = e.NewPageIndex;
+            gvTicket.DataBind();
         }
     }
 }
