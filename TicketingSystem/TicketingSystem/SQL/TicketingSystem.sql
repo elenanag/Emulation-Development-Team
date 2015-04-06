@@ -1042,3 +1042,52 @@ BEGIN
 END
 --GO 
 --EXEC spTicketIdAndSummary @TicketID=3
+
+--------------------------------------------------------------------
+
+--Ticket Sorting
+Go
+Create Procedure spSortedTicket
+(
+	@SortColumn Varchar(20),
+	@SortDirection Varchar(4)
+)
+As
+Begin
+If @SortColumn = 'TicketID' And @SortDirection = 'ASC'
+	SELECT t.TicketID,t.Summary,ts.TicketStatusName, u.Email, tp.TicketPriorityName,t.DateCreated 
+	FROM tbTicket t JOIN tbTicketStatus ts ON ts.TicketStatusID = t.TicketStatusID
+	JOIN tbTicketPriority tp ON tp.TicketPriorityID = t.TicketPriorityID
+	JOIN tbUser u ON u.UserID = t.ClientID Order By t.TicketID ASC
+Else If @SortColumn = 'TicketID' And @SortDirection = 'DESC'
+	SELECT t.TicketID,t.Summary,ts.TicketStatusName, u.Email, tp.TicketPriorityName,t.DateCreated 
+	FROM tbTicket t JOIN tbTicketStatus ts ON ts.TicketStatusID = t.TicketStatusID
+	JOIN tbTicketPriority tp ON tp.TicketPriorityID = t.TicketPriorityID
+	JOIN tbUser u ON u.UserID = t.ClientID Order By t.TicketID DESC
+Else If @SortColumn = 'DateCreated' And @SortDirection = 'ASC'
+	SELECT t.TicketID,t.Summary,ts.TicketStatusName, u.Email, tp.TicketPriorityName,t.DateCreated 
+	FROM tbTicket t JOIN tbTicketStatus ts ON ts.TicketStatusID = t.TicketStatusID
+	JOIN tbTicketPriority tp ON tp.TicketPriorityID = t.TicketPriorityID
+	JOIN tbUser u ON u.UserID = t.ClientID Order By t.DateCreated ASC
+Else If @SortColumn = 'DateCreated' And @SortDirection = 'DESC'
+	SELECT t.TicketID,t.Summary,ts.TicketStatusName, u.Email, tp.TicketPriorityName,t.DateCreated 
+	FROM tbTicket t JOIN tbTicketStatus ts ON ts.TicketStatusID = t.TicketStatusID
+	JOIN tbTicketPriority tp ON tp.TicketPriorityID = t.TicketPriorityID
+	JOIN tbUser u ON u.UserID = t.ClientID Order By t.DateCreated DESC
+Else If @SortColumn = 'Email' And @SortDirection = 'ASC'
+	SELECT t.TicketID,t.Summary,ts.TicketStatusName, u.Email, tp.TicketPriorityName,t.DateCreated 
+	FROM tbTicket t JOIN tbTicketStatus ts ON ts.TicketStatusID = t.TicketStatusID
+	JOIN tbTicketPriority tp ON tp.TicketPriorityID = t.TicketPriorityID
+	JOIN tbUser u ON u.UserID = t.ClientID Order By u.Email ASC
+Else If @SortColumn = 'Email' And @SortDirection = 'DESC'
+	SELECT t.TicketID,t.Summary,ts.TicketStatusName, u.Email, tp.TicketPriorityName,t.DateCreated 
+	FROM tbTicket t JOIN tbTicketStatus ts ON ts.TicketStatusID = t.TicketStatusID
+	JOIN tbTicketPriority tp ON tp.TicketPriorityID = t.TicketPriorityID
+	JOIN tbUser u ON u.UserID = t.ClientID Order By u.Email DESC
+Else
+	SELECT t.TicketID,t.Summary,ts.TicketStatusName, u.Email, tp.TicketPriorityName,t.DateCreated 
+	FROM tbTicket t JOIN tbTicketStatus ts ON ts.TicketStatusID = t.TicketStatusID
+	JOIN tbTicketPriority tp ON tp.TicketPriorityID = t.TicketPriorityID
+	JOIN tbUser u ON u.UserID = t.ClientID
+End
+Go

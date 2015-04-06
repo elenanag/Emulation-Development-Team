@@ -7,18 +7,19 @@
         <asp:Label ID="lblBoard" runat="server" Font-Bold="true" Font-Names="Arial" Font-Size="Large" Text="Ticket Board"></asp:Label> &nbsp&nbsp 
         <asp:DropDownList ID="ddlTicketStatus" runat="server" Height="28px" Width="105px" AutoPostBack="True" OnSelectedIndexChanged="ddlTicketStatus_SelectedIndexChanged"></asp:DropDownList> <br /><br />
         <asp:GridView ID="gvTicket" BorderStyle="Solid" runat="server" CellPadding="4" ForeColor="#333333" GridLines="None" Height="134px" Width="812px" 
-                        AutoGenerateColumns="False" OnRowCommand="gvTicket_RowCommand" DataKeyNames="TicketID">
+                        AutoGenerateColumns="False" OnRowCommand="gvTicket_RowCommand" DataKeyNames="TicketID" AllowSorting="True"
+                        OnSorting="gvTicket_Sorting" AllowPaging="True" OnPageIndexChanging="gvTicket_PageIndexChanging">
             <AlternatingRowStyle BackColor="White" />
             <Columns>
                 <asp:ButtonField CommandName="SelectTicket" HeaderText="Select" Text="Select">
                 <ItemStyle ForeColor="#EC3C2D" />
                 </asp:ButtonField>
-                <asp:BoundField DataField="TicketID" HeaderText="Ticket No." />
+                <asp:BoundField DataField="TicketID" HeaderText="Ticket No." SortExpression="TicketID" />
                 <asp:BoundField DataField="Summary" HeaderText="Issue/Problem" />
-                <asp:BoundField DataField="DateCreated" DataFormatString="{0:d}" HeaderText="Date Created" />
+                <asp:BoundField DataField="DateCreated" DataFormatString="{0:d}" HeaderText="Date Created" SortExpression="DateCreated" />
                 <asp:BoundField DataField="TicketPriorityName" HeaderText="Priority" NullDisplayText="-" />
                 <asp:BoundField DataField="TicketStatusName" HeaderText="Status" />
-                <asp:BoundField DataField="Email" HeaderText="Ticket Sender" />
+                <asp:BoundField DataField="Email" HeaderText="Ticket Sender" SortExpression="Email" />
             </Columns>
             <FooterStyle BackColor="#990000" Font-Bold="True" ForeColor="White" />
             <HeaderStyle BackColor="#EC3C2D" Font-Bold="True" ForeColor="White" />

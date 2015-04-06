@@ -21,9 +21,21 @@ namespace EmulationGroupProject
             {
                 PopulateTicketGrid();
                 PopulateTicketDropDown();
+
+                Session["SortColumn"] = "TicketID";
+                Session["SortDirection"] = "ASC";
+
+                RefreshSortedTicketToGrid();
             }
         }
-
+        private void RefreshSortedTicketToGrid()
+        {
+            DAL d = new DAL(connString);
+            d.AddParam("SortColumn", Session["SortColumn"].ToString());
+            d.AddParam("SortDirection", Session["SortDirection"].ToString());
+            gvTicket.DataSource = d.ExecuteProcedure("spSortedTicket");
+            gvTicket.DataBind();
+        }
         private void PopulateTicketDropDown()
         {
             DAL d = new DAL(connString);
@@ -63,20 +75,54 @@ namespace EmulationGroupProject
 
         protected void gvTicket_RowCommand(object sender, GridViewCommandEventArgs e)
         {
-            gvTicket.SelectedIndex = Convert.ToInt32(e.CommandArgument);
-            if (e.CommandName == "SelectTicket")
+            if (e.CommandName != "Sort")
             {
-                string ticketID = gvTicket.SelectedDataKey.Value.ToString();
-                DAL d = new DAL(connString);
-                DataSet ds = new DataSet();
-                d.AddParam("@TicketID", ticketID);
-                ds = d.ExecuteProcedure("spTicketIdAndSummary");
+                gvTicket.SelectedIndex = Convert.ToInt32(e.CommandArgument);
+                if (e.CommandName == "SelectTicket")
+                {
+                    string ticketID = gvTicket.SelectedDataKey.Value.ToString();
+                    DAL d = new DAL(connString);
+                    DataSet ds = new DataSet();
+                    d.AddParam("@TicketID", ticketID);
+                    ds = d.ExecuteProcedure("spTicketIdAndSummary");
 
-                dlTicketInfo.DataSource = ds;
-                dlTicketInfo.DataBind();
+                    dlTicketInfo.DataSource = ds;
+                    dlTicketInfo.DataBind();
+                }
             }
+            
         }
 
-        
+        protected void gvTicket_Sorting(object sender, GridViewSortEventArgs e)
+        {
+            if (e.SortExpression == Session["SortColumn"].ToString())
+            {
+                SwitchDirectionSort();
+            }
+            else
+            {
+                Session["SortColumn"] = e.SortExpression;
+                Session["SortDirection"] = "ASC";
+            }
+            RefreshSortedTicketToGrid();
+        }
+        private void SwitchDirectionSort()
+        {
+            if (Session["SortDirection"].ToString() == "ASC")
+            {
+                Session["SortDirection"] = "DESC";
+            }
+            else
+            {
+                Session["SortDirection"] = "ASC";
+            }
+        }
+        protected void gvTicket_PageIndexChanging(object sender, GridViewPageEventArgs e)
+        {
+            RefreshSortedTicketToGrid();
+
+            gvTicket.PageIndex = e.NewPageIndex;
+            gvTicket.DataBind();
+        }
     }
 }
