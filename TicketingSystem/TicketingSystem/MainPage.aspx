@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/FirstMaster.Master" AutoEventWireup="true" CodeBehind="MainPage.aspx.cs" Inherits="EmulationGroupProject.MainPage" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/FirstMaster.Master" AutoEventWireup="true" CodeBehind="MainPage.aspx.cs" enableEventValidation="false" Inherits="EmulationGroupProject.MainPage" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <div id="rightSideBar">
         <table style="text-align:center; width:199px"">
@@ -42,14 +42,11 @@
     <div style="text-align:center" >
         <asp:Label ID="lblBoard" runat="server" Font-Bold="true" Font-Names="Arial" Font-Size="Large" Text="Ticket Board"></asp:Label> &nbsp&nbsp 
         <asp:DropDownList ID="ddlTicketStatus" runat="server" Height="28px" Width="135px" AutoPostBack="True" OnSelectedIndexChanged="ddlTicketStatus_SelectedIndexChanged"></asp:DropDownList> <br /><br />
-        <asp:GridView ID="gvTicket" BorderStyle="Solid" runat="server" CellPadding="4" ForeColor="#333333" GridLines="None" Height="134px" Width="1000px" 
+        <asp:GridView ID="gvTicket" BorderStyle="Solid" runat="server" CellPadding="4" ForeColor="#333333" GridLines="None" Height="134px" Width="1100px" 
                         AutoGenerateColumns="False" OnRowCommand="gvTicket_RowCommand" DataKeyNames="TicketID" AllowSorting="True"
-                        OnSorting="gvTicket_Sorting" AllowPaging="True" OnPageIndexChanging="gvTicket_PageIndexChanging">
+                        OnSorting="gvTicket_Sorting" AllowPaging="True" OnPageIndexChanging="gvTicket_PageIndexChanging" OnRowDataBound="gvTicket_RowDataBound">
             <AlternatingRowStyle BackColor="White" />
             <Columns>
-                <asp:ButtonField CommandName="SelectTicket" HeaderText="Select" Text="Select">
-                <ItemStyle ForeColor="#EC3C2D" />
-                </asp:ButtonField>
                 <asp:BoundField DataField="TicketID" HeaderText="Ticket No." SortExpression="TicketID" />
                 <asp:BoundField DataField="Summary" HeaderText="Issue/Problem" />
                 <asp:BoundField DataField="DateCreated" DataFormatString="{0:d}" HeaderText="Date Created" SortExpression="DateCreated" />
@@ -57,11 +54,11 @@
                 <asp:BoundField DataField="TicketStatusName" HeaderText="Status" />
                 <asp:BoundField DataField="Email" HeaderText="Ticket Sender" SortExpression="Email" />
             </Columns>
-            <FooterStyle BackColor="#990000" Font-Bold="True" ForeColor="White" />
+            <FooterStyle BackColor="#EC3C2D" Font-Bold="True" ForeColor="White" />
             <HeaderStyle BackColor="#EC3C2D" Font-Bold="True" ForeColor="White" />
             <PagerStyle BackColor="#FFCC66" ForeColor="#333333" HorizontalAlign="Center" />
-            <RowStyle BackColor="#FFFBD6" ForeColor="#333333" />
-            <SelectedRowStyle Font-Bold="True" ForeColor="#EC3C2D" />
+            <RowStyle BackColor="#FDF9EE" ForeColor="#333333" />
+            <SelectedRowStyle Font-Bold="True" ForeColor="black" />
             <SortedAscendingCellStyle BackColor="#FDF5AC" />
             <SortedAscendingHeaderStyle BackColor="#4D0000" />
             <SortedDescendingCellStyle BackColor="#FCF6C0" />
@@ -84,8 +81,8 @@
                     <td><asp:ImageButton ID="ImgBtnPrint" ImageUrl="images/print.jpg" Height="26px" Width="59px" runat="server" /></td>
                 </tr>
             </table>
-        </div>
-    <br /><br />
+                    </div>
+                     <br /><br />
     <div>
         <asp:ImageButton ID="imgResponse" ImageUrl="images/response.jpg" runat="server" Height="34px" Width="86px" />
             &nbsp&nbsp
@@ -105,8 +102,7 @@
             </tr>
         </table>
         </div>      
-
-            </ItemTemplate>
+                 </ItemTemplate>
         </asp:DataList>
     </div>
         
