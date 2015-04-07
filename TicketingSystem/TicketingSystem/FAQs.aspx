@@ -1,6 +1,6 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/FirstMaster.Master" AutoEventWireup="true" CodeBehind="FAQs.aspx.cs" Inherits="TicketingSystem.FAQs" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    <div style="text-align:center"><img src="images/faqs.jpg" /></div>
+    <div style="padding-left:400px;"><img src="images/faqs.jpg" /></div>
     <br />
 
     <!doctype html>
@@ -8,7 +8,6 @@
   <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
   <script src="//code.jquery.com/jquery-1.10.2.js"></script>
   <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
-  <link rel="stylesheet" href="/resources/demos/style.css">
   <script>
       $(function () {
           $("#accordion").accordion();

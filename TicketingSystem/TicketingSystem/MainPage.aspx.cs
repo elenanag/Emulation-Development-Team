@@ -19,7 +19,6 @@ namespace EmulationGroupProject
         {
             if (!IsPostBack)
             {
-                gvTicket.SelectedIndex = 0;
                 PopulateTicketGrid();
                 PopulateTicketDropDown();
 
