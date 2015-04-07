@@ -1,48 +1,9 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/FirstMaster.Master" AutoEventWireup="true" CodeBehind="MainPage.aspx.cs" enableEventValidation="false" Inherits="EmulationGroupProject.MainPage" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    <div id="rightSideBar">
-        <table style="text-align:center; width:199px"">
-            <tr>
-                <td><asp:Button ID="btnHigh" BackColor="White" BorderStyle="None" runat="server" Text="High" /></td>
-                <td><asp:Button ID="btnMed"  BackColor="White" BorderStyle="None" runat="server" Text="Medium" /></td>
-                <td><asp:Button ID="btnLow"  BackColor="White" BorderStyle="None" runat="server" Text="Low" /></td>
-            </tr>
-        </table>
-        <div>
-        <h2 style="font-size:20px">Details</h2>
-            <table>
-                <tr>
-                    <td>Date created:</td>
-                    <td><asp:Label ID="lblDate" runat="server" Text=""></asp:Label></td>
-                </tr>
-                <tr>
-                    <td>Time spent:</td>
-                    <td><asp:Label ID="Label1" runat="server" Text=""></asp:Label></td>
-                </tr>
-            </table>
-    </div>
-        <div>
-            <h2 style="font-size:20px">Users</h2> 
-            <table>
-                <tr>
-                    <td>Assigned to:</td>
-                    <td><asp:Label ID="Label2" runat="server" Text=""></asp:Label></td>
-                    <td><asp:DropDownList ID="ddlAssign" Font-Size="X-Small" style="border:0px; outline:0px;" runat="server">
-                        <asp:ListItem>assign to</asp:ListItem>
-                        </asp:DropDownList></td>
-                </tr>
-                <tr>
-                    <td>Client name:</td>
-                    <td><asp:Label ID="Label3" runat="server" Text=""></asp:Label></td>
-                </tr>
-            </table>
-        </div>
-   
-    </div>
     <div style="text-align:center" >
         <asp:Label ID="lblBoard" runat="server" Font-Bold="true" Font-Names="Arial" Font-Size="Large" Text="Ticket Board"></asp:Label> &nbsp&nbsp 
         <asp:DropDownList ID="ddlTicketStatus" runat="server" Height="28px" Width="135px" AutoPostBack="True" OnSelectedIndexChanged="ddlTicketStatus_SelectedIndexChanged"></asp:DropDownList> <br /><br />
-        <asp:GridView ID="gvTicket" BorderStyle="Solid" runat="server" CellPadding="4" ForeColor="#333333" GridLines="None" Height="134px" Width="820px" 
+        <asp:GridView ID="gvTicket" BorderStyle="Solid" runat="server" CellPadding="4" ForeColor="#333333" GridLines="None" Height="134px" Width="1200px" 
                         AutoGenerateColumns="False" OnRowCommand="gvTicket_RowCommand" DataKeyNames="TicketID" AllowSorting="True"
                         OnSorting="gvTicket_Sorting" AllowPaging="True" OnPageIndexChanging="gvTicket_PageIndexChanging" OnRowDataBound="gvTicket_RowDataBound">
             <AlternatingRowStyle BackColor="White" />
@@ -68,7 +29,8 @@
     <br /><br />
     <div id="ticketOptions">
         <asp:DataList ID="dlTicketInfo" runat="server">
-            <ItemTemplate>    
+            <ItemTemplate>   
+            <div style="float:left; width:720px"> 
                 <p style="text-align:center;margin:0;padding-bottom:10px; padding-right:50px; color:black">
                 Ticket # <%# Eval("TicketID")%> : 
                 <%#Eval("Summary")%>
@@ -83,28 +45,74 @@
             </table>
                     </div>
                      <br /><br />
-    <div>
-        <asp:ImageButton ID="imgResponse" ImageUrl="images/response.jpg" runat="server" Height="34px" Width="86px" />
-            &nbsp&nbsp
-        <asp:ImageButton ID="imgNotes" ImageUrl="images/notes.jpg" runat="server" Height="34px" Width="86px" />
-        <br /><br />
-        <asp:TextBox ID="txtPost" runat="server" TextMode="MultiLine"></asp:TextBox>
-    </div>
-    <div style="text-align:center">
-        <table style="height: 69px; width: 256px">
+            <div>
+                <asp:ImageButton ID="imgResponse" ImageUrl="images/response.jpg" runat="server" Height="34px" Width="86px" />
+                    &nbsp&nbsp
+                <asp:ImageButton ID="imgNotes" ImageUrl="images/notes.jpg" runat="server" Height="34px" Width="86px" />
+                <br /><br />
+                <asp:TextBox ID="txtPost" runat="server" TextMode="MultiLine"></asp:TextBox>
+            </div>
+            <div style="text-align:center">
+            <table style="height: 69px; width: 256px">
+                <tr>
+                    <td>
+                        <asp:CheckBox ID="chkClosed" Visible="true" Text="Close ticket" runat="server" />
+                    </td>
+                    <td>
+                         <asp:Button ID="btnPost" runat="server" Visible="true" Text="Post" Height="23px" Width="70px" />
+                    </td>
+                </tr>
+            </table>
+            </div>
+            </div>
+        <div style="float:left; padding-left:20px">
+        <div id="rightSideBar">
+        <table style="text-align:center; width:199px"">
             <tr>
-                <td>
-                    <asp:CheckBox ID="chkClosed" Visible="true" Text="Close ticket" runat="server" />
-                </td>
-                <td>
-                     <asp:Button ID="btnPost" runat="server" Visible="true" Text="Post" Height="23px" Width="70px" />
-                </td>
+                <td><asp:Button ID="btnHigh" BackColor="#FDF9EE" BorderStyle="None" runat="server" Text="High" /></td>
+                <td><asp:Button ID="btnMed"  BackColor="#FDF9EE" BorderStyle="None" runat="server" Text="Medium" /></td>
+                <td><asp:Button ID="btnLow"  BackColor="#FDF9EE" BorderStyle="None" runat="server" Text="Low" /></td>
             </tr>
         </table>
-        </div>      
-                 </ItemTemplate>
+            <hr />
+        <div>
+        <h2 style="font-size:20px">Details</h2>
+            <table>
+                <tr>
+                    <td>Date created:</td>
+                    <td><asp:Label ID="lblDate" runat="server" Text=""></asp:Label></td>
+                </tr>
+                <tr>
+                    <td>Time spent:</td>
+                    <td><asp:Label ID="Label1" runat="server" Text=""></asp:Label></td>
+                </tr>
+            </table>
+        </div>
+            <hr />
+        <div>
+            <h2 style="font-size:20px">Users</h2> 
+            <table>
+                <tr>
+                    <td>Assigned to:</td>
+                    <td><asp:Label ID="Label2" runat="server" Text=""></asp:Label></td>
+                    <td><asp:DropDownList ID="ddlAssign" Font-Size="X-Small" BackColor="#FDF9EE" style="border:0px; outline:0px;" runat="server">
+                        <asp:ListItem>assign to</asp:ListItem>
+                        </asp:DropDownList></td>
+                </tr>
+                <tr>
+                    <td>Client name:</td>
+                    <td><asp:Label ID="Label3" runat="server" Text=""></asp:Label></td>
+                </tr>
+            </table>
+        </div>
+            <hr />
+        </div>
+        </div>
+        </ItemTemplate>
+
         </asp:DataList>
     </div>
+
         
  <script type="text/javascript">
 
@@ -112,7 +120,7 @@
          $("#ContentPlaceHolder1_chkClosed, label[for='ContentPlaceHolder1_chkClosed']").hide();
          $("#ContentPlaceHolder1_btnPost").hide();
 
-         $("#ContentPlaceHolder1_txtPost").focus(function () {
+         $("#ContentPlaceHolder1_dlTicketInfo_txtPost_0").focus(function () {
              $(this).animate({           
                  width: '200px',
                  height: '40px'
@@ -120,7 +128,7 @@
                 "fast"
              )
              .animate({
-                 width: '720px',
+                 width: '600px',
                  height: '130px'
                       },
                 "slow");

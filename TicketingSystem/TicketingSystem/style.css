@@ -292,8 +292,8 @@ padding:0 0 0 70px; float:left;
 
 /*------------------------------RIGHT SIDEBAR -------------------------------------*/
 #rightSideBar{
-	width:181px; color:#B6B6B5; background:url(images/bg.gif) repeat-x 0 0 #FDF9EE; padding:19px 0 0 0; float:right;	
-	text-align:left; margin-right:200px}
+	width:300px; color:#B6B6B5; background:url(images/bg.gif) repeat-x 0 0 #FDF9EE; padding:19px 0 0 0; float:right;	
+	text-align:left;}
 #rightSideBar p{
 	background:url(images/left_side_down.gif) no-repeat bottom left; height:8px; font-size:0; display:block;
 	}
