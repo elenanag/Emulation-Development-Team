@@ -1,7 +1,43 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/FirstMaster.Master" AutoEventWireup="true" CodeBehind="MainPage.aspx.cs" Inherits="EmulationGroupProject.MainPage" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <div id="rightSideBar">
-        <h2 style="font-size:20px">Details</h2> 
+        <table style="text-align:center; width:199px"">
+            <tr>
+                <td><asp:Button ID="btnHigh" BackColor="White" BorderStyle="None" runat="server" Text="High" /></td>
+                <td><asp:Button ID="btnMed"  BackColor="White" BorderStyle="None" runat="server" Text="Medium" /></td>
+                <td><asp:Button ID="btnLow"  BackColor="White" BorderStyle="None" runat="server" Text="Low" /></td>
+            </tr>
+        </table>
+        <div>
+        <h2 style="font-size:20px">Details</h2>
+            <table>
+                <tr>
+                    <td>Date created:</td>
+                    <td><asp:Label ID="lblDate" runat="server" Text=""></asp:Label></td>
+                </tr>
+                <tr>
+                    <td>Time spent:</td>
+                    <td><asp:Label ID="Label1" runat="server" Text=""></asp:Label></td>
+                </tr>
+            </table>
+        </div>
+        <div>
+            <h2 style="font-size:20px">Users</h2> 
+            <table>
+                <tr>
+                    <td>Assigned to:</td>
+                    <td><asp:Label ID="Label2" runat="server" Text=""></asp:Label></td>
+                    <td><asp:DropDownList ID="ddlAssign" Font-Size="X-Small" style="border:0px; outline:0px;" runat="server">
+                        <asp:ListItem>assign to</asp:ListItem>
+                        </asp:DropDownList></td>
+                </tr>
+                <tr>
+                    <td>Client name:</td>
+                    <td><asp:Label ID="Label3" runat="server" Text=""></asp:Label></td>
+                </tr>
+            </table>
+        </div>
+   
     </div>
     <div style="text-align:center" >
         <asp:Label ID="lblBoard" runat="server" Font-Bold="true" Font-Names="Arial" Font-Size="Large" Text="Ticket Board"></asp:Label> &nbsp&nbsp 
@@ -31,6 +67,7 @@
             <SortedDescendingCellStyle BackColor="#FCF6C0" />
             <SortedDescendingHeaderStyle BackColor="#820000" />
         </asp:GridView>
+        <asp:Label ID="lblTest" runat="server" Text=""></asp:Label>
     </div>
     <br /><br />
     <div id ="ticketOptions" >

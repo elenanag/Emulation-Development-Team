@@ -291,14 +291,14 @@ padding:0 0 0 70px; float:left;
 
 /*------------------------------RIGHT SIDEBAR -------------------------------------*/
 #rightSideBar{
-	width:161px; color:#B6B6B5; background:url(images/bg.gif) repeat-x 0 0 #FDF9EE; padding:19px 0 0 0; float:right;	
-	text-align:left; margin-right:100px}
+	width:181px; color:#B6B6B5; background:url(images/bg.gif) repeat-x 0 0 #FDF9EE; padding:19px 0 0 0; float:right;	
+	text-align:left; margin-right:200px}
 #rightSideBar p{
 	background:url(images/left_side_down.gif) no-repeat bottom left; height:8px; font-size:0; display:block;
 	}
 #rightSideBar h2{
 	color:black; width:90px; height:34px; display:block;
-	margin:0px 0 0 25px; font: normal 24px/34px Arial, Helvetica, sans-serif; padding: 0 0 0 25px;
+	font: normal 24px/34px Arial, Helvetica, sans-serif;
 	}
 #rightSideBar ul{
 	width:119px; display:block; margin:6px 0 24px 25px; font-size:0;
@@ -313,7 +313,7 @@ padding:0 0 0 70px; float:left;
 	background-color:#454545; color:#B6B6B5;
 	}
 #rightSideBar h3{
-	color:#fff; width:114px; height:24px; display:block; margin:0px 0 10px 26px; padding: 0 0 0 0; background-color:#171717;	
+	color:#fff; width:114px; height:24px; display:block; background-color:#171717;	
 	font: normal 24px/24px Arial, Helvetica, sans-serif; 
 	}
 #rightSideBar h3.lor{

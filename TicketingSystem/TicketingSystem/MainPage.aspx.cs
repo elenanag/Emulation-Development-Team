@@ -125,5 +125,6 @@ namespace EmulationGroupProject
             gvTicket.PageIndex = e.NewPageIndex;
             gvTicket.DataBind();
         }
+
     }
 }
