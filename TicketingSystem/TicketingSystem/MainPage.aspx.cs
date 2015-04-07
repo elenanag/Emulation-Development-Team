@@ -19,6 +19,7 @@ namespace EmulationGroupProject
         {
             if (!IsPostBack)
             {
+                gvTicket.SelectedIndex = 0;
                 PopulateTicketGrid();
                 PopulateTicketDropDown();
 
@@ -124,6 +125,37 @@ namespace EmulationGroupProject
 
             gvTicket.PageIndex = e.NewPageIndex;
             gvTicket.DataBind();
+        }
+
+        protected void gvTicket_RowDataBound(object sender, GridViewRowEventArgs e)
+        {
+            
+            try
+            {
+                switch (e.Row.RowType)
+                {
+                    case DataControlRowType.Header:
+                        //...
+                        break;
+                    case DataControlRowType.DataRow:
+                        e.Row.Attributes.Add("onmouseover", "this.style.backgroundColor='lightgray'; this.style.color='Black'; this.style.cursor='pointer'");
+                        if (e.Row.RowState == DataControlRowState.Alternate)
+                        {
+                            e.Row.Attributes.Add("onmouseout", String.Format("this.style.color='Black';this.style.backgroundColor='';", gvTicket.AlternatingRowStyle.BackColor.ToKnownColor()));
+                        }
+                        else
+                        {
+                            e.Row.Attributes.Add("onmouseout", String.Format("this.style.color='Black';this.style.backgroundColor='White';", gvTicket.RowStyle.BackColor.ToKnownColor()));
+                        }
+                        e.Row.Attributes.Add("onclick", Page.ClientScript.GetPostBackEventReference(gvTicket, "SelectTicket$" + e.Row.RowIndex.ToString()));
+                        break;
+                }
+            }
+            catch
+            {
+                //...throw
+            }
+
         }
     }
 }
