@@ -19,7 +19,8 @@
                     Password:
                 </td>
                 <td>
-                   <%-- <input id="txtPassword" type="text" required />--%><asp:TextBox ID="txtPassword" runat="server" TextMode="Password"></asp:TextBox>
+                   <%-- <input id="txtPassword" type="text" required />--%>
+                    <asp:TextBox ID="txtPassword" runat="server" TextMode="Password"></asp:TextBox>
                 </td>
             </tr>
             <tr>

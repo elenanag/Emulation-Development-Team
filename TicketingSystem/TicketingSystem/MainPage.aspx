@@ -20,7 +20,7 @@
                     <td><asp:Label ID="Label1" runat="server" Text=""></asp:Label></td>
                 </tr>
             </table>
-        </div>
+    </div>
         <div>
             <h2 style="font-size:20px">Users</h2> 
             <table>
@@ -41,8 +41,8 @@
     </div>
     <div style="text-align:center" >
         <asp:Label ID="lblBoard" runat="server" Font-Bold="true" Font-Names="Arial" Font-Size="Large" Text="Ticket Board"></asp:Label> &nbsp&nbsp 
-        <asp:DropDownList ID="ddlTicketStatus" runat="server" Height="28px" Width="105px" AutoPostBack="True" OnSelectedIndexChanged="ddlTicketStatus_SelectedIndexChanged"></asp:DropDownList> <br /><br />
-        <asp:GridView ID="gvTicket" BorderStyle="Solid" runat="server" CellPadding="4" ForeColor="#333333" GridLines="None" Height="134px" Width="812px" 
+        <asp:DropDownList ID="ddlTicketStatus" runat="server" Height="28px" Width="135px" AutoPostBack="True" OnSelectedIndexChanged="ddlTicketStatus_SelectedIndexChanged"></asp:DropDownList> <br /><br />
+        <asp:GridView ID="gvTicket" BorderStyle="Solid" runat="server" CellPadding="4" ForeColor="#333333" GridLines="None" Height="134px" Width="1000px" 
                         AutoGenerateColumns="False" OnRowCommand="gvTicket_RowCommand" DataKeyNames="TicketID" AllowSorting="True"
                         OnSorting="gvTicket_Sorting" AllowPaging="True" OnPageIndexChanging="gvTicket_PageIndexChanging">
             <AlternatingRowStyle BackColor="White" />
@@ -67,20 +67,15 @@
             <SortedDescendingCellStyle BackColor="#FCF6C0" />
             <SortedDescendingHeaderStyle BackColor="#820000" />
         </asp:GridView>
-        <asp:Label ID="lblTest" runat="server" Text=""></asp:Label>
     </div>
     <br /><br />
-    <div id ="ticketOptions" >
-        <%--Ticket #<asp:Label ID="lblTicketNumber" runat="server" Text=""></asp:Label>--%>
+    <div id="ticketOptions">
         <asp:DataList ID="dlTicketInfo" runat="server">
             <ItemTemplate>    
                 <p style="text-align:center;margin:0;padding-bottom:10px; padding-right:50px; color:black">
                 Ticket # <%# Eval("TicketID")%> : 
                 <%#Eval("Summary")%>
-                 </ItemTemplate>
-        </asp:DataList>
-        <br /><Br />
-        <div>
+                    <div><br />
             <table border="1">
                 <tr>
                     <td> <asp:ImageButton ID="ImgBtnEdit" ImageUrl="images/edit.jpg" Height="26px" Width="65px" runat="server" /></td>
@@ -90,7 +85,6 @@
                 </tr>
             </table>
         </div>
-    </div>
     <br /><br />
     <div>
         <asp:ImageButton ID="imgResponse" ImageUrl="images/response.jpg" runat="server" Height="34px" Width="86px" />
@@ -110,14 +104,12 @@
                 </td>
             </tr>
         </table>
-        <asp:DataList ID="DataList1" runat="server">
-            <ItemTemplate>
-                <div>
+        </div>      
 
-                </div>
             </ItemTemplate>
         </asp:DataList>
     </div>
+        
  <script type="text/javascript">
 
      $(function () {
