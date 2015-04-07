@@ -91,7 +91,7 @@ CREATE TABLE tbTicketStatus
 TicketStatusID INT IDENTITY(1,1) PRIMARY KEY,
 TicketStatusName VARCHAR(35)
 )
-INSERT INTO  tbTicketStatus Values('Open'),('Unassigned'),('Closed')
+INSERT INTO  tbTicketStatus Values('Open Tickets'),('Unassigned Tickets'),('Closed Tickets')
 -------------------------------
 CREATE TABLE tbTicketPriority
 (
@@ -1028,7 +1028,7 @@ BEGIN
 	WHERE TicketStatusName = ISNULL(@TicketStatusName,TicketStatusName)
 END
 --GO
---EXEC spGetTicketByStatusName @TicketStatusName='open'
+--EXEC spGetTicketByStatusName @TicketStatusName='Open Tickets'
 
 
 GO
@@ -1043,7 +1043,6 @@ END
 --GO 
 --EXEC spTicketIdAndSummary @TicketID=3
 
---------------------------------------------------------------------
 
 --Ticket Sorting
 Go
