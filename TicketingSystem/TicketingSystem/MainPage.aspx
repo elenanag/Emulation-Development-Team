@@ -20,7 +20,7 @@
             </Columns>
             <FooterStyle BackColor="#EC3C2D" Font-Bold="True" ForeColor="White" />
             <HeaderStyle BackColor="#EC3C2D" Font-Bold="True" ForeColor="White" />
-            <PagerStyle BackColor="#FFCC66" ForeColor="#333333" HorizontalAlign="Center" />
+            <PagerStyle BackColor="#EC3C2D" ForeColor="#333333" HorizontalAlign="Center" />
             <RowStyle BackColor="#FDF9EE" ForeColor="#333333" />
             <SelectedRowStyle Font-Bold="True" ForeColor="black" />
             <SortedAscendingCellStyle BackColor="#FDF5AC" />
