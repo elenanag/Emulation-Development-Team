@@ -53,8 +53,9 @@ ul{
 /* ----------------- shadow end --------------------------- */
 /* ----------------- body start --------------------------- */
 #body{
-	width:90%; margin:0 auto; padding-top:70px; padding-left:30px; position:relative;
-    top: 0px;
+	width:90%; margin:3 auto 0 auto; 
+padding-top:70px; padding-left:30px; position:relative;
+    top: -1px;
     left: 0px;
 }
 #bodyPannel{

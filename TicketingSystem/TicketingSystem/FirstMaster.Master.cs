@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ClassLibrary;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -11,7 +12,25 @@ namespace EmulationGroupProject
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            {
 
+                if (Session["user"] == null)
+                {
+
+                    //lbtnLogout.Visible = false;
+
+                    lblwelcome.Visible = false;
+
+                }
+
+                else
+                {
+
+                    LoginInfo user = (LoginInfo)Session["user"];
+
+                    lblwelcome.Text = user.Email;
+                }
+            }
         }
     }
 }
