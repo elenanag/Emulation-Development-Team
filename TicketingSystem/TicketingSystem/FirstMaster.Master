@@ -18,16 +18,14 @@
 		<a href="index.html" title="Flash Web"><img src="images/robertson.jpeg"
              alt="Flash Web" width="179" height="75" border="0" /></a>
 		<ul><li><a href="LoginPage.aspx" title="Home" class="hover">Home</a></li>
-			<li><a href="Support.aspx" title="Support">Support</a></li>
             <li><a href="LoginPage.aspx" title="Login">Login</a></li>
 			<li><a href="FAQs.aspx" title="FAQs">FAQs</a></li>
             <li><a href="AboutUs.aspx" title="About us">About Us</a></li>
             <li><a href="#" title="Contact">Contact</a></li>
-			
 			<li><a href="LoginPage.aspx" title="signout">Sign Out</a></li>
 		</ul>
 	</div>
-    <div style=padding-left:1030px ><asp:Label ID="lblwelcome" runat="server" Text=""></asp:Label></div>
+    <div style=padding-left:1030px ><asp:Label ID="lblwelcome" runat="server" ></asp:Label></div>
 	<!-- top navigation end -->
 	<!-- body start -->
 	<div id="body">
