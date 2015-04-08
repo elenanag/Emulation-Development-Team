@@ -16,10 +16,8 @@ namespace EmulationGroupProject
 
                 if (Session["user"] == null)
                 {
-
-                    //lbtnLogout.Visible = false;
-
-                    lblwelcome.Visible = false;
+                                    
+                      lblwelcome.Visible = false;
 
                 }
 
