@@ -1,7 +1,12 @@
 /* CSS Document */
 /* CSS Document */
+
+.RobertsonBackground
+{
+    background:url(images/backgroundtest.jpg); 
+}
 body{
-	background:url(images/bg.gif) repeat-x 0 0 #FDF9EE; color:#4E4628;
+	color:#4E4628;
 	font:normal 14px/19px Arial, Helvetica, sans-serif;
 	margin:0; padding:0;}
 div, h1, h2, h3, h4, h5, h6, form, label, input, span, ul, li, p, a{
@@ -55,8 +60,8 @@ ul{
 /* ----------------- shadow end --------------------------- */
 /* ----------------- body start --------------------------- */
 #body{
-	width:90%; margin:3 auto 0 auto; 
-padding-top:70px; padding-left:30px; position:relative;
+	width:90%; margin:3px auto 0 auto; 
+    padding-top:70px; padding-left:30px; position:relative;
     top: -1px;
     left: 0px;
 }
@@ -280,16 +285,16 @@ padding:0 0 0 70px; float:left;
 	color:#0B0B0B; background-color:#EFEBDE; padding:0 8px; text-decoration:none;
 	font:normal 12px/16px "Trebuchet MS", Arial, Helvetica, sans-serif;}
 #footer p{
-	color:#A90000; background-color:#FDF9EE; padding:0 8px; float:right;
+	color:#A90000; padding:0 8px; float:right;
 	font:normal 12px/22px "Trebuchet MS", Arial, Helvetica, sans-serif;}
 #footer p.tworld{
-	color:#0B0B0B; background-color:#FDF9EE; padding:0 8px; float:right;
+	color:#0B0B0B; padding:0 8px; float:right;
 	font:normal 12px/19px "Trebuchet MS", Arial, Helvetica, sans-serif;}
 #footer p.tworld a{
-	color:#0B0B0B; background-color:#FDF9EE; text-decoration:none;
+	color:#0B0B0B; text-decoration:none;
 	font:normal 12px/19px "Trebuchet MS", Arial, Helvetica, sans-serif;}
 #footer p.tworld a:hover{
-	color:#0B0B0B; background-color:#EFEBDE; text-decoration:none;
+	color:#0B0B0B; text-decoration:none;
 	font:normal 12px/19px "Trebuchet MS", Arial, Helvetica, sans-serif;}
 
 /*------------------------------RIGHT SIDEBAR -------------------------------------*/

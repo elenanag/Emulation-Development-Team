@@ -1,6 +1,6 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/FirstMaster.Master" AutoEventWireup="true" CodeBehind="AboutUs.aspx.cs" Inherits="TicketingSystem.AboutUs" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    <div style="padding-left:400px;"><img src="images/about_us.jpg" /></div>
+    <div style="padding-left:400px;"><img src="images/about_us.gif" /></div>
     <div style="padding-left:290px; text-align:left; font-size:medium; font-weight:bold;padding-top:40px; padding-right:310px;">
         Established in 2015, the Emulation Development Team is in the business of creating a  
         customer based software. The team had started to feel that a good Ticketing software 

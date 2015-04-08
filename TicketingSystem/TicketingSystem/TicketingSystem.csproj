@@ -70,6 +70,7 @@
   <ItemGroup>
     <Content Include="Global.asax" />
     <Content Include="images\about_us.jpg" />
+    <Content Include="images\backgroundtest.jpg" />
     <Content Include="images\bg.gif" />
     <Content Include="images\boeder.gif" />
     <Content Include="images\bottom_shadow.gif" />
@@ -82,7 +83,9 @@
     <Content Include="images\edit.jpg" />
     <Content Include="images\event_link_bg.gif" />
     <Content Include="images\faqs.jpg" />
+    <Content Include="images\footer.gif" />
     <Content Include="images\footer.jpg" />
+    <Content Include="images\gridBackground.jpg" />
     <Content Include="images\logo_text.gif" />
     <Content Include="images\midle_bg.gif" />
     <Content Include="images\more_bg.gif" />
@@ -91,10 +94,12 @@
     <Content Include="images\newsletter_h2_bg.gif" />
     <Content Include="images\newsletter_midle.gif" />
     <Content Include="images\newsletter_top.gif" />
+    <Content Include="images\notes.jpg" />
     <Content Include="images\picture.gif" />
     <Content Include="images\print.jpg" />
     <Content Include="images\red_arrow.gif" />
     <Content Include="images\red_bullet.gif" />
+    <Content Include="images\response.jpg" />
     <Content Include="images\robertson.jpeg" />
     <Content Include="images\search_h2_bg.gif" />
     <Content Include="images\submit_bg.gif" />

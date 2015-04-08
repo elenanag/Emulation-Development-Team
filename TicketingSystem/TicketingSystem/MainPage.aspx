@@ -138,7 +138,10 @@
 
              $("#ContentPlaceHolder1_btnPost").show();
          });
-         
+        
+      $("body").removeClass("RobertsonBackground");
      });
+    
+
      </script>
 </asp:Content>
