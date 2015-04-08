@@ -5,17 +5,29 @@
         <asp:DropDownList ID="ddlTicketStatus" runat="server" Height="28px" Width="135px" AutoPostBack="True" OnSelectedIndexChanged="ddlTicketStatus_SelectedIndexChanged"></asp:DropDownList>&nbsp&nbsp
         <asp:Button ID="btnNewTicket" runat="server" Text="New Ticket" Height="28px" Width="100px" Font-Bold="True" OnClick="btnNewTicket_Click" />
          <br /><br />
-        <asp:GridView ID="gvTicket" BorderStyle="Solid" runat="server" CellPadding="4" ForeColor="#333333" GridLines="None" Height="134px" Width="1200px" 
+        <asp:GridView ID="gvTicket" BorderStyle="Solid" runat="server" CellPadding="4" ForeColor="#333333" GridLines="None" Height="134px" Width="1130px" 
                         AutoGenerateColumns="False" OnRowCommand="gvTicket_RowCommand" DataKeyNames="TicketID" AllowSorting="True"
                         OnSorting="gvTicket_Sorting" AllowPaging="True" OnPageIndexChanging="gvTicket_PageIndexChanging" OnRowDataBound="gvTicket_RowDataBound" PageSize="5">
             <AlternatingRowStyle BackColor="White" />
             <Columns>
-                <asp:BoundField DataField="TicketID" HeaderText="Ticket No." SortExpression="TicketID" />
-                <asp:BoundField DataField="Summary" HeaderText="Issue/Problem" />
-                <asp:BoundField DataField="DateCreated" DataFormatString="{0:d}" HeaderText="Date Created" SortExpression="DateCreated" />
-                <asp:BoundField DataField="TicketPriorityName" HeaderText="Priority" NullDisplayText="-" />
-                <asp:BoundField DataField="TicketStatusName" HeaderText="Status" />
-                <asp:BoundField DataField="Email" HeaderText="Ticket Sender" SortExpression="Email" />
+                <asp:BoundField DataField="TicketID" HeaderText="Ticket No." SortExpression="TicketID" >
+                <HeaderStyle HorizontalAlign="Left" />
+                </asp:BoundField>
+                <asp:BoundField DataField="Summary" HeaderText="Issue/Problem" >
+                <HeaderStyle HorizontalAlign="Left" />
+                </asp:BoundField>
+                <asp:BoundField DataField="DateCreated" DataFormatString="{0:d}" HeaderText="Date Created" SortExpression="DateCreated" >
+                <HeaderStyle HorizontalAlign="Left" />
+                </asp:BoundField>
+                <asp:BoundField DataField="TicketPriorityName" HeaderText="Priority" NullDisplayText="-" >
+                <HeaderStyle HorizontalAlign="Left" />
+                </asp:BoundField>
+                <asp:BoundField DataField="TicketStatusName" HeaderText="Status" >
+                <HeaderStyle HorizontalAlign="Left" />
+                </asp:BoundField>
+                <asp:BoundField DataField="Email" HeaderText="Ticket Sender" SortExpression="Email" >
+                <HeaderStyle HorizontalAlign="Left" />
+                </asp:BoundField>
             </Columns>
             <FooterStyle BackColor="#EC3C2D" Font-Bold="True" ForeColor="White" />
             <HeaderStyle BackColor="#EC3C2D" Font-Bold="True" ForeColor="White" />

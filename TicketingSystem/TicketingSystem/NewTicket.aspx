@@ -8,9 +8,9 @@
             <tr><td style="width: 230px">
                 IT issue:
                 </td><td style="width: 380px">
-                    <asp:DropDownList ID="ddItIssue" runat="server" Height="28px" Width="250px"></asp:DropDownList>
+                    &nbsp;&nbsp; <asp:DropDownList ID="ddItIssue" runat="server" Height="28px" Width="250px"></asp:DropDownList>
                      </td></tr>
-            <tr><td style="width: 230px">
+             <tr><td style="width: 230px">
                 Summary:
                 </td><td style="width: 380px">
                     <asp:TextBox ID="txtSummary" runat="server" Height="28px" Width="400px"></asp:TextBox>
