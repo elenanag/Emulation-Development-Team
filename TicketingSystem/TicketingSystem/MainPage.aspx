@@ -1,6 +1,7 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/FirstMaster.Master" AutoEventWireup="true" CodeBehind="MainPage.aspx.cs" enableEventValidation="false" Inherits="EmulationGroupProject.MainPage" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <div style="text-align:center" >
+        <link href="StyleSheet2.css" rel="stylesheet" />
         <asp:Label ID="lblBoard" runat="server" Font-Bold="true" Font-Names="Arial" Font-Size="Large" Text="Ticket Board"></asp:Label> &nbsp&nbsp 
         <asp:DropDownList ID="ddlTicketStatus" runat="server" Height="28px" Width="135px" AutoPostBack="True" OnSelectedIndexChanged="ddlTicketStatus_SelectedIndexChanged"></asp:DropDownList>&nbsp&nbsp
         <asp:Button ID="btnNewTicket" runat="server" Text="New Ticket" Height="28px" Width="100px" Font-Bold="True" OnClick="btnNewTicket_Click" />
@@ -51,7 +52,58 @@
                     <div><br />
             <table border="1">
                 <tr>
-                    <td> <asp:ImageButton ID="ImgBtnEdit" ImageUrl="images/edit.jpg" Height="26px" Width="65px" runat="server" /></td>
+                    <td><a href = "javascript:void(0)" onclick = "document.getElementById('light').style.display='block';
+    document.getElementById('fade').style.display='block'"><img src="images/edit.jpg"   Height="26px" Width="65px"/></a>
+<div id="light" class="white_content">
+ <table cellpadding=0 cellspacing=0  style="background-color:red;"  width="100%" ><tr><td height="16px" >
+     <a href = "javascript:void(0)" 
+         onclick = "document.getElementById('light').style.display='none';
+         document.getElementById('fade').style.display='none'">
+         <img src="close.gif" style="border :0px"  width="13px" align="right" height="13px"/></a></td></tr>
+<tr><td style="padding-left:16px;padding-right:16px;padding-bottom:16px"> 
+<table align="center"  border="0" cellpadding="0" cellspacing="0" style="background-color:#fff" width="100%">
+<tr>
+<td align="center" colspan="2" class="headertext" style="padding-top:20px;">Edit Ticket </td>
+</tr>
+<tr><td>&nbsp;</td></tr>
+<tr><td align="center"> 
+<table><tr>
+<td align="right">Summary</td><td><asp:TextBox ID="txtUser" runat="server" CssClass="textfield"></asp:TextBox>
+</td>
+</tr>
+<tr><td height="10px"></td></tr>
+<tr>
+<td align="right">Description</td>
+<td><asp:TextBox ID="txtPwd" runat="server" CssClass="textfield" TextMode="MultiLine"></asp:TextBox></td>
+</tr>
+<tr><td height="10px"></td></tr>
+<tr><td align="right">Priority</td>
+<td>
+    <asp:DropDownList ID="Ddlpriority" runat="server"></asp:DropDownList></td>
+</tr>
+<tr><td height="10px"></td></tr>
+<tr><td align="right">Status</td>
+<td> <asp:DropDownList ID="DdlStatus" runat="server"></asp:DropDownList></td>
+</tr>
+<tr><td height="10px"></td></tr>
+<tr><td align="right">Assignee</td>
+<td>
+    <asp:DropDownList ID="DdlAssignee" runat="server"></asp:DropDownList></td>
+</tr>
+<tr><td height="10px"></td></tr>
+<tr>
+<td> </td><td><asp:Button ID="Button1" runat="server" Text="Save" class="button2" Height="27px"/>
+</td>
+</tr></table></td></tr>
+<tr><td height="10px"></td></tr>
+</table>
+</td></tr>
+</table>
+<div align="center" class=" headertext">
+<asp:Label ID="txtlbl" runat="server"  ></asp:Label></div>
+</div>
+<div id="fade" class="black_overlay"></div>
+ <%--<asp:ImageButton ID="ImgBtnEdit" ImageUrl="images/edit.jpg" Height="26px" Width="65px" runat="server" />--%></td>
                     <td><asp:ImageButton ID="ImgBtnClose" ImageUrl="images/Close.jpg" Height="24px" Width="54px" runat="server" /></td>
                     <td><asp:ImageButton ID="ImgBtnCloseDupelicate" ImageUrl="images/Close as duplicate.jpg" Height="23px" Width="115px" runat="server" /></td>
                     <td><asp:ImageButton ID="ImgBtnPrint" ImageUrl="images/print.jpg" Height="26px" Width="59px" runat="server" /></td>

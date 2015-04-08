@@ -111,6 +111,7 @@
     <Content Include="NewTicket.aspx" />
     <Content Include="SQL\TicketingSystem.sql" />
     <Content Include="style.css" />
+    <Content Include="StyleSheet2.css" />
     <Content Include="Support.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
