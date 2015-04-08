@@ -156,5 +156,10 @@ namespace EmulationGroupProject
             }
 
         }
+
+        protected void btnNewTicket_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("NewTicket.aspx");
+        }
     }
 }
