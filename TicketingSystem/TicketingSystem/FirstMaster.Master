@@ -13,6 +13,7 @@
 </head>
        
 <body class="RobertsonBackground">
+    <div id="fade" class="black_overlay"></div>
 	<!-- top navigation start -->
 	<div id="topNav">
 		<a href="index.html" title="Flash Web"><img src="images/robertson.jpeg"

@@ -53,7 +53,7 @@
             <table border="1">
                 <tr>
                     <td><a href = "javascript:void(0)" onclick = "document.getElementById('light').style.display='block';
-    document.getElementById('fade').style.display='block'"><img src="images/edit.jpg"   Height="26px" Width="65px"/></a>
+    document.getElementById('fade').style.display='block'"><img src="images/edit.jpg"  Height="26px" Width="65px"/></a>
 <div id="light" class="white_content">
  <table cellpadding=0 cellspacing=0  style="background-color:red;"  width="100%" ><tr><td height="16px" >
      <a href = "javascript:void(0)" 
@@ -102,7 +102,7 @@
 <div align="center" class=" headertext">
 <asp:Label ID="txtlbl" runat="server"  ></asp:Label></div>
 </div>
-<div id="fade" class="black_overlay"></div>
+
  <%--<asp:ImageButton ID="ImgBtnEdit" ImageUrl="images/edit.jpg" Height="26px" Width="65px" runat="server" />--%></td>
                     <td><asp:ImageButton ID="ImgBtnClose" ImageUrl="images/Close.jpg" Height="24px" Width="54px" runat="server" /></td>
                     <td><asp:ImageButton ID="ImgBtnCloseDupelicate" ImageUrl="images/Close as duplicate.jpg" Height="23px" Width="115px" runat="server" /></td>
