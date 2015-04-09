@@ -157,7 +157,7 @@ TicketAttachmentID INT IDENTITY (1,1) PRIMARY KEY,
 ImagePath VARCHAR(MAX),
 ClientID INT FOREIGN KEY REFERENCES tbUser(UserID),
 TicketID INT FOREIGN KEY REFERENCES tbTicket(TicketID),
-DateOfAttachment DATE
+DateOfAttachment DATETIME
 )
 GO
 CREATE TABLE tbDevice
@@ -440,20 +440,21 @@ CREATE PROCEDURE spInsertTicket
 (
 	@Summary VARCHAR(250),
 	@Description VARCHAR(MAX),
-	@DateCreated DATETIME ,
-	@TicketPriorityID INT,
-	@TicketStatusID INT,
-	@TicketCategoryID INT ,
-	@ClientID INT ,
-	@AssigneeID INT 
-	)
+	@DateCreated DATETIME,
+	@TicketPriorityID INT = NULL,
+	@TicketStatusID INT = 2,
+	@TicketCategoryID INT = NULL,
+	@ClientID INT = NULL,
+	@AssigneeID INT = NULL 
+)
 AS
 BEGIN
 	INSERT INTO tbTicket VALUES (@Summary,@Description,@DateCreated,@TicketPriorityID,@TicketStatusID,@TicketCategoryID,@ClientID,@AssigneeID)
+	SELECT @@IDENTITY AS [Newest TicketID]
 END
 --GO
---EXEC spInsertTicket @Summary='Computer issues', @Description='The Big Problem with computer',@DateCreated='4/4/15',@TicketPriorityID=2,
---	@TicketStatusID=2,@TicketCategoryID=1,@ClientID=10,@AssigneeID=8
+--EXEC spInsertTicket @Summary='Computer issues', @Description='The Big Problem with computer',@DateCreated='4/4/15',
+--	@TicketStatusID=2,@TicketCategoryID=1,@ClientID=10
 
 
 
@@ -834,7 +835,7 @@ CREATE PROCEDURE spInsertTicketAttachment
 	@ImagePath VARCHAR(MAX),
 	@ClientID INT,
 	@TicketID INT,
-	@DateOfAttachment DATE
+	@DateOfAttachment DATETIME
 )
 AS
 BEGIN
@@ -852,7 +853,7 @@ CREATE PROCEDURE spUpdateTicketAttachment
 	@ImagePath VARCHAR(MAX),
 	@ClientID INT,
 	@TicketID INT,
-	@DateOfAttachment DATE
+	@DateOfAttachment DATETIME
 )
 AS
 BEGIN
@@ -1089,4 +1090,5 @@ Else
 	JOIN tbTicketPriority tp ON tp.TicketPriorityID = t.TicketPriorityID
 	JOIN tbUser u ON u.UserID = t.ClientID
 End
-Go
+GO
+
