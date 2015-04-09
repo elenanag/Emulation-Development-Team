@@ -7,13 +7,13 @@
     
 <link href="style.css" rel="stylesheet" type="text/css" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
+
      <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
      <script src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script> 
 </head>
        
 <body class="RobertsonBackground">
-    
+    <div id="fade" class="black_overlay"></div>
 	<!-- top navigation start -->
 	<div id="topNav">
 		<a href="index.html" title="Flash Web"><img src="images/robertson.jpeg"
