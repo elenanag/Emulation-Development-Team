@@ -485,7 +485,29 @@ END
 --	@TicketStatusID=2, @TicketCategoryID=3,@ClientID=9,@AssigneeID=7,@TicketID=3
 
 
+GO
+CREATE PROCEDURE spEditTicket
+(
+	@TicketID INT,
+	@Summary VARCHAR(250),
+	@Description VARCHAR(MAX),
+	@TicketPriorityID INT,
+	@TicketStatusID INT,
+	@TicketCategoryID INT ,
+	@AssigneeID INT
+)
+AS
+BEGIN
+		UPDATE tbTicket
+		SET Summary=@Summary, Description=@Description,
+		TicketPriorityID=@TicketPriorityID,TicketStatusID=@TicketStatusID,TicketCategoryID=@TicketCategoryID,AssigneeID=@AssigneeID
+		WHERE TicketID=@TicketID
+END
+--GO
+--EXEC spEditTicket @Summary='broken screen', @Description='student laptop screen broke',@TicketPriorityID=2,
+--	@TicketStatusID=2, @TicketCategoryID=3,@AssigneeID=7,@TicketID=3
 
+　
 --Delete from tbTicket
 
 GO

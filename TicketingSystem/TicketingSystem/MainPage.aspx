@@ -43,7 +43,7 @@
     </div>
     <br /><br />
     <div id="ticketOptions">
-        <asp:DataList ID="dlTicketInfo" runat="server">
+        <asp:DataList ID="dlTicketInfo" runat="server" >
             <ItemTemplate>   
             <div style="float:left; width:720px"> 
                 <p style="text-align:center;margin:0;padding-bottom:10px; padding-right:50px; color:black">
@@ -53,55 +53,60 @@
             <table border="1">
                 <tr>
                     <td><a href = "javascript:void(0)" onclick = "document.getElementById('light').style.display='block';
-    document.getElementById('fade').style.display='block'"><img src="images/edit.jpg"  Height="26px" Width="65px"/></a>
-<div id="light" class="white_content">
- <table cellpadding=0 cellspacing=0  style="background-color:red;"  width="100%" ><tr><td height="16px" >
-     <a href = "javascript:void(0)" 
-         onclick = "document.getElementById('light').style.display='none';
-         document.getElementById('fade').style.display='none'">
-         <img src="close.gif" style="border :0px"  width="13px" align="right" height="13px"/></a></td></tr>
-<tr><td style="padding-left:16px;padding-right:16px;padding-bottom:16px"> 
-<table align="center"  border="0" cellpadding="0" cellspacing="0" style="background-color:#fff" width="100%">
-<tr>
-<td align="center" colspan="2" class="headertext" style="padding-top:20px;">Edit Ticket </td>
-</tr>
-<tr><td>&nbsp;</td></tr>
-<tr><td align="center"> 
-<table><tr>
-<td align="right">Summary</td><td><asp:TextBox ID="txtUser" runat="server" CssClass="textfield"></asp:TextBox>
-</td>
-</tr>
-<tr><td height="10px"></td></tr>
-<tr>
-<td align="right">Description</td>
-<td><asp:TextBox ID="txtPwd" runat="server" CssClass="textfield" TextMode="MultiLine"></asp:TextBox></td>
-</tr>
-<tr><td height="10px"></td></tr>
-<tr><td align="right">Priority</td>
-<td>
-    <asp:DropDownList ID="Ddlpriority" runat="server"></asp:DropDownList></td>
-</tr>
-<tr><td height="10px"></td></tr>
-<tr><td align="right">Status</td>
-<td> <asp:DropDownList ID="DdlStatus" runat="server"></asp:DropDownList></td>
-</tr>
-<tr><td height="10px"></td></tr>
-<tr><td align="right">Assignee</td>
-<td>
-    <asp:DropDownList ID="DdlAssignee" runat="server"></asp:DropDownList></td>
-</tr>
-<tr><td height="10px"></td></tr>
-<tr>
-<td> </td><td><asp:Button ID="Button1" runat="server" Text="Save" class="button2" Height="27px"/>
-</td>
-</tr></table></td></tr>
-<tr><td height="10px"></td></tr>
-</table>
-</td></tr>
-</table>
-<div align="center" class=" headertext">
-<asp:Label ID="txtlbl" runat="server"  ></asp:Label></div>
-</div>
+                        document.getElementById('fade').style.display='block'"><img src="images/edit.jpg"  Height="26px" Width="65px"/></a>
+                            <div id="light" class="white_content">
+            <table cellpadding=0 cellspacing=0  style="background-color:red;"  width="100%" ><tr><td height="16px" >
+                             <a href = "javascript:void(0)" 
+                             onclick = "document.getElementById('light').style.display='none';
+                             document.getElementById('fade').style.display='none'">
+                             <img src="close.gif" style="border :0px"  width="13px" align="right" height="13px"/></a></td></tr>
+                    <tr><td style="padding-left:16px;padding-right:16px;padding-bottom:16px"> 
+            <table align="center"  border="0" cellpadding="0" cellspacing="0" style="background-color:#fff" width="100%">
+                    <tr>
+                    <td align="center" colspan="2" class="headertext" style="padding-top:20px;">Edit Ticket </td>
+                    </tr>
+                    <tr><td>&nbsp;</td></tr>
+                    <tr><td align="center"> 
+                    <table><tr>
+                    <td align="right">Summary</td><td><asp:TextBox ID="txtSummary" runat="server" CssClass="textfield"></asp:TextBox>
+                    </td>
+                    </tr>
+                    <tr><td height="10px"></td></tr>
+                    <tr>
+                    <td align="right">Description</td>
+                    <td><asp:TextBox ID="txtDesc" runat="server" CssClass="textfield" TextMode="MultiLine"></asp:TextBox></td>
+                    </tr>
+                    <tr><td height="10px"></td></tr>
+                    <tr><td align="right">Priority</td>
+                    <td>
+                        <asp:DropDownList ID="DdlPriority" runat="server"></asp:DropDownList></td>
+                    </tr>
+                    <tr><td height="10px"></td></tr>
+                    <tr><td align="right">Status</td>
+                    <td> <asp:DropDownList ID="DdlStatus" runat="server"></asp:DropDownList></td>
+                    </tr>
+                    <tr><td height="10px"></td></tr>
+                    <tr><td align="right">Assignee</td>
+                    <td>
+                        <asp:DropDownList ID="DdlAssignee" runat="server"></asp:DropDownList></td>
+                    </tr>
+                    <tr><td height="10px"></td></tr>
+                    <tr><td align="right"> Category</td>
+                    <td>
+                        <asp:DropDownList ID="DdlTicketCategory" runat="server"></asp:DropDownList></td>
+                    </tr>
+                    <tr><td height="10px"></td></tr>
+                    <tr>
+                    <td> </td><td><asp:Button ID="btnEdit" runat="server" Text="Edit" class="button2" Height="27px"/>
+                    </td>
+                    </tr></table></td></tr>
+                    <tr><td height="10px"></td></tr>
+                    </table>
+                    </td></tr>
+                    </table>
+                    <div align="center" class=" headertext">
+                    <asp:Label ID="txtlbl" runat="server"  ></asp:Label></div>
+                    </div>
 
  <%--<asp:ImageButton ID="ImgBtnEdit" ImageUrl="images/edit.jpg" Height="26px" Width="65px" runat="server" />--%></td>
                     <td><asp:ImageButton ID="ImgBtnClose" ImageUrl="images/Close.jpg" Height="24px" Width="54px" runat="server" /></td>
