@@ -12,8 +12,6 @@ namespace EmulationGroupProject
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            {
-
                 if (Session["user"] == null)
                 {
                                     
@@ -29,7 +27,5 @@ namespace EmulationGroupProject
                     lblwelcome.Text = user.Email;
                 }
             }
-        }
-
     }
 }

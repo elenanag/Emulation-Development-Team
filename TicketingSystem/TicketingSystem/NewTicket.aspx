@@ -5,10 +5,10 @@
         <asp:Label ID="lblSubmitTicket" runat="server" Text="SUBMIT TICKET" Font-Bold="True" Font-Size="Large"></asp:Label><br />
         </div><br /><br />
         <table>
-            <tr><td style="width: 230px">
+             <tr><td style="width: 230px">
                 IT issue:
                 </td><td style="width: 380px">
-                    &nbsp;&nbsp; <asp:DropDownList ID="ddItIssue" runat="server" Height="28px" Width="250px"></asp:DropDownList>
+                    <asp:DropDownList ID="ddItIssue" runat="server" Height="28px" Width="250px"></asp:DropDownList>
                      </td></tr>
              <tr><td style="width: 230px">
                 Summary:
@@ -19,16 +19,17 @@
                 Description:
                 <br /><br /><br /><br />
                 </td><td style="width: 380px">
-                    <asp:TextBox ID="txtDescription" runat="server" Height="100px" Width="400px"></asp:TextBox>
+                    <asp:TextBox ID="txtDescription" runat="server" Height="100px" Width="400px" TextMode="MultiLine"></asp:TextBox>
                      </td></tr>
             <tr><td style="width: 230px; padding-top:10px;">
                 Attachment: (optional)
                 </td><td style="width: 380px; padding-top:10px;">
-                    <asp:FileUpload ID="FileUpload1" runat="server" Height="28px" /><asp:LinkButton ID="btnClearAttachment" runat="server">clear attachment</asp:LinkButton>
-                </td></tr>
+                    <asp:FileUpload ID="FileUpload1" runat="server" AllowMultiple="true" Height="28px" /><asp:LinkButton ID="btnClearAttachment" runat="server">clear attachment</asp:LinkButton><br />
+               <%-- <asp:Label ID="lblResult" runat="server" ForeColor="#CC0000"></asp:Label>--%>
+                     </td></tr>
             <tr><td style="width: 230px">
                 </td><td style="width: 380px; padding-left:250px; padding-top:20px;">
-                    <asp:Button ID="btnSubmitRequest" runat="server" Text="Submit Request" Height="30px" Width="150px" BackColor="#CC0000" BorderColor="#CC0000" Font-Bold="True" ForeColor="White" Font-Size="Small"/>
+                    <asp:Button ID="btnSubmitRequest" runat="server" Text="Submit Request" Height="30px" Width="150px" BackColor="#CC0000" BorderColor="#CC0000" Font-Bold="True" ForeColor="White" Font-Size="Small" OnClick="btnSubmitRequest_Click"/>
                      </td></tr>
             </table>
     </div>
