@@ -186,7 +186,7 @@
     </div>
     <br />
     <asp:Panel ID="panelActivity" Visible="false" runat="server">
-    <div style="width:650px">
+    <div style="width:650px" class="Scroll">
         <h2>Activity</h2>
         <br />
         <asp:Repeater ID="Repeater1" runat="server">
