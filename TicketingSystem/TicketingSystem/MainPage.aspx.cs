@@ -201,6 +201,7 @@ namespace EmulationGroupProject
             DataSet ds = d.ExecuteProcedure("spInsertTicketComment");
 
             BindRepeater();
+            txt.Text = "";
         }
 
     }
