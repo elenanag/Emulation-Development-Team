@@ -546,12 +546,14 @@ EXEC spSearchTicket @Description='com'
 GO
 CREATE PROCEDURE spGetTicketComment
 (
-	@TicketCommentID  INT = NULL
+	@TicketID  INT = NULL
 )
 AS
 BEGIN
-	SELECT * FROM tbTicketComment 
-	WHERE 	TicketCommentID= ISNULL(TicketCommentID,@TicketCommentID)
+	SELECT * FROM tbTicketComment tc
+		JOIN tbTicket t ON tc.TicketID = t.TicketID
+		JOIN tbUser tu ON tu.UserID = tc.AssigneeID
+		WHERE t.TicketID = @TicketID
 END
 GO
 EXEC spGetTicketComment
@@ -565,7 +567,7 @@ CREATE PROCEDURE spInsertTicketComment
 	@DateOfComments DATETIME ,
 	@AssigneeID INT,
 	@TicketID INT
-	)
+)
 AS
 BEGIN
 	INSERT INTO tbTicketComment VALUES (@Comments,@DateOfComments,	@AssigneeID,@TicketID)
@@ -575,6 +577,7 @@ END
 
 
 --Update TicketComment
+
 
 GO
 CREATE PROCEDURE spUpdateTicketComment
