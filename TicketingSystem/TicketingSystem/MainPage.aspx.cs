@@ -9,16 +9,24 @@ using System.Data;
 using DAL_Project;
 using System.Data.SqlClient;
 using System.Drawing;
+using ClassLibrary;
 
 namespace EmulationGroupProject
 {
     public partial class MainPage : System.Web.UI.Page
     {
         string connString = ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString;
+        LoginInfo login;
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
             {
+                if (Session["user"] != null)
+                {
+                    login = (LoginInfo)Session["user"];
+                    Session["UserID"] = login.UserID;
+                }
+
                 PopulateTicketGrid();
                 PopulateTicketDropDown();
 
@@ -27,6 +35,23 @@ namespace EmulationGroupProject
 
                 RefreshSortedTicketToGrid();
             }
+        }
+        private void BindRepeater()
+        {
+            DAL d = new DAL(connString);
+            d.AddParam("TicketID", gvTicket.SelectedValue);
+            DataSet ds = d.ExecuteProcedure("spGetTicketComment");
+            if (ds.Tables[0].Rows.Count > 0)
+            {
+                Repeater1.DataSource = ds;
+                Repeater1.DataBind();
+                panelActivity.Visible = true;
+            }
+            else
+            {
+                panelActivity.Visible = false;
+            }
+            
         }
         private void RefreshSortedTicketToGrid()
         {
@@ -89,6 +114,7 @@ namespace EmulationGroupProject
 
                 dlTicketInfo.DataSource = ds;
                 dlTicketInfo.DataBind();
+                BindRepeater();
             }
         }
 
@@ -160,6 +186,21 @@ namespace EmulationGroupProject
         protected void btnNewTicket_Click(object sender, EventArgs e)
         {
             Response.Redirect("NewTicket.aspx");
+        }
+
+        protected void dlTicketInfo_ItemCommand(object source, DataListCommandEventArgs e)
+        {
+            Button btn = (Button)e.Item.FindControl("btnPost");
+            TextBox txt = (TextBox)e.Item.FindControl("txtPost");
+
+            DAL d = new DAL(connString);
+            d.AddParam("Comments", txt.Text);
+            d.AddParam("DateOfComments", DateTime.Now);
+            d.AddParam("AssigneeID", Session["UserID"]);
+            d.AddParam("TicketID", gvTicket.SelectedValue);
+            DataSet ds = d.ExecuteProcedure("spInsertTicketComment");
+
+            BindRepeater();
         }
 
     }

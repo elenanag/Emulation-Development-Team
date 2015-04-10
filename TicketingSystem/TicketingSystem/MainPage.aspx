@@ -43,7 +43,7 @@
     </div>
     <br /><br />
     <div id="ticketOptions">
-        <asp:DataList ID="dlTicketInfo" runat="server">
+        <asp:DataList ID="dlTicketInfo" OnItemCommand="dlTicketInfo_ItemCommand" runat="server">
             <ItemTemplate>   
             <div style="float:left; width:720px"> 
                 <p style="text-align:center;margin:0;padding-bottom:10px; padding-right:50px; color:black">
@@ -53,14 +53,14 @@
             <table border="1">
                 <tr>
                     <td><a href = "javascript:void(0)" onclick = "document.getElementById('light').style.display='block';
-    document.getElementById('fade').style.display='block'"><img src="images/edit.jpg"  Height="26px" Width="65px"/></a>
-<div id="light" class="white_content">
- <table cellpadding=0 cellspacing=0  style="background-color:red;"  width="100%" ><tr><td height="16px" >
-     <a href = "javascript:void(0)" 
-         onclick = "document.getElementById('light').style.display='none';
-         document.getElementById('fade').style.display='none'">
-         <img src="close.gif" style="border :0px"  width="13px" align="right" height="13px"/></a></td></tr>
-<tr><td style="padding-left:16px;padding-right:16px;padding-bottom:16px"> 
+                    document.getElementById('fade').style.display='block'"><img src="images/edit.jpg"  Height="26px" Width="65px"/></a>
+            <div id="light" class="white_content">
+                <table cellpadding=0 cellspacing=0  style="background-color:red;"  width="100%" ><tr><td height="16px" >
+                 <a href = "javascript:void(0)" 
+                  onclick = "document.getElementById('light').style.display='none';
+                     document.getElementById('fade').style.display='none'">
+              <img src="close.gif" style="border :0px"  width="13px" align="right" height="13px"/></a></td></tr>
+            <tr><td style="padding-left:16px;padding-right:16px;padding-bottom:16px"> 
 <table align="center"  border="0" cellpadding="0" cellspacing="0" style="background-color:#fff" width="100%">
 <tr>
 <td align="center" colspan="2" class="headertext" style="padding-top:20px;">Edit Ticket </td>
@@ -110,6 +110,7 @@
                 </tr>
             </table>
                     </div>
+                    <hr />
                      <br /><br />
             <div>
                 <asp:ImageButton ID="imgResponse" ImageUrl="images/response.jpg" runat="server" Height="34px" Width="86px" />
@@ -178,7 +179,22 @@
 
         </asp:DataList>
     </div>
-
+    <br />
+    <asp:Panel ID="panelActivity" Visible="false" runat="server">
+    <div style="width:650px">
+        <h2>Activity</h2>
+        <br />
+        <asp:Repeater ID="Repeater1" runat="server">
+            <ItemTemplate>
+                <asp:Label ID="lblComment" runat="server" Text='<%# Eval("Comments") %>'></asp:Label>
+                <br />
+                <asp:Label ID="lblDateAndTime" Font-Size="Small" ForeColor="Gray" runat="server" Text='<%# Eval("DateOfComments") %>'></asp:Label>
+                <asp:Label ID="lblClientName" Font-Size="Small" ForeColor="Gray" runat="server" Text='<%# "by " + Eval("FirstName") + " " + Eval("LastName") %>'></asp:Label>
+                <hr />
+            </ItemTemplate>
+        </asp:Repeater>
+    </div>
+    </asp:Panel>
         
  <script type="text/javascript">
 
