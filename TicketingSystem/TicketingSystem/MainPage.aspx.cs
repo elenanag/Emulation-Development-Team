@@ -80,6 +80,8 @@ namespace EmulationGroupProject
 
             gvTicket.DataSource = ds;
             gvTicket.DataBind();
+
+            PopulateTicketGrid();
         }
 
         protected void ddlTicketStatus_SelectedIndexChanged(object sender, EventArgs e) 
@@ -192,6 +194,7 @@ namespace EmulationGroupProject
         {
             Button btn = (Button)e.Item.FindControl("btnPost");
             TextBox txt = (TextBox)e.Item.FindControl("txtPost");
+            Panel panel = (Panel)e.Item.FindControl("paneAttachment");
 
             DAL d = new DAL(connString);
             d.AddParam("Comments", txt.Text);
@@ -201,6 +204,26 @@ namespace EmulationGroupProject
             DataSet ds = d.ExecuteProcedure("spInsertTicketComment");
 
             BindRepeater();
+
+            GetAttachment(panel);
+            
+        }
+
+        private void GetAttachment(Panel p)
+        {
+            DAL d = new DAL(connString);
+            d.AddParam("TicketID", gvTicket.SelectedValue);
+            DataSet ds = d.ExecuteProcedure("spGetAttachment");
+            if (ds.Tables[0].Rows.Count > 0)
+            {
+                Repeater1.DataSource = ds;
+                Repeater1.DataBind();
+                p.Visible = true;
+            }
+            else
+            {
+                p.Visible = false;
+            }
         }
 
     }

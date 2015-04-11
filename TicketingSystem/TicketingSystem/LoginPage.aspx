@@ -11,7 +11,7 @@
                 </td>
                 <td style="height: 27px">
                    <%-- <input id="txtEmail" type="text" required />--%>
-                    <asp:TextBox ID="txtEmail" runat="server" TextMode="Email" Width="143px"></asp:TextBox>
+                    <asp:TextBox ID="txtEmail" runat="server" Width="143px"></asp:TextBox>
                 </td>
             </tr>
             <tr>
@@ -20,7 +20,7 @@
                 </td>
                 <td>
                    <%-- <input id="txtPassword" type="text" required />--%>
-                    <asp:TextBox ID="txtPassword" runat="server" TextMode="Password" Height="19px" Width="141px"></asp:TextBox>
+                    <asp:TextBox ID="txtPassword" runat="server" Height="19px" Width="141px"></asp:TextBox>
                 </td>
             </tr>
             <tr>

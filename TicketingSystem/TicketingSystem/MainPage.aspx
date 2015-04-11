@@ -178,10 +178,15 @@
             </table>
         </div>
             <hr />
+                 <div>
+                 <asp:Panel ID="panelAttachment" runat="server">
+                     <h2 style="font-size:20px">Attachment(s)</h2>
+                     <asp:DataList ID="dlAttachment" runat="server"></asp:DataList>
+                 </asp:Panel>
+                </div>
         </div>
         </div>
         </ItemTemplate>
-
         </asp:DataList>
     </div>
     <br />
