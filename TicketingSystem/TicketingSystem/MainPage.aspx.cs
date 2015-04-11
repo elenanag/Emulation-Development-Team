@@ -224,6 +224,7 @@ namespace EmulationGroupProject
             {
                 p.Visible = false;
             }
+            txt.Text = "";
         }
 
     }

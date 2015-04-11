@@ -353,6 +353,11 @@ padding:0 0 0 70px; float:left;
 	background-color:#454545; color:#B6B6B5;
 	}
 
-
+.Scroll {
+   height: 300px;
+   width:600px;
+   overflow-y: scroll;
+   overflow-x: scroll;
+}
 
 
