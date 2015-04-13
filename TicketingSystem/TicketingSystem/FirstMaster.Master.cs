@@ -24,5 +24,19 @@ namespace EmulationGroupProject
                 lblwelcome.Text = user.Email;
             }
         }
+
+        protected void SignOut_Click(object sender, EventArgs e)
+        {
+            Session.Abandon();
+            Session.Clear();
+            Response.Redirect("LoginPage.aspx");
+        }
+
+        protected void lnkLogout_Click(object sender, EventArgs e)
+        {
+            Session.Abandon();
+            Session.Clear();
+            Response.Redirect("LoginPage.aspx");
+        }
     }
 }

@@ -8,7 +8,7 @@
          <br /><br />
         <asp:GridView ID="gvTicket" BorderStyle="Solid" runat="server" CellPadding="4" ForeColor="#333333" GridLines="None" Height="134px" Width="1130px" 
                         AutoGenerateColumns="False" OnRowCommand="gvTicket_RowCommand" DataKeyNames="TicketID" AllowSorting="True"
-                        OnSorting="gvTicket_Sorting" AllowPaging="True" OnPageIndexChanging="gvTicket_PageIndexChanging" OnRowDataBound="gvTicket_RowDataBound" PageSize="5">
+                        OnSorting="gvTicket_Sorting" AllowPaging="True" OnPageIndexChanging="gvTicket_PageIndexChanging" OnRowDataBound="gvTicket_RowDataBound" PageSize="5" Visible="False">
             <AlternatingRowStyle BackColor="White" />
             <Columns>
                 <asp:BoundField DataField="TicketID" HeaderText="Ticket No." SortExpression="TicketID" >
@@ -108,7 +108,7 @@
 <asp:Label ID="txtlbl" runat="server"  ></asp:Label></div>
 </div>
 
- <%--<asp:ImageButton ID="ImgBtnEdit" ImageUrl="images/edit.jpg" Height="26px" Width="65px" runat="server" />--%></td>
+
                     <td><asp:ImageButton ID="ImgBtnClose" ImageUrl="images/Close.jpg" Height="24px" Width="54px" runat="server" /></td>
                     <td><asp:ImageButton ID="ImgBtnCloseDupelicate" ImageUrl="images/Close as duplicate.jpg" Height="23px" Width="115px" runat="server" /></td>
                     <td><asp:ImageButton ID="ImgBtnPrint" ImageUrl="images/print.jpg" Height="26px" Width="59px" runat="server" /></td>

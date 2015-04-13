@@ -68,5 +68,10 @@ namespace TicketingSystem
 
                 Response.Redirect("TicketConfirmation.aspx");
             }
+
+        protected void btnClearAttachment_Click(object sender, EventArgs e)
+        {
+
+        }
         }
     } 
