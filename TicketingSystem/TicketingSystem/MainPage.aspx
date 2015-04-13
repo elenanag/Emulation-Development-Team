@@ -41,19 +41,19 @@
             <SortedDescendingHeaderStyle BackColor="#820000" />
         </asp:GridView>
     </div>
-    <br /><br />
+    <br />
     <div id="ticketOptions">
         <asp:DataList ID="dlTicketInfo" OnItemCommand="dlTicketInfo_ItemCommand" runat="server">
             <ItemTemplate>   
             <div style="float:left; width:720px"> 
-                <p style="text-align:center;margin:0;padding-bottom:10px; padding-right:50px; color:black">
+                <p style="text-align:center;margin:0; color:black">
                 Ticket # <%# Eval("TicketID")%> : 
                 <%#Eval("Summary")%>
                     <div><br />
-            <table border="1">
+            <table>
                 <tr>
                     <td><a href = "javascript:void(0)" onclick = "document.getElementById('light').style.display='block';
-    document.getElementById('fade').style.display='block'"><img src="images/edit.jpg"  Height="26px" Width="65px"/></a>
+    document.getElementById('fade').style.display='block'"><img src="images/edit.gif" style="border:1px solid; border-color:black"  Height="24px" Width="65px"/></a>
 <div id="light" class="white_content">
  <table cellpadding=0 cellspacing=0  style="background-color:red;"  width="100%" ><tr><td height="16px" >
      <a href = "javascript:void(0)" 
@@ -107,20 +107,16 @@
 <div align="center" class=" headertext">
 <asp:Label ID="txtlbl" runat="server"  ></asp:Label></div>
 </div>
-
-
-                    <td><asp:ImageButton ID="ImgBtnClose" ImageUrl="images/Close.jpg" Height="24px" Width="54px" runat="server" /></td>
-                    <td><asp:ImageButton ID="ImgBtnCloseDupelicate" ImageUrl="images/Close as duplicate.jpg" Height="23px" Width="115px" runat="server" /></td>
-                    <td><asp:ImageButton ID="ImgBtnPrint" ImageUrl="images/print.jpg" Height="26px" Width="59px" runat="server" /></td>
+                    <td><asp:ImageButton ID="ImgBtnClose" BorderStyle="Solid" BorderWidth="1" ImageUrl="images/Close.gif" Height="24px" Width="54px" runat="server" /></td>
+                    <td><asp:ImageButton ID="ImgBtnCloseDupelicate" BorderStyle="Solid" BorderWidth="1" ImageUrl="images/Close as duplicate.gif" Height="24px" Width="115px" runat="server" /></td>
+                    <td><asp:ImageButton ID="ImgBtnPrint" ImageUrl="images/print.gif" BorderStyle="Solid" BorderWidth="1" Height="24px" Width="59px" runat="server" /></td>
                 </tr>
             </table>
                     </div>
                     <hr />
-                     <br /><br />
             <div>
-                <asp:ImageButton ID="imgResponse" ImageUrl="images/response.jpg" runat="server" Height="34px" Width="86px" />
-                    &nbsp&nbsp
-                <asp:ImageButton ID="imgNotes" ImageUrl="images/notes.jpg" runat="server" Height="34px" Width="86px" />
+                <asp:ImageButton ID="imgResponse" BorderStyle="Solid" BorderWidth="1" ImageUrl="images/response.gif" runat="server" Height="34px" Width="86px" />
+                <asp:ImageButton ID="imgNotes" ImageUrl="images/notes.gif" BorderStyle="Solid" BorderWidth="1" runat="server" Height="34px" Width="86px" />
                 <br /><br />
                 <asp:TextBox ID="txtPost" runat="server" TextMode="MultiLine"></asp:TextBox>
             </div>
@@ -141,9 +137,9 @@
         <div id="rightSideBar">
         <table style="text-align:center; width:199px"">
             <tr>
-                <td><asp:Button ID="btnHigh" BackColor="#FDF9EE" BorderStyle="None" runat="server" Text="High" /></td>
-                <td><asp:Button ID="btnMed"  BackColor="#FDF9EE" BorderStyle="None" runat="server" Text="Medium" /></td>
-                <td><asp:Button ID="btnLow"  BackColor="#FDF9EE" BorderStyle="None" runat="server" Text="Low" /></td>
+                <td><asp:Button ID="btnHigh" BackColor="White"  BorderStyle="None" runat="server" Text="High" /></td>
+                <td><asp:Button ID="btnMed"  BackColor="White" BorderStyle="None" runat="server" Text="Medium" /></td>
+                <td><asp:Button ID="btnLow"  BackColor="White" BorderStyle="None" runat="server" Text="Low" /></td>
             </tr>
         </table>
             <hr />
