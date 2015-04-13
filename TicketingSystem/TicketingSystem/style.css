@@ -10,7 +10,7 @@ body{
 	font:normal 14px/19px Arial, Helvetica, sans-serif;
 	margin:0; padding:0;}
 div, h1, h2, h3, h4, h5, h6, form, label, input, span, ul, li, p, a{
-	margin:3 0 0 1; 
+	margin:0 0 0 0; 
 padding:0;
 }
 ul{
@@ -301,7 +301,7 @@ padding:0 0 0 70px; float:left;
 
 /*------------------------------RIGHT SIDEBAR -------------------------------------*/
 #rightSideBar{
-	width:300px; color:#B6B6B5; background:url(images/bg.gif) repeat-x 0 0 #FDF9EE; padding:19px 0 0 0; float:right;	
+	width:300px; background:url(images/bg.gif) repeat-x 0 0; padding:19px 0 0 0; float:right;	
 	text-align:left;}
 #rightSideBar p{
 	background:url(images/left_side_down.gif) no-repeat bottom left; height:8px; font-size:0; display:block;
