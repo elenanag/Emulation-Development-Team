@@ -206,6 +206,8 @@ namespace EmulationGroupProject
             BindRepeater();
 
             GetAttachment();
+
+            txt.Text = "";
         }
 
         private void GetAttachment()
