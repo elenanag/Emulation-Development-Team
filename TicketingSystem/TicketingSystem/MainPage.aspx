@@ -184,15 +184,21 @@
         </asp:DataList>
     </div>
   
+ 
     <div style ="padding-left:750px;">
      <asp:DataList ID="dlImage" runat="server" RepeatColumns="1" Visible="False" >
         <ItemTemplate>
-            <h3>Image:</h3> <br/>
-             <asp:Image ID="Image" runat="server" ImageUrl='<%# Eval("ImagePath") %>' Width="200" Height="120" /><br/><br/>
-              <br />    
+            <h3>Image:</h3>
+             <a href='<%# Eval("ImagePath") %>' class="group1" rel="grouped">
+             <asp:Image ID="imagelightbox" runat="server" ImageUrl='<%# Eval("ImagePath") %>' Width="200" Height="120" />
+            </a>
+          
+             <br />    
      </ItemTemplate>    
     </asp:DataList>
-        
+
+
+     
      <asp:DataList ID="dlAttachments" runat="server" RepeatColumns="1" Visible="False" >
         <ItemTemplate>
             <h3>Attachment:</h3> <br/>
@@ -244,7 +250,10 @@
         
       $("body").removeClass("RobertsonBackground");
      });
-    
+
+     $(document).ready(function () {
+         $("a.group1").fancybox();
+     });
 
      </script>
 </asp:Content>
