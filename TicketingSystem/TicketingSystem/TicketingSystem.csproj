@@ -58,6 +58,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="AboutUs.aspx" />
+    <Content Include="EditTicket.aspx" />
     <Content Include="FAQs.aspx" />
     <Content Include="FirstMaster.Master" />
     <None Include="Web.Debug.config">
@@ -124,6 +125,13 @@
     </Compile>
     <Compile Include="AboutUs.aspx.designer.cs">
       <DependentUpon>AboutUs.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="EditTicket.aspx.cs">
+      <DependentUpon>EditTicket.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="EditTicket.aspx.designer.cs">
+      <DependentUpon>EditTicket.aspx</DependentUpon>
     </Compile>
     <Compile Include="FAQs.aspx.cs">
       <DependentUpon>FAQs.aspx</DependentUpon>

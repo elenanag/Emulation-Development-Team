@@ -7,19 +7,28 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace EmulationGroupProject {
+namespace TicketingSystem {
     
     
-    public partial class MainPage {
+    public partial class EditTicket {
         
         /// <summary>
-        /// lblBoard control.
+        /// lblEditTicket control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblBoard;
+        protected global::System.Web.UI.WebControls.Label lblEditTicket;
+        
+        /// <summary>
+        /// ddlTicketCat control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList ddlTicketCat;
         
         /// <summary>
         /// ddlTicketStatus control.
@@ -31,66 +40,48 @@ namespace EmulationGroupProject {
         protected global::System.Web.UI.WebControls.DropDownList ddlTicketStatus;
         
         /// <summary>
-        /// btnNewTicket control.
+        /// ddlTicketPriority control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnNewTicket;
+        protected global::System.Web.UI.WebControls.DropDownList ddlTicketPriority;
         
         /// <summary>
-        /// gvTicket control.
+        /// ddlAssignee control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView gvTicket;
+        protected global::System.Web.UI.WebControls.DropDownList ddlAssignee;
         
         /// <summary>
-        /// dlTicketInfo control.
+        /// txtSummary control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DataList dlTicketInfo;
+        protected global::System.Web.UI.WebControls.TextBox txtSummary;
         
         /// <summary>
-        /// dlImage control.
+        /// txtDescription control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DataList dlImage;
+        protected global::System.Web.UI.WebControls.TextBox txtDescription;
         
         /// <summary>
-        /// dlAttachments control.
+        /// btnEditTicket control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DataList dlAttachments;
-        
-        /// <summary>
-        /// panelActivity control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Panel panelActivity;
-        
-        /// <summary>
-        /// Repeater1 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Repeater Repeater1;
+        protected global::System.Web.UI.WebControls.Button btnEditTicket;
     }
 }

@@ -8,7 +8,7 @@
          <br /><br />
         <asp:GridView ID="gvTicket" BorderStyle="Solid" runat="server" CellPadding="4" ForeColor="#333333" GridLines="None" Height="134px" Width="1130px" 
                         AutoGenerateColumns="False" OnRowCommand="gvTicket_RowCommand" DataKeyNames="TicketID" AllowSorting="True"
-                        OnSorting="gvTicket_Sorting" AllowPaging="True" OnPageIndexChanging="gvTicket_PageIndexChanging" OnRowDataBound="gvTicket_RowDataBound" PageSize="5">
+                        OnSorting="gvTicket_Sorting" AllowPaging="True" OnPageIndexChanging="gvTicket_PageIndexChanging" OnRowDataBound="gvTicket_RowDataBound" PageSize="5" Visible="False">
             <AlternatingRowStyle BackColor="White" />
             <Columns>
                 <asp:BoundField DataField="TicketID" HeaderText="Ticket No." SortExpression="TicketID" >
@@ -108,7 +108,7 @@
 <asp:Label ID="txtlbl" runat="server"  ></asp:Label></div>
 </div>
 
- <%--<asp:ImageButton ID="ImgBtnEdit" ImageUrl="images/edit.jpg" Height="26px" Width="65px" runat="server" />--%></td>
+
                     <td><asp:ImageButton ID="ImgBtnClose" ImageUrl="images/Close.jpg" Height="24px" Width="54px" runat="server" /></td>
                     <td><asp:ImageButton ID="ImgBtnCloseDupelicate" ImageUrl="images/Close as duplicate.jpg" Height="23px" Width="115px" runat="server" /></td>
                     <td><asp:ImageButton ID="ImgBtnPrint" ImageUrl="images/print.jpg" Height="26px" Width="59px" runat="server" /></td>
@@ -184,14 +184,30 @@
         </asp:DataList>
     </div>
   
+ 
     <div style ="padding-left:750px;">
-     <asp:DataList ID="dlAttachment" runat="server" RepeatColumns="1" Visible="False" >
+     <asp:DataList ID="dlImage" runat="server" RepeatColumns="1" Visible="False" >
+        <ItemTemplate>
+            <h3>Image:</h3>
+             <a href='<%# Eval("ImagePath") %>' class="group1" rel="grouped">
+             <asp:Image ID="imagelightbox" runat="server" ImageUrl='<%# Eval("ImagePath") %>' Width="200" Height="120" />
+            </a>
+          
+             <br />    
+     </ItemTemplate>    
+    </asp:DataList>
+
+
+     
+     <asp:DataList ID="dlAttachments" runat="server" RepeatColumns="1" Visible="False" >
         <ItemTemplate>
             <h3>Attachment:</h3> <br/>
-             <asp:Image ID="Image" runat="server" ImageUrl='<%# Eval("ImagePath") %>' Width="200" Height="120" /><br/><br/>
+             <a href='<%# Eval("ImagePath") %>' ><%# Eval("ImagePath") %></a><br/><br/>
               <br />    
      </ItemTemplate>    
-    </asp:DataList></div>
+    </asp:DataList>
+
+    </div>
     
     <asp:Panel ID="panelActivity" Visible="false" runat="server">
     <div style="width:650px" class="Scroll">
@@ -234,7 +250,10 @@
         
       $("body").removeClass("RobertsonBackground");
      });
-    
+
+     $(document).ready(function () {
+         $("a.group1").fancybox();
+     });
 
      </script>
 </asp:Content>

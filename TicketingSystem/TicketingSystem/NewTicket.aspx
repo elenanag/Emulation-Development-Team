@@ -25,7 +25,7 @@
                 Attachment: (optional)
                 </td><td style="width: 380px; padding-top:10px;">
                     <asp:FileUpload ID="FileUpload1" runat="server" AllowMultiple="true" Height="28px" /><asp:LinkButton ID="btnClearAttachment" runat="server">clear attachment</asp:LinkButton><br />
-               <%-- <asp:Label ID="lblResult" runat="server" ForeColor="#CC0000"></asp:Label>--%>
+               
                      </td></tr>
             <tr><td style="width: 230px">
                 </td><td style="width: 380px; padding-left:250px; padding-top:20px;">

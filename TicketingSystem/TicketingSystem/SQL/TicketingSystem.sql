@@ -441,7 +441,7 @@ CREATE PROCEDURE spInsertTicket
 	@Summary VARCHAR(250),
 	@Description VARCHAR(MAX),
 	@DateCreated DATETIME,
-	@TicketPriorityID INT = NULL,
+	@TicketPriorityID INT = 2,
 	@TicketStatusID INT = 2,
 	@TicketCategoryID INT = NULL,
 	@ClientID INT = NULL,
@@ -556,7 +556,7 @@ BEGIN
 		WHERE t.TicketID = @TicketID
 END
 GO
-EXEC spGetTicketComment
+EXEC spGetTicketComment 
 
 
 --Insert ticket into TicketComment table
@@ -1129,7 +1129,44 @@ BEGIN
 		JOIN tbTicket t ON ta.TicketID = t.TicketID
 		WHERE t.TicketID = @TicketID
 END
---GO
---EXEC spGetAttachment @TicketID = 4
+GO
+EXEC spGetAttachment @TicketID = 13
+
+GO
+CREATE PROCEDURE spGetImageAttachments
+(
+	@TicketID INT = NULL
+)
+AS
+BEGIN
+	SELECT ImagePath FROM tbTicketAttachment ta
+		JOIN tbTicket t ON ta.TicketID = t.TicketID
+		WHERE t.TicketID = @TicketID
+			AND	   ta.ImagePath like '%.jpg' OR ta.ImagePath like '%.png' 
+				OR ta.ImagePath like '%.bmp' OR ta.ImagePath like '%.jpeg'
+				OR ta.ImagePath like '%.gif'
+END
+GO
+
+EXEC spGetImageAttachments @TicketID=13
+
+GO
+CREATE PROCEDURE spGetNonImageAttachments
+(
+	@TicketID INT = NULL
+)
+AS
+BEGIN
+	SELECT ImagePath FROM tbTicketAttachment ta
+		JOIN tbTicket t ON ta.TicketID = t.TicketID
+		WHERE t.TicketID = @TicketID
+			AND	   ta.ImagePath NOT like '%.jpg' AND ta.ImagePath NOT like '%.png' 
+				AND ta.ImagePath NOT like '%.bmp' AND ta.ImagePath NOT like '%.jpeg'
+				AND ta.ImagePath NOT like '%.gif'
+END
+GO
+
+EXEC spGetNonImageAttachments @TicketID=13
+
 
 SELECT * FROM tbTicket
