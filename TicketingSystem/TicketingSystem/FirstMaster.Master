@@ -24,6 +24,7 @@
             <li><a href="LoginPage.aspx" title="Login">Login</a></li>
             <li><a href="AboutUs.aspx" title="About us">About Us</a></li>
 			<li><a href="LoginPage.aspx" title="signout">Sign Out</a></li>
+         
 		</ul>
 	</div>
     <div style=padding-left:1030px ><asp:Label ID="lblwelcome" runat="server" ></asp:Label></div>
