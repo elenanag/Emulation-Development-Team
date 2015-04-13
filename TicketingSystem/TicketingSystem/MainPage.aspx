@@ -202,7 +202,7 @@
                 <asp:Label ID="lblComment" runat="server" Text='<%# Eval("Comments") %>'></asp:Label>
                 <br />
                 <asp:Label ID="lblDateAndTime" Font-Size="Small" ForeColor="Gray" runat="server" Text='<%# Eval("DateOfComments") %>'></asp:Label>
-                <asp:Label ID="lblClientName" Font-Size="Small" ForeColor="Gray" runat="server" Text='<%# "by " + Eval("FirstName") + " " + Eval("LastName") %>'></asp:Label>
+                <asp:Label ID="lblClientName" Font-Bold="true" Font-Size="Small" ForeColor="Gray" runat="server" Text='<%# "by " + Eval("FirstName") + " " + Eval("LastName") %>'></asp:Label>
                 <hr />
             </ItemTemplate>
         </asp:Repeater>
