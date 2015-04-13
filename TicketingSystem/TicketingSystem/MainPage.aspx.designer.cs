@@ -58,13 +58,22 @@ namespace EmulationGroupProject {
         protected global::System.Web.UI.WebControls.DataList dlTicketInfo;
         
         /// <summary>
-        /// dlAttachment control.
+        /// dlImage control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DataList dlAttachment;
+        protected global::System.Web.UI.WebControls.DataList dlImage;
+        
+        /// <summary>
+        /// dlAttachments control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DataList dlAttachments;
         
         /// <summary>
         /// panelActivity control.

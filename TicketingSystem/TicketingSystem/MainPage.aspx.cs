@@ -212,16 +212,31 @@ namespace EmulationGroupProject
         {
             DAL d = new DAL(connString);
             d.AddParam("TicketID", gvTicket.SelectedValue);
-            DataSet ds = d.ExecuteProcedure("spGetAttachment");
+            DataSet ds = d.ExecuteProcedure("spGetImageAttachments");
 
             if (ds.Tables[0].Rows.Count > 0)
             {
-                dlAttachment.DataSource = ds;
-                dlAttachment.DataBind();
-                dlAttachment.Visible = true;
+                dlImage.DataSource = ds;
+                dlImage.DataBind();
+                dlImage.Visible = true;
             }
             else {
-                dlAttachment.Visible = false;
+                dlImage.Visible = false;
+            }
+
+            d = new DAL(connString);
+            d.AddParam("TicketID", gvTicket.SelectedValue);
+            ds = d.ExecuteProcedure("spGetNonImageAttachments");
+
+            if (ds.Tables[0].Rows.Count > 0)
+            {
+                dlAttachments.DataSource = ds;
+                dlAttachments.DataBind();
+                dlAttachments.Visible = true;
+            }
+            else
+            {
+                dlAttachments.Visible = false;
             }
         }
     }
