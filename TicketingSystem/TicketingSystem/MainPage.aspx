@@ -185,13 +185,23 @@
     </div>
   
     <div style ="padding-left:750px;">
-     <asp:DataList ID="dlAttachment" runat="server" RepeatColumns="1" Visible="False" >
+     <asp:DataList ID="dlImage" runat="server" RepeatColumns="1" Visible="False" >
         <ItemTemplate>
-            <h3>Attachment:</h3> <br/>
+            <h3>Image:</h3> <br/>
              <asp:Image ID="Image" runat="server" ImageUrl='<%# Eval("ImagePath") %>' Width="200" Height="120" /><br/><br/>
               <br />    
      </ItemTemplate>    
-    </asp:DataList></div>
+    </asp:DataList>
+        
+     <asp:DataList ID="dlAttachments" runat="server" RepeatColumns="1" Visible="False" >
+        <ItemTemplate>
+            <h3>Attachment:</h3> <br/>
+             <a href='<%# Eval("ImagePath") %>' ><%# Eval("ImagePath") %></a><br/><br/>
+              <br />    
+     </ItemTemplate>    
+    </asp:DataList>
+
+    </div>
     
     <asp:Panel ID="panelActivity" Visible="false" runat="server">
     <div style="width:650px" class="Scroll">
