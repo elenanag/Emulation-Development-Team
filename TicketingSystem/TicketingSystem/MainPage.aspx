@@ -178,18 +178,21 @@
             </table>
         </div>
             <hr />
-                 <div>
-                 <asp:Panel ID="panelAttachment" runat="server">
-                     <h2 style="font-size:20px">Attachment(s)</h2>
-                     <asp:DataList ID="dlAttachment" runat="server"></asp:DataList>
-                 </asp:Panel>
-                </div>
         </div>
         </div>
         </ItemTemplate>
         </asp:DataList>
     </div>
-    <br />
+  
+    <div style ="padding-left:750px;">
+     <asp:DataList ID="dlAttachment" runat="server" RepeatColumns="1" Visible="False" >
+        <ItemTemplate>
+            <h3>Attachment:</h3> <br/>
+             <asp:Image ID="Image" runat="server" ImageUrl='<%# Eval("ImagePath") %>' Width="200" Height="120" /><br/><br/>
+              <br />    
+     </ItemTemplate>    
+    </asp:DataList></div>
+    
     <asp:Panel ID="panelActivity" Visible="false" runat="server">
     <div style="width:650px" class="Scroll">
         <h2>Activity</h2>
@@ -205,7 +208,7 @@
         </asp:Repeater>
     </div>
     </asp:Panel>
-        
+    
  <script type="text/javascript">
 
      $(function () {

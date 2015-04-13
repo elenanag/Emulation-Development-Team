@@ -12,20 +12,17 @@ namespace EmulationGroupProject
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-                if (Session["user"] == null)
-                {
-                                    
-                      lblwelcome.Visible = false;
-
-                }
-
-                else
-                {
-
-                    LoginInfo user = (LoginInfo)Session["user"];
-
-                    lblwelcome.Text = user.Email;
-                }
+            if (Session["user"] == null)
+            {
+                lblwelcome.Visible = false;
             }
+
+            else
+            {
+                LoginInfo user = (LoginInfo)Session["user"];
+
+                lblwelcome.Text = user.Email;
+            }
+        }
     }
 }

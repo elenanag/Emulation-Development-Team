@@ -34,6 +34,7 @@ namespace EmulationGroupProject
                 Session["SortDirection"] = "ASC";
 
                 RefreshSortedTicketToGrid();
+
             }
         }
         private void BindRepeater()
@@ -81,7 +82,6 @@ namespace EmulationGroupProject
             gvTicket.DataSource = ds;
             gvTicket.DataBind();
 
-            PopulateTicketGrid();
         }
 
         protected void ddlTicketStatus_SelectedIndexChanged(object sender, EventArgs e) 
@@ -117,6 +117,7 @@ namespace EmulationGroupProject
                 dlTicketInfo.DataSource = ds;
                 dlTicketInfo.DataBind();
                 BindRepeater();
+                GetAttachment();
             }
         }
 
@@ -194,7 +195,6 @@ namespace EmulationGroupProject
         {
             Button btn = (Button)e.Item.FindControl("btnPost");
             TextBox txt = (TextBox)e.Item.FindControl("txtPost");
-            Panel panel = (Panel)e.Item.FindControl("paneAttachment");
 
             DAL d = new DAL(connString);
             d.AddParam("Comments", txt.Text);
@@ -205,27 +205,24 @@ namespace EmulationGroupProject
 
             BindRepeater();
 
-            GetAttachment(panel);
-            
+            GetAttachment();
         }
 
-        private void GetAttachment(Panel p)
+        private void GetAttachment()
         {
             DAL d = new DAL(connString);
             d.AddParam("TicketID", gvTicket.SelectedValue);
             DataSet ds = d.ExecuteProcedure("spGetAttachment");
+
             if (ds.Tables[0].Rows.Count > 0)
             {
-                Repeater1.DataSource = ds;
-                Repeater1.DataBind();
-                p.Visible = true;
+                dlAttachment.DataSource = ds;
+                dlAttachment.DataBind();
+                dlAttachment.Visible = true;
             }
-            else
-            {
-                p.Visible = false;
+            else {
+                dlAttachment.Visible = false;
             }
-            txt.Text = "";
         }
-
     }
 }

@@ -1117,3 +1117,19 @@ Else
 End
 GO
 
+--Get the attached info
+GO
+CREATE PROCEDURE spGetAttachment
+(
+	@TicketID INT = NULL
+)
+AS
+BEGIN
+	SELECT ImagePath FROM tbTicketAttachment ta
+		JOIN tbTicket t ON ta.TicketID = t.TicketID
+		WHERE t.TicketID = @TicketID
+END
+--GO
+--EXEC spGetAttachment @TicketID = 4
+
+SELECT * FROM tbTicket
