@@ -1174,3 +1174,12 @@ EXEC spGetNonImageAttachments @TicketID=11
 
 
 SELECT * FROM tbTicket
+
+
+go
+GO 
+CREATE PROCEDURE spGetAssignee
+AS
+BEGIN
+ SELECT UserID, FirstName FROM tbUser WHERE AccessLevelID = 1 or AccessLevelID = 2
+END

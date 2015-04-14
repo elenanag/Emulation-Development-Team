@@ -17,9 +17,10 @@
                  Ticket Priority:</td><td style="width: 380px">
                     <asp:DropDownList ID="ddlTicketPriority" runat="server" Height="28px" Width="250px"></asp:DropDownList>
                      </td></tr>
-              <tr><td style="width: 230px">
-                  Assignee</td><td style="width: 380px">
-                    <asp:DropDownList ID="ddlAssignee" runat="server" Height="28px" Width="250px"></asp:DropDownList>
+              <tr><td style="width: 230px">Assignee</td><td style="width: 380px">
+                    
+                     <asp:DropDownList ID="ddlAssignee" runat="server" Height="28px" Width="250px"></asp:DropDownList>
+                    
                      </td></tr>
              <tr><td style="width: 230px">
                 Summary:
@@ -37,7 +38,7 @@
                      &nbsp;</td></tr>
             <tr><td style="width: 230px">
                 </td><td style="width: 380px; padding-left:250px; padding-top:20px;">
-                     <asp:Button ID="btnEditTicket" runat="server" Text="Edit Request" Height="30px" Width="150px" BackColor="#CC0000" BorderColor="#CC0000" Font-Bold="True" ForeColor="White" Font-Size="Small" />
+                     <asp:Button ID="btnEditTicket" runat="server" Text="Edit Request" Height="30px" Width="150px" BackColor="#CC0000" BorderColor="#CC0000" Font-Bold="True" ForeColor="White" Font-Size="Small" OnClick="btnEditTicket_Click" />
                      </td></tr>
             </table>
     </div>
