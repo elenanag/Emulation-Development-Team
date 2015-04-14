@@ -19,7 +19,6 @@ namespace TicketingSystem
         protected void Page_Load(object sender, EventArgs e)
         {
             PopulateTicketCategory();
-
         }
 
         private void PopulateTicketCategory()
@@ -30,7 +29,6 @@ namespace TicketingSystem
             ddItIssue.DataValueField = "TicketCategoryID";
             ddItIssue.DataSource = ds;
             ddItIssue.DataBind();
-
         }
 
         protected void btnSubmitRequest_Click(object sender, EventArgs e)
@@ -65,9 +63,7 @@ namespace TicketingSystem
 
                     d.ExecuteProcedure("spInsertTicketAttachment");
 
-
                     userPostedFile.SaveAs(filepath + "\\" + Path.GetFileName(userPostedFile.FileName));
-
                 }
             }
 
@@ -95,7 +91,5 @@ namespace TicketingSystem
         //    client.Send(message);
 
         //}
-
-       
     }
 } 
