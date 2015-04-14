@@ -122,13 +122,16 @@ INSERT INTO tbTicket VALUES ('Computer crashed', 'One of my students computer ch
 							('E-mail not working', 'One of my students e-mail is not working', GETDATE(), 3,3, 1, 7, 10),
 							('Internet not working', 'Problem with the internet', GETDATE(), 1,1, 3, 8, 9),
 							('Computer will not start', 'Used laptop will not start', GETDATE(), 3,1, 4, 15, 9),
+							('Computer cracked screen', 'Used laptop cracked screen', GETDATE(), 1,2, 4, 14, 10),
 							('Computer is running slow', 'All the computers in my class is slow', GETDATE(), 2,2, 4, 15, 9),
 							('student e-mail issue', 'I am unable to send or receive email?', GETDATE(), 3,2, 1, 19, 3),
 							('Email conflict', 'I can not receive any email attachments?', GETDATE(), 1,1, 1, 22, 10),
 							('email contact issue', 'Are spaces allowed in email addresses?', GETDATE(), 2,1, 1, 18, 10),
 							('Network reject user', 'I can not connect to my network drive anymore?', GETDATE(), 3,2, 4, 15, 9),
-							('Computer will not start', 'Used laptop will not start', GETDATE(), 3,1, 4, 15, 9)
+							('Computer will not start', 'Used laptop will not start', GETDATE(), 3,1, 4, 15, 9),
+							('cracked screen', 'Student has cracked laptop screen', GETDATE(), 2, 2, 4, 22, 10)
 							------------
+--SELECT * FROM tbTicket
 GO
 CREATE TABLE tbTicketComment
 (
@@ -159,6 +162,7 @@ ClientID INT FOREIGN KEY REFERENCES tbUser(UserID),
 TicketID INT FOREIGN KEY REFERENCES tbTicket(TicketID),
 DateOfAttachment DATETIME
 )
+
 GO
 CREATE TABLE tbDevice
 (
@@ -857,7 +861,7 @@ END
 GO
 CREATE PROCEDURE spInsertTicketAttachment
 (
-	@ImagePath VARCHAR(MAX),
+	@ImagePath VARCHAR(MAX) = NULL,
 	@ClientID INT,
 	@TicketID INT,
 	@DateOfAttachment DATETIME
@@ -867,7 +871,7 @@ BEGIN
 INSERT INTO tbTicketAttachment VALUES (@ImagePath, @ClientID, @TicketID, @DateOfAttachment)
 END
 --GO
---EXEC spInsertTicketAttachment @ImagePath='\attachment\', @ClientID=8, @TicketID=3, @DateOfAttachment='9/24/15'
+--EXEC spInsertTicketAttachment @ImagePath='\attachment\',@ClientID=8, @TicketID=3, @DateOfAttachment='9/24/15'
 　
 
 --Update Ticket Attachment
@@ -1148,7 +1152,7 @@ BEGIN
 END
 GO
 
-EXEC spGetImageAttachments @TicketID=13
+EXEC spGetImageAttachments @TicketID=12
 
 GO
 CREATE PROCEDURE spGetNonImageAttachments
@@ -1166,7 +1170,7 @@ BEGIN
 END
 GO
 
-EXEC spGetNonImageAttachments @TicketID=13
+EXEC spGetNonImageAttachments @TicketID=11
 
 
 SELECT * FROM tbTicket
