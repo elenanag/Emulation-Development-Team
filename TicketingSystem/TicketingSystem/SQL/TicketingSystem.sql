@@ -1176,7 +1176,6 @@ EXEC spGetNonImageAttachments @TicketID=11
 SELECT * FROM tbTicket
 
 
-go
 GO 
 CREATE PROCEDURE spGetAssignee
 AS
