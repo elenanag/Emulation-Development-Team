@@ -105,23 +105,23 @@ namespace EmulationGroupProject
             if (e.CommandName != "Sort")
             {
                 gvTicket.SelectedIndex = Convert.ToInt32(e.CommandArgument);
-                if (e.CommandName == "SelectTicket")
-                {
-                    gvTicket.SelectedIndex = Convert.ToInt32(e.CommandArgument);
-                    string ticketID = gvTicket.SelectedDataKey.Value.ToString();
-                    DAL d = new DAL(connString);
-                    DataSet ds = new DataSet();
-                    d.AddParam("@TicketID", ticketID);
-                    ds = d.ExecuteProcedure("spTicketIdAndSummary");
+            if (e.CommandName == "SelectTicket")
+            {
+                gvTicket.SelectedIndex = Convert.ToInt32(e.CommandArgument);
+                string ticketID = gvTicket.SelectedDataKey.Value.ToString();
+                DAL d = new DAL(connString);
+                DataSet ds = new DataSet();
+                d.AddParam("@TicketID", ticketID);
+                ds = d.ExecuteProcedure("spTicketIdAndSummary");
 
-                    dlTicketInfo.DataSource = ds;
-                    dlTicketInfo.DataBind();
+                dlTicketInfo.DataSource = ds;
+                dlTicketInfo.DataBind();
 
-                    BindRepeater();
-                    GetAttachment();
+                BindRepeater();
+                GetAttachment();
 
-                }
             }
+        }
         }
 
         protected void gvTicket_Sorting(object sender, GridViewSortEventArgs e)
@@ -201,7 +201,7 @@ namespace EmulationGroupProject
             DAL d = new DAL(connString);
             d.AddParam("Comments", txt.Text);
             d.AddParam("DateOfComments", DateTime.Now);
-            d.AddParam("AssigneeID", Session["UserID"]);
+            d.AddParam("AssigneeID",Session["UserID"]);
             d.AddParam("TicketID", gvTicket.SelectedValue);
             DataSet ds = d.ExecuteProcedure("spInsertTicketComment");
 
@@ -255,7 +255,10 @@ namespace EmulationGroupProject
             ddAsignee.DataTextField = "FirstName";
             ddAsignee.DataValueField = "UserID";
             ddAsignee.DataBind();
+        
 
+       
+        
             ddAsignee.Items.Insert(0, "Assign To");
         }
     }

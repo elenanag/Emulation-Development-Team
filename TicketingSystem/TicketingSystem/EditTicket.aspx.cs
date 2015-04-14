@@ -1,4 +1,5 @@
-﻿using DAL_Project;
+﻿using ClassLibrary;
+using DAL_Project;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
@@ -19,7 +20,27 @@ namespace TicketingSystem
             PopulateStatus();
             PopulatePriority();
             PopulateAssignee();
+            refresh();
 
+        }
+
+        private void refresh()
+        {
+            DAL_Project.DAL d = new DAL_Project.DAL(connString);
+
+            if (Request.QueryString["TicketID"] != null)
+            {
+                string TicketID = Request.QueryString["TicketID"].ToString();
+                d.AddParam("TicketID",TicketID);
+            }
+            DataSet ds = d.ExecuteProcedure("spGetTicket");
+            ddlTicketCat.Text   = ds.Tables[0].Rows[0]["TicketCategoryID"].ToString();
+            ddlTicketStatus.Text = ds.Tables[0].Rows[0]["TicketStatusID"].ToString();
+            ddlTicketPriority.Text = ds.Tables[0].Rows[0]["TicketPriorityID"].ToString();
+            ddlAssignee.Text = ds.Tables[0].Rows[0]["ClientID"].ToString();
+             txtSummary.Text=ds.Tables[0].Rows[0]["Summary"].ToString();
+           txtDescription.Text = ds.Tables[0].Rows[0]["Description"].ToString();
+            
         }
 
         private void PopulateAssignee()
@@ -66,7 +87,18 @@ namespace TicketingSystem
 
         protected void btnEditTicket_Click(object sender, EventArgs e)
         {
+            
+            DAL d = new DAL(connString);
+            DataSet ds = new DataSet();
+            d.AddParam("Summary", txtSummary.Text);
+            d.AddParam("Description", txtDescription.Text);
+            d.AddParam("TicketCategoryID", ddlTicketCat.SelectedItem.Text);
+            d.AddParam("TicketStatusID", ddlTicketStatus.SelectedItem.Text);
+            d.AddParam("TicketPriorityID", ddlTicketPriority.SelectedItem.Text);
+            d.AddParam("AssigneeID", ddlAssignee.SelectedItem.Text);
+            ds = d.ExecuteProcedure("spEditTicket");
 
         }
+       
     }
 }
