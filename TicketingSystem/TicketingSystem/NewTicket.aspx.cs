@@ -47,29 +47,28 @@ namespace TicketingSystem
 
             ds = d.ExecuteProcedure("spInsertTicket");
 
-            string filepath = Server.MapPath("\\attachment");
-            HttpFileCollection uploadedFiles = Request.Files;
-
-
-            for (int i = 0; i < uploadedFiles.Count; i++)
+            if (FileUpload1.FileName != "")
             {
-                d = new DAL(connString);
-                HttpPostedFile userPostedFile = uploadedFiles[i];
-                int newestTicketID = Convert.ToInt32(ds.Tables[0].Rows[0]["Newest TicketID"]);
+                string filepath = Server.MapPath("\\attachment");
+                HttpFileCollection uploadedFiles = Request.Files;
 
-                d.AddParam("ClientID", clientID);
-                d.AddParam("TicketID", newestTicketID);
-                d.AddParam("DateOfAttachment", DateTime.Now.ToString());
-
-                d.ExecuteProcedure("spInsertTicketAttachment");
-
-                if (userPostedFile.FileName != "")
+                for (int i = 0; i < uploadedFiles.Count; i++)
                 {
+                    d = new DAL(connString);
+                    HttpPostedFile userPostedFile = uploadedFiles[i];
+                    int newestTicketID = Convert.ToInt32(ds.Tables[0].Rows[0]["Newest TicketID"]);
+
                     d.AddParam("ImagePath", "attachment\\" + Path.GetFileName(userPostedFile.FileName));
+                    d.AddParam("ClientID", clientID);
+                    d.AddParam("TicketID", newestTicketID);
+                    d.AddParam("DateOfAttachment", DateTime.Now.ToString());
+
+                    d.ExecuteProcedure("spInsertTicketAttachment");
+
+
                     userPostedFile.SaveAs(filepath + "\\" + Path.GetFileName(userPostedFile.FileName));
+
                 }
-                
-                
             }
 
             //SendEmail();
