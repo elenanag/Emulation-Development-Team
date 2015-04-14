@@ -48,15 +48,15 @@
             <div style="float:left; width:720px"> 
                 <p style="text-align:center;margin:0; color:black">
                       
-               <a href='EditTicket.aspx?TicketID= Ticket # <%# Eval("TicketID")%> ': 
                 <%#Eval("Summary")%>
                     <div><br />
             <table>
                 <tr>
                    
 </div>
-
-                   <td><asp:ImageButton ID="ImageBtnEdit" ImageUrl="images/edit.jpg" Height="24px" Width="54px" runat="server" /></td>
+                   <td>
+                       
+                   <td><a href='EditTicket.aspx?TicketID=<%# Eval("TicketID")%>'><img src="images/edit.jpg" Height="24px" Width="54px" /></a></td>
                     <td><asp:ImageButton ID="ImgBtnClose" ImageUrl="images/Close.jpg" Height="24px" Width="54px" runat="server" /></td>
                     <td><asp:ImageButton ID="ImgBtnCloseDupelicate" ImageUrl="images/Close as duplicate.jpg" Height="23px" Width="115px" runat="server" /></td>
                     <td><asp:ImageButton ID="ImgBtnPrint" ImageUrl="images/print.jpg" Height="26px" Width="59px" runat="server" /></td>

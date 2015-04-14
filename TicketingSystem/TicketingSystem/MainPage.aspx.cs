@@ -256,9 +256,5 @@ namespace EmulationGroupProject
             }
         }
 
-       
-
-       
-        
     }
 }
