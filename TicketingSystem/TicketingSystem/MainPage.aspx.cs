@@ -199,7 +199,7 @@ namespace EmulationGroupProject
             DAL d = new DAL(connString);
             d.AddParam("Comments", txt.Text);
             d.AddParam("DateOfComments", DateTime.Now);
-            d.AddParam("AssigneeID", Session["UserID"]);
+            d.AddParam("AssigneeID",Session["UserID"]);
             d.AddParam("TicketID", gvTicket.SelectedValue);
             DataSet ds = d.ExecuteProcedure("spInsertTicketComment");
 
@@ -242,6 +242,9 @@ namespace EmulationGroupProject
             }
         }
 
+       
+
+       
         
     }
 }

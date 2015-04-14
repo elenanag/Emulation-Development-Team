@@ -20,7 +20,27 @@ namespace TicketingSystem
             PopulateStatus();
             PopulatePriority();
             PopulateAssignee();
+            refresh();
 
+        }
+
+        private void refresh()
+        {
+            DAL_Project.DAL d = new DAL_Project.DAL(connString);
+
+            if (Request.QueryString["TicketID"] != null)
+            {
+                string TicketID = Request.QueryString["TicketID"].ToString();
+                d.AddParam("TicketID",TicketID);
+            }
+            DataSet ds = d.ExecuteProcedure("spGetTicket");
+            ddlTicketCat.Text   = ds.Tables[0].Rows[0]["TicketCategoryID"].ToString();
+            ddlTicketStatus.Text = ds.Tables[0].Rows[0]["TicketStatusID"].ToString();
+            ddlTicketPriority.Text = ds.Tables[0].Rows[0]["TicketPriorityID"].ToString();
+            ddlAssignee.Text = ds.Tables[0].Rows[0]["ClientID"].ToString();
+             txtSummary.Text=ds.Tables[0].Rows[0]["Summary"].ToString();
+           txtDescription.Text = ds.Tables[0].Rows[0]["Description"].ToString();
+            
         }
 
         private void PopulateAssignee()
@@ -71,45 +91,14 @@ namespace TicketingSystem
             DAL d = new DAL(connString);
             DataSet ds = new DataSet();
             d.AddParam("Summary", txtSummary.Text);
-
             d.AddParam("Description", txtDescription.Text);
-            d.AddParam("TicketCategoryID",ddlTicketCat.Text);
-            d.AddParam("TicketStatusID", ddlTicketStatus.Text);
-            d.AddParam("TicketPriorityID",ddlTicketPriority.Text);
-            d.AddParam("AssigneeID", ddlAssignee.Text);
+            d.AddParam("TicketCategoryID", ddlTicketCat.SelectedItem.Text);
+            d.AddParam("TicketStatusID", ddlTicketStatus.SelectedItem.Text);
+            d.AddParam("TicketPriorityID", ddlTicketPriority.SelectedItem.Text);
+            d.AddParam("AssigneeID", ddlAssignee.SelectedItem.Text);
             ds = d.ExecuteProcedure("spEditTicket");
 
         }
-        private void SelectTicket()
-        {
-
-           // string customerID = gvCustomers.SelectedDataKey.Value.ToString();
-
-            DAL d = new DAL(connString);
-
-            DataSet ds = new DataSet();
-            d.AddParam("@TicketID",TicketID);
-
-            ds = d.ExecuteProcedure("spGetCustomer");
-
-            txtFirstName.Text = ds.Tables[0].Rows[0]["FirstName"].ToString();
-
-            txtLastName.Text = ds.Tables[0].Rows[0]["LastName"].ToString();
-
-            txtPhone.Text = ds.Tables[0].Rows[0]["Phone"].ToString();
-
-            txtAddress.Text = ds.Tables[0].Rows[0]["Address"].ToString();
-
-            txtEmail.Text = ds.Tables[0].Rows[0]["Email"].ToString();
-
-            txtUserName.Text = ds.Tables[0].Rows[0]["UserName"].ToString();
-
-            txtPassword.Text = ds.Tables[0].Rows[0]["Password"].ToString();
-
-            gvCustomers.SelectedRowStyle.BackColor = Color.Pink;
-
-            RefreshData();
-
-        }
+       
     }
 }
