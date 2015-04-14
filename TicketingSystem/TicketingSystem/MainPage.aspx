@@ -43,7 +43,8 @@
     </div>
     <br />
     <div id="ticketOptions">
-        <asp:DataList ID="dlTicketInfo" OnItemCommand="dlTicketInfo_ItemCommand" runat="server"  >
+    
+        <asp:DataList ID="dlTicketInfo" OnItemCommand="dlTicketInfo_ItemCommand" runat="server" OnItemDataBound="dlTicketInfo_ItemDataBound" >
             <ItemTemplate>   
             <div style="float:left; width:720px"> 
                 <p style="text-align:center;margin:0; color:black">
@@ -108,8 +109,8 @@
                 <tr>
                     <td>Assigned to:</td>
                     <td><asp:Label ID="Label2" runat="server" Text=""></asp:Label></td>
-                    <td><asp:DropDownList ID="ddlAssign" Font-Size="X-Small" BackColor="#FDF9EE" style="border:0px; outline:0px;" runat="server">
-                        <asp:ListItem>assign to</asp:ListItem>
+                    <td><asp:DropDownList ID="ddlAssign" Font-Size="Medium" BackColor="#FDF9EE" style="border:0px; outline:0px;" runat="server">
+                        <asp:ListItem>Assign To</asp:ListItem>
                         </asp:DropDownList></td>
                 </tr>
                 <tr>

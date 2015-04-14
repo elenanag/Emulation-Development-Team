@@ -116,26 +116,14 @@ namespace EmulationGroupProject
 
                 dlTicketInfo.DataSource = ds;
                 dlTicketInfo.DataBind();
+
                 BindRepeater();
                 GetAttachment();
-                //PopulateAsigneeTicket();
+
             }
         }
-
         }
 
-        //private void PopulateAsigneeTicket()
-        //{
-        //    DAL d = new DAL(connString);
-        //    DataSet ds = d.ExecuteProcedure("spGetStatus");
-
-        //    ddlTicketStatus.DataTextField = "TicketStatusName";
-        //    ddlTicketStatus.DataValueField = "TicketStatusID";
-        //    ddlTicketStatus.DataSource = ds;
-        //    ddlTicketStatus.DataBind();
-
-            
-        //}
         protected void gvTicket_Sorting(object sender, GridViewSortEventArgs e)
         {
             if (e.SortExpression == Session["SortColumn"].ToString())
@@ -256,5 +244,22 @@ namespace EmulationGroupProject
             }
         }
 
+        protected void dlTicketInfo_ItemDataBound(object sender, DataListItemEventArgs e)
+        {
+            DataList DataList1 = (DataList)sender;
+            DAL d = new DAL(connString);
+            DataSet ds = d.ExecuteProcedure("spGetAssignee");
+
+            DropDownList ddAsignee = (DropDownList)e.Item.FindControl("ddlAssign");
+            ddAsignee.DataSource = ds.Tables[0];
+            ddAsignee.DataTextField = "FirstName";
+            ddAsignee.DataValueField = "UserID";
+            ddAsignee.DataBind();
+        
+
+       
+        
+            ddAsignee.Items.Insert(0, "Assign To");
+        }
     }
 }
