@@ -1,4 +1,5 @@
-﻿using DAL_Project;
+﻿using ClassLibrary;
+using DAL_Project;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
@@ -66,6 +67,48 @@ namespace TicketingSystem
 
         protected void btnEditTicket_Click(object sender, EventArgs e)
         {
+            
+            DAL d = new DAL(connString);
+            DataSet ds = new DataSet();
+            d.AddParam("Summary", txtSummary.Text);
+
+            d.AddParam("Description", txtDescription.Text);
+            d.AddParam("TicketCategoryID",ddlTicketCat.Text);
+            d.AddParam("TicketStatusID", ddlTicketStatus.Text);
+            d.AddParam("TicketPriorityID",ddlTicketPriority.Text);
+            d.AddParam("AssigneeID", ddlAssignee.Text);
+            ds = d.ExecuteProcedure("spEditTicket");
+
+        }
+        private void SelectTicket()
+        {
+
+           // string customerID = gvCustomers.SelectedDataKey.Value.ToString();
+
+            DAL d = new DAL(connString);
+
+            DataSet ds = new DataSet();
+            d.AddParam("@TicketID",TicketID);
+
+            ds = d.ExecuteProcedure("spGetCustomer");
+
+            txtFirstName.Text = ds.Tables[0].Rows[0]["FirstName"].ToString();
+
+            txtLastName.Text = ds.Tables[0].Rows[0]["LastName"].ToString();
+
+            txtPhone.Text = ds.Tables[0].Rows[0]["Phone"].ToString();
+
+            txtAddress.Text = ds.Tables[0].Rows[0]["Address"].ToString();
+
+            txtEmail.Text = ds.Tables[0].Rows[0]["Email"].ToString();
+
+            txtUserName.Text = ds.Tables[0].Rows[0]["UserName"].ToString();
+
+            txtPassword.Text = ds.Tables[0].Rows[0]["Password"].ToString();
+
+            gvCustomers.SelectedRowStyle.BackColor = Color.Pink;
+
+            RefreshData();
 
         }
     }
