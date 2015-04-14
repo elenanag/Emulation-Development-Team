@@ -1,5 +1,6 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/FirstMaster.Master" AutoEventWireup="true" CodeBehind="LoginPage.aspx.cs" Inherits="EmulationGroupProject.LoginPage" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+    <br /><br />
     <div style="padding-left:500px;"><asp:Label ID="lblTicketingSystem" runat="server" Text="TICKETING SYSTEM" Font-Bold="True" Font-Size="X-Large"></asp:Label></div>
     <br /> <br />
     <div style="border-color:red; border-style:solid; border-radius:7px; background-color:#E1DBC7; margin:auto; width: 506px; padding-left:10px; padding-top:5px; text-align:center; height: 171px;">
