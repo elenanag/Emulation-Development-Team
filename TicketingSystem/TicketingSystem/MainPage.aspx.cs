@@ -118,10 +118,24 @@ namespace EmulationGroupProject
                 dlTicketInfo.DataBind();
                 BindRepeater();
                 GetAttachment();
+                //PopulateAsigneeTicket();
             }
         }
 
         }
+
+        //private void PopulateAsigneeTicket()
+        //{
+        //    DAL d = new DAL(connString);
+        //    DataSet ds = d.ExecuteProcedure("spGetStatus");
+
+        //    ddlTicketStatus.DataTextField = "TicketStatusName";
+        //    ddlTicketStatus.DataValueField = "TicketStatusID";
+        //    ddlTicketStatus.DataSource = ds;
+        //    ddlTicketStatus.DataBind();
+
+            
+        //}
         protected void gvTicket_Sorting(object sender, GridViewSortEventArgs e)
         {
             if (e.SortExpression == Session["SortColumn"].ToString())

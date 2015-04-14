@@ -117,17 +117,16 @@
                     </div>
                     <hr />
             <div>
-                <asp:ImageButton ID="imgResponse" BorderStyle="Solid" BorderWidth="1" ImageUrl="images/response.gif" runat="server" Height="34px" Width="86px" />
-                <asp:ImageButton ID="imgNotes" ImageUrl="images/notes.gif" BorderStyle="Solid" BorderWidth="1" runat="server" Height="34px" Width="86px" />
-                <br /><br />
+                <h3>Comments:</h3>
+                <br />
                 <asp:TextBox ID="txtPost" runat="server" TextMode="MultiLine"></asp:TextBox>
             </div>
             <div style="text-align:center">
             <table style="height: 69px; width: 256px">
                 <tr>
-                    <td>
+                    <%--<td>
                         <asp:CheckBox ID="chkClosed" Visible="true" Text="Close ticket" runat="server" />
-                    </td>
+                    </td>--%>
                     <td>
                          <asp:Button ID="btnPost" runat="server" Visible="true" Text="Post" Height="23px" Width="70px" />
                     </td>
@@ -148,10 +147,6 @@
         <div>
         <h2 style="font-size:20px">Details</h2>
             <table>
-                <tr>
-                    <td>Date created:</td>
-                    <td><asp:Label ID="lblDate" runat="server" Text=""></asp:Label></td>
-                </tr>
                 <tr>
                     <td>Time spent:</td>
                     <td><asp:Label ID="Label1" runat="server" Text=""></asp:Label></td>
@@ -184,11 +179,11 @@
   
  
     <div style ="padding-left:750px;">
-     <asp:DataList ID="dlImage" runat="server" RepeatColumns="1" Visible="False" >
+     <asp:DataList ID="dlImage" runat="server" RepeatColumns="3" Visible="False" >
         <ItemTemplate>
             <h3>Image:</h3>
              <a href='<%# Eval("ImagePath") %>' class="group1" rel="grouped">
-             <asp:Image ID="imagelightbox" runat="server" ImageUrl='<%# Eval("ImagePath") %>' Width="200" Height="120" />
+             <asp:Image ID="imagelightbox" runat="server" ImageUrl='<%# Eval("ImagePath") %>' Width="90" Height="60" />
             </a>
           
              <br />    
