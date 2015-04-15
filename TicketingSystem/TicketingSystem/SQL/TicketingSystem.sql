@@ -716,7 +716,7 @@ CREATE PROCEDURE spGetDevice
 AS
 BEGIN
 	SELECT * FROM tbDevice
-	WHERE DeviceID = ISNULL(DeviceID ,@DeviceID)
+	WHERE DeviceID = ISNULL(@DeviceID ,DeviceID)
 END
 GO
 EXEC spGetDevice
@@ -788,7 +788,7 @@ CREATE PROCEDURE spGetDeviceBooking
 AS
 BEGIN
 	SELECT * FROM tbDeviceBooking
-	WHERE DeviceBookingID = ISNULL(DeviceBookingID ,@DeviceBookingID)
+	WHERE DeviceBookingID = ISNULL(@DeviceBookingID ,DeviceBookingID)
 END
 GO
 --EXEC spGetDeviceBooking

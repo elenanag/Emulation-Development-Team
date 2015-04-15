@@ -37,7 +37,7 @@ namespace TicketingSystem
             ddlTicketCat.Text   = ds.Tables[0].Rows[0]["TicketCategoryID"].ToString();
             ddlTicketStatus.Text = ds.Tables[0].Rows[0]["TicketStatusID"].ToString();
             ddlTicketPriority.Text = ds.Tables[0].Rows[0]["TicketPriorityID"].ToString();
-            ddlAssignee.SelectedValue = ds.Tables[0].Rows[0]["ClientID"].ToString();
+            ddlAssignee.SelectedValue = ds.Tables[0].Rows[0]["AssigneeID"].ToString();
             txtSummary.Text = ds.Tables[0].Rows[0]["Summary"].ToString();
             txtDescription.Text = ds.Tables[0].Rows[0]["Description"].ToString();
         }
