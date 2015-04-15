@@ -834,7 +834,7 @@ END
 --GO
 --EXEC spUpdateDeviceBooking  @DateStart='3/4/15',@DateEnd='4/4/15',@DeviceID=4,@ClientID=10,@DeviceBookingID=3
 
-　
+
 
 --Delete from tbDeviceBooking
 
