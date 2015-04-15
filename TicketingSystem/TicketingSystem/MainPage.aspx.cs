@@ -52,7 +52,6 @@ namespace EmulationGroupProject
             {
                 panelActivity.Visible = false;
             }
-            
         }
         private void RefreshSortedTicketToGrid()
         {
@@ -117,12 +116,21 @@ namespace EmulationGroupProject
                 dlTicketInfo.DataSource = ds;
                 dlTicketInfo.DataBind();
 
+
                 BindRepeater();
                 GetAttachment();
-
+                //GetTicketDetailsForRightSideBar();
             }
         }
         }
+        //private void GetTicketDetailsForRightSideBar()
+        //{
+        //    DAL d = new DAL(connString);
+        //    d.AddParam("TicketID", gvTicket.SelectedValue);
+        //    DataSet ds = d.ExecuteProcedure("spGetTimeSpentOnTicket");
+
+            
+        //}
 
         protected void gvTicket_Sorting(object sender, GridViewSortEventArgs e)
         {
@@ -195,21 +203,44 @@ namespace EmulationGroupProject
 
         protected void dlTicketInfo_ItemCommand(object source, DataListCommandEventArgs e)
         {
+            Button btn2 = (Button)e.Item.FindControl("btnAddTime");
             Button btn = (Button)e.Item.FindControl("btnPost");
             TextBox txt = (TextBox)e.Item.FindControl("txtPost");
+            Label lblTime = (Label)e.Item.FindControl("lblTime");
+            TextBox txtTime = (TextBox)e.Item.FindControl("txtTime");
+            Button btn3 = (Button)e.Item.FindControl("btnAddIt");
 
-            DAL d = new DAL(connString);
-            d.AddParam("Comments", txt.Text);
-            d.AddParam("DateOfComments", DateTime.Now);
-            d.AddParam("AssigneeID",Session["UserID"]);
-            d.AddParam("TicketID", gvTicket.SelectedValue);
-            DataSet ds = d.ExecuteProcedure("spInsertTicketComment");
+            if (e.CommandName == btn2.CommandName)
+            {
+                lblTime.Visible = false;
+                txtTime.Visible = true;
+                btn3.Visible = true;
+                btn2.Visible = false;
+            }
+            else if(e.CommandName == btn3.CommandName)
+            {
+                lblTime.Visible = true;
+                txtTime.Visible = false;
+                btn3.Visible = false;
+                btn2.Visible = true;
 
-            BindRepeater();
 
-            GetAttachment();
+            }
+            else if(e.CommandName == btn.CommandName)
+            {
+                DAL d = new DAL(connString);
+                d.AddParam("Comments", txt.Text);
+                d.AddParam("DateOfComments", DateTime.Now);
+                d.AddParam("AssigneeID", Session["UserID"]);
+                d.AddParam("TicketID", gvTicket.SelectedValue);
+                DataSet ds = d.ExecuteProcedure("spInsertTicketComment");
 
-            txt.Text = "";
+                BindRepeater();
+
+                GetAttachment();
+
+                txt.Text = "";
+            }
         }
 
         private void GetAttachment()
@@ -261,5 +292,6 @@ namespace EmulationGroupProject
         
             ddAsignee.Items.Insert(0, "Assign To");
         }
+
     }
 }
