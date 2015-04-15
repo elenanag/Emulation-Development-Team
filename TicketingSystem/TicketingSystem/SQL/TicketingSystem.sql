@@ -30,7 +30,8 @@ AccessLevelID INT FOREIGN KEY REFERENCES tbUserAccessLevel(AccessLevelID)
 )
 GO
 
-INSERT INTO tbUser VALUES('Elena','Nagberi', 'admin', '204-345-4567', 'elena.nagberi@robertsoncollege.net', 'elena', 1),
+INSERT INTO tbUser VALUES ('Unasigned','Unasigned', 'Unasigned', 'Unasigned', 'Unasigned@robertsoncollege.net', 'Unasigned', 2),
+						('Elena','Nagberi', 'admin', '204-345-4567', 'elena.nagberi@robertsoncollege.net', 'elena', 1),
 						('Kulwinder','Brar', 'admin', '204-999-4789', 'kulwinder.brar@robertsoncollege.net', 'brar', 1),
 						('Justine','Dela Cruz', 'admin', '204-345-4567', 'justine.dela_cruz@robertsoncollege.net', '12345', 1),
 						('Scott','Wachal', 'admin', '204-345-4567', 'scott.wachal@robertsoncollege.net', 'scott', 1),
@@ -460,7 +461,7 @@ CREATE PROCEDURE spInsertTicket
 	@TicketStatusID INT = 2,
 	@TicketCategoryID INT = NULL,
 	@ClientID INT = NULL,
-	@AssigneeID INT = NULL 
+	@AssigneeID INT = 1
 )
 AS
 BEGIN
