@@ -29,12 +29,13 @@
          
 		</ul>
 	</div>
-    <div style=padding-left:1030px ><asp:Label ID="lblwelcome" runat="server" ></asp:Label></div>
+    
 	<!-- top navigation end -->
 	<!-- body start -->
 	<div id="body">
 			
-	<form id="form1" runat="server">
+	<form id="form1" runat="server"><div style="padding-left:900px; width: 950px;" >
+       <asp:Label ID="lblwelcome" runat="server" ></asp:Label> <asp:ImageButton ID="ImgBtnLogOut" ImageUrl="images/LogOut.gif" Height="30px" Width="60px" runat="server" OnClick="ImgBtnLogOut_Click" /></div>
         <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
 
         </asp:ContentPlaceHolder>

@@ -13,6 +13,15 @@ namespace EmulationGroupProject {
     public partial class FirstMaster {
         
         /// <summary>
+        /// form1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlForm form1;
+        
+        /// <summary>
         /// lblwelcome control.
         /// </summary>
         /// <remarks>
@@ -22,13 +31,13 @@ namespace EmulationGroupProject {
         protected global::System.Web.UI.WebControls.Label lblwelcome;
         
         /// <summary>
-        /// form1 control.
+        /// ImgBtnLogOut control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlForm form1;
+        protected global::System.Web.UI.WebControls.ImageButton ImgBtnLogOut;
         
         /// <summary>
         /// ContentPlaceHolder1 control.

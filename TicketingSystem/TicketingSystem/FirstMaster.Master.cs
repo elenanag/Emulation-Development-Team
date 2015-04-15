@@ -15,6 +15,7 @@ namespace EmulationGroupProject
             if (Session["user"] == null)
             {
                 lblwelcome.Visible = false;
+                ImgBtnLogOut.Visible = false;
             }
 
             else
@@ -32,7 +33,10 @@ namespace EmulationGroupProject
             Response.Redirect("LoginPage.aspx");
         }
 
-        protected void lnkLogout_Click(object sender, EventArgs e)
+       
+
+      
+        protected void ImgBtnLogOut_Click(object sender, ImageClickEventArgs e)
         {
             Session.Abandon();
             Session.Clear();

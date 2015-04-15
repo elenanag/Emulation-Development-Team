@@ -61,6 +61,7 @@
     <Content Include="EditTicket.aspx" />
     <Content Include="FAQs.aspx" />
     <Content Include="FirstMaster.Master" />
+    <Content Include="images\Lesson01.zip" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -92,6 +93,7 @@
     <Content Include="images\footer.gif" />
     <Content Include="images\footer.jpg" />
     <Content Include="images\gridBackground.jpg" />
+    <Content Include="images\LogOut.gif" />
     <Content Include="images\logo_text.gif" />
     <Content Include="images\midle_bg.gif" />
     <Content Include="images\more_bg.gif" />
