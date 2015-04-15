@@ -7,7 +7,7 @@
         <table>
              <tr><td style="width: 230px">
                  Ticket Category:</td><td style="width: 380px">
-                    <asp:DropDownList ID="ddlTicketCat" runat="server" Height="28px" Width="250px"></asp:DropDownList>
+                    <asp:DropDownList ID="ddlTicketCat" runat="server" Height="28px" Width="250px"  ></asp:DropDownList>
                      </td></tr>
               <tr><td style="width: 230px">
                  Ticket Status</td><td style="width: 380px">
@@ -19,7 +19,7 @@
                      </td></tr>
               <tr><td style="width: 230px">Assignee</td><td style="width: 380px">
                     
-                     <asp:DropDownList ID="ddlAssignee" runat="server" Height="28px" Width="250px"></asp:DropDownList>
+                     <asp:DropDownList ID="ddlAssignee" runat="server" Height="28px" Width="250px" ></asp:DropDownList>
                     
                      </td></tr>
              <tr><td style="width: 230px">
@@ -35,11 +35,12 @@
                      </td></tr>
             <tr><td style="width: 230px; padding-top:10px;">
                 &nbsp;</td><td style="width: 380px; padding-top:10px;">
-                     &nbsp;</td></tr>
-            <tr><td style="width: 230px">
-                </td><td style="width: 380px; padding-left:250px; padding-top:20px;">
                      <asp:Button ID="btnEditTicket" runat="server" Text="Edit Request" Height="30px" Width="150px" BackColor="#CC0000" BorderColor="#CC0000" Font-Bold="True" ForeColor="White" Font-Size="Small" OnClick="btnEditTicket_Click" />
                      </td></tr>
+            <tr><td style="width: 230px">
+                </td><td style="width: 380px; padding-left:250px; padding-top:20px;">
+                     &nbsp;</td></tr>
             </table>
+        <asp:Label ID="lblmsg" runat="server" Text="" Font-Bold="True" Font-Size="Large"></asp:Label>
     </div>
 </asp:Content>

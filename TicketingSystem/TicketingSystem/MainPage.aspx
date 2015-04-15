@@ -112,8 +112,7 @@
                 <tr>
                     <td>Assigned to:</td>
                     <td><asp:Label ID="Label2" runat="server" Text=""></asp:Label></td>
-                    <td><asp:DropDownList ID="ddlAssign" Font-Size="Medium" BackColor="#FDF9EE" style="border:0px; outline:0px;" runat="server">
-                        <asp:ListItem>Assign To</asp:ListItem>
+                    <td><asp:DropDownList ID="ddlAssign" OnSelectedIndexChanged="ddlAssign_SelectedIndexChanged" CommandName="dropdown" AutoPostBack="true" Font-Size="Medium" BackColor="#FDF9EE" style="border:0px; outline:0px;" runat="server" >
                         </asp:DropDownList></td>
                 </tr>
                 <tr>

@@ -716,7 +716,7 @@ CREATE PROCEDURE spGetDevice
 AS
 BEGIN
 	SELECT * FROM tbDevice
-	WHERE DeviceID = ISNULL(@DeviceID ,DeviceID)
+	WHERE DeviceID = ISNULL(DeviceID ,@DeviceID)
 END
 GO
 EXEC spGetDevice
@@ -788,7 +788,7 @@ CREATE PROCEDURE spGetDeviceBooking
 AS
 BEGIN
 	SELECT * FROM tbDeviceBooking
-	WHERE DeviceBookingID = ISNULL(@DeviceBookingID ,DeviceBookingID)
+	WHERE DeviceBookingID = ISNULL(DeviceBookingID ,@DeviceBookingID)
 END
 GO
 --EXEC spGetDeviceBooking
@@ -1180,8 +1180,37 @@ BEGIN
 				AND ta.ImagePath NOT like '%.gif'
 END
 GO
-
 EXEC spGetNonImageAttachments @TicketID=13
+
+--Get the assignee when ticket selected
+GO
+CREATE PROCEDURE spTicketAssignee
+(
+	@TicketID INT
+)
+AS
+BEGIN
+	SELECT AssigneeID, FirstName  FROM tbTicket t
+	JOIN tbUser u ON t.AssigneeID = u.UserID 
+	WHERE TicketID=@TicketID
+END
+GO
+EXEC spTicketAssignee @TicketID = 1
+
+
+--Update ticket assignee
+GO
+CREATE PROCEDURE spUpdateTicketAssignee
+(
+	@TicketID INT,
+	@AssigneeID INT
+)
+AS
+BEGIN
+	UPDATE tbTicket SET AssigneeID = @AssigneeID WHERE TicketID=@TicketID
+END
+GO
+EXEC spUpdateTicketAssignee @TicketID = 3, @AssigneeID = 2
 
 
 SELECT * FROM tbTicket

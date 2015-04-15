@@ -26,7 +26,9 @@ namespace EmulationGroupProject
                     login = (LoginInfo)Session["user"];
                     Session["UserID"] = login.UserID;
                 }
-
+                else {
+                    Response.Redirect("LoginPage.aspx");
+                }
                 PopulateTicketGrid();
                 PopulateTicketDropDown();
 
@@ -108,6 +110,8 @@ namespace EmulationGroupProject
             {
                 gvTicket.SelectedIndex = Convert.ToInt32(e.CommandArgument);
                 string ticketID = gvTicket.SelectedDataKey.Value.ToString();
+                    ViewState["TicketID"] = ticketID;
+                    
                 DAL d = new DAL(connString);
                 DataSet ds = new DataSet();
                 d.AddParam("@TicketID", ticketID);
@@ -129,7 +133,7 @@ namespace EmulationGroupProject
         //    d.AddParam("TicketID", gvTicket.SelectedValue);
         //    DataSet ds = d.ExecuteProcedure("spGetTimeSpentOnTicket");
 
-            
+
         //}
 
         protected void gvTicket_Sorting(object sender, GridViewSortEventArgs e)
@@ -228,19 +232,19 @@ namespace EmulationGroupProject
             }
             else if(e.CommandName == btn.CommandName)
             {
-                DAL d = new DAL(connString);
-                d.AddParam("Comments", txt.Text);
-                d.AddParam("DateOfComments", DateTime.Now);
+            DAL d = new DAL(connString);
+            d.AddParam("Comments", txt.Text);
+            d.AddParam("DateOfComments", DateTime.Now);
                 d.AddParam("AssigneeID", Session["UserID"]);
-                d.AddParam("TicketID", gvTicket.SelectedValue);
-                DataSet ds = d.ExecuteProcedure("spInsertTicketComment");
+            d.AddParam("TicketID", gvTicket.SelectedValue);
+            DataSet ds = d.ExecuteProcedure("spInsertTicketComment");
 
-                BindRepeater();
+            BindRepeater();
 
-                GetAttachment();
+            GetAttachment();
 
-                txt.Text = "";
-            }
+            txt.Text = "";
+        }
         }
 
         private void GetAttachment()
@@ -277,7 +281,7 @@ namespace EmulationGroupProject
 
         protected void dlTicketInfo_ItemDataBound(object sender, DataListItemEventArgs e)
         {
-            DataList DataList1 = (DataList)sender;
+            DataList DataList = (DataList)sender;
             DAL d = new DAL(connString);
             DataSet ds = d.ExecuteProcedure("spGetAssignee");
 
@@ -287,11 +291,23 @@ namespace EmulationGroupProject
             ddAsignee.DataValueField = "UserID";
             ddAsignee.DataBind();
         
-
+            d = new DAL(connString);
+            ds = new DataSet();
+            d.AddParam("@TicketID", ViewState["TicketID"]);
+            ds = d.ExecuteProcedure("spTicketAssignee");
+            ddAsignee.SelectedValue = ds.Tables[0].Rows[0]["AssigneeID"].ToString();
+            ddAsignee.SelectedItem.Text = ds.Tables[0].Rows[0]["FirstName"].ToString();
        
-        
-            ddAsignee.Items.Insert(0, "Assign To");
         }
-
+        
+        protected void ddlAssign_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            DropDownList ddAsignee = (DropDownList)sender;
+            DAL d = new DAL(connString);
+            d.AddParam("@TicketID", ViewState["TicketID"]);
+            d.AddParam("@AssigneeID", ddAsignee.SelectedValue);
+            d.ExecuteProcedure("spUpdateTicketAssignee");
+        }
+        
     }
 }
