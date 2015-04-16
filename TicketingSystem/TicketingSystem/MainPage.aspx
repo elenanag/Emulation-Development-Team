@@ -58,7 +58,7 @@
                    <td><a href='EditTicket.aspx?TicketID=<%# Eval("TicketID")%>'><img src="images/edit.jpg" Height="24px" Width="54px" /></a></td>
                     <td><asp:ImageButton ID="ImgBtnClose" ImageUrl="images/Close.jpg" Height="24px" Width="54px" runat="server" /></td>
                     <td><asp:ImageButton ID="ImgBtnCloseDupelicate" ImageUrl="images/Close as duplicate.jpg" Height="23px" Width="115px" runat="server" /></td>
-                    <td><asp:ImageButton ID="ImgBtnPrint" ImageUrl="images/print.jpg" Height="26px" Width="59px" runat="server" /></td>
+                    <td><a href='PrintTicket.aspx?TicketID=<%# Eval("TicketID")%>'><img src="images/print.jpg" Height="26px" Width="59px"  /></td>
                 </tr>
             </table>
                     </div>
