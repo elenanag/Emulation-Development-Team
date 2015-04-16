@@ -119,9 +119,9 @@ ClientID INT FOREIGN KEY REFERENCES tbUser(UserID),
 AssigneeID INT FOREIGN KEY REFERENCES tbUser(UserID)
 )
 GO
-INSERT INTO tbTicket VALUES ('Computer crashed', 'One of my students computer chrashed', GETDATE(), 2,2, 4, 7, 9),
+INSERT INTO tbTicket VALUES ('Computer crashed', 'One of my students computer chrashed', GETDATE(), 2,2, 4, 18, 9),
 							('Password not working', 'One of my students password is not working', GETDATE(), 1,1, 2, 8, 10),
-							('E-mail not working', 'One of my students e-mail is not working', GETDATE(), 3,3, 1, 7, 10),
+							('E-mail not working', 'One of my students e-mail is not working', GETDATE(), 3,3, 1, 20, 10),
 							('Internet not working', 'Problem with the internet', GETDATE(), 1,1, 3, 8, 9),
 							('Computer will not start', 'Used laptop will not start', GETDATE(), 3,1, 4, 15, 9),
 							('Computer is running slow', 'All the computers in my class is slow', GETDATE(), 2,2, 4, 15, 9),
@@ -1145,9 +1145,11 @@ BEGIN
 		JOIN tbTicket t ON ta.TicketID = t.TicketID
 		WHERE t.TicketID = @TicketID
 END
-GO
-EXEC spGetAttachment @TicketID = 13
+--GO
+--EXEC spGetAttachment @TicketID = 13
 
+
+--Get the image attachments
 GO
 CREATE PROCEDURE spGetImageAttachments
 (
@@ -1162,10 +1164,11 @@ BEGIN
 				OR ta.ImagePath like '%.bmp' OR ta.ImagePath like '%.jpeg'
 				OR ta.ImagePath like '%.gif'
 END
-GO
+--GO
+--EXEC spGetImageAttachments @TicketID=13
 
-EXEC spGetImageAttachments @TicketID=13
 
+--Get the attachments with no Image
 GO
 CREATE PROCEDURE spGetNonImageAttachments
 (
@@ -1180,8 +1183,8 @@ BEGIN
 				AND ta.ImagePath NOT like '%.bmp' AND ta.ImagePath NOT like '%.jpeg'
 				AND ta.ImagePath NOT like '%.gif'
 END
-GO
-EXEC spGetNonImageAttachments @TicketID=13
+--GO
+--EXEC spGetNonImageAttachments @TicketID=13
 
 --Get the assignee when ticket selected
 GO
@@ -1212,6 +1215,29 @@ BEGIN
 END
 GO
 EXEC spUpdateTicketAssignee @TicketID = 3, @AssigneeID = 2
+
+
+--Print ticket info
+GO
+CREATE PROCEDURE spGetPrintInfo
+(
+	@TicketID INT
+)
+AS
+BEGIN
+	SELECT t.TicketID, t.Summary, t.Description, tp.TicketPriorityName, ts.TicketStatusName, 
+						tc.CategoryName, (u2.FirstName + ' ' + u2.LastName) AS [Assignee], (u.FirstName + ' ' + u.LastName) AS [Client], u.Email AS [Client Email], t.DateCreated FROM tbTicket t 
+	JOIN tbTicketPriority tp ON tp.TicketPriorityID = t.TicketPriorityID
+	JOIN tbTicketStatus ts ON t.TicketStatusID = ts.TicketStatusID
+	JOIN tbTicketCategory tc ON t.TicketCategoryID = tc.TicketCategoryID
+	JOIN tbUser u ON t.ClientID = u.UserID
+	JOIN tbUser u2 ON u2.UserID = t.AssigneeID
+	WHERE TicketID = @TicketID
+	
+END
+GO
+EXEC spGetPrintInfo @TicketID=7
+
 
 
 SELECT * FROM tbTicket
