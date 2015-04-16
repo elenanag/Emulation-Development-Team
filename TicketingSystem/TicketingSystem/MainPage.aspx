@@ -55,7 +55,6 @@
                 <tr>
                    
 </div>
-
                    <td><a href='EditTicket.aspx?TicketID=<%# Eval("TicketID")%>'><img src="images/edit.jpg" Height="24px" Width="54px" /></a></td>
                     <td><asp:ImageButton ID="ImgBtnClose" ImageUrl="images/Close.jpg" Height="24px" Width="54px" runat="server" /></td>
                     <td><asp:ImageButton ID="ImgBtnCloseDupelicate" ImageUrl="images/Close as duplicate.jpg" Height="23px" Width="115px" runat="server" /></td>
@@ -96,12 +95,10 @@
         <h2 style="font-size:20px">Details</h2>
             <table>
                 <tr>
-                    <td>Time spent:</td>
-                    <td><asp:Label ID="lblTime" runat="server" Text=" 0"></asp:Label>
-                        <asp:TextBox ID="txtTime" Width="33px" BackColor="White" Visible="false" runat="server"></asp:TextBox> &nbsp minutes
-                        &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<asp:Button ID="btnAddTime" CommandName="AddTime" runat="server" Text="Add Time" />
-                        <asp:Button ID="btnAddIt" runat="server" Visible="false" Text="Add!" />
-                    </td>
+                   <td>Assigned to:</td>
+                    <td><asp:Label ID="Label2" runat="server" Text=""></asp:Label></td>
+                    <td><asp:DropDownList ID="ddlAssign" OnSelectedIndexChanged="ddlAssign_SelectedIndexChanged" CommandName="dropdown" AutoPostBack="true" Font-Size="Medium" BackColor="#FDF9EE" style="border:0px; outline:0px;" runat="server" >
+                        </asp:DropDownList></td>
                 </tr>
             </table>
         </div>
@@ -110,10 +107,9 @@
             <h2 style="font-size:20px">Users</h2> 
             <table>
                 <tr>
-                    <td>Assigned to:</td>
-                    <td><asp:Label ID="Label2" runat="server" Text=""></asp:Label></td>
-                    <td><asp:DropDownList ID="ddlAssign" OnSelectedIndexChanged="ddlAssign_SelectedIndexChanged" CommandName="dropdown" AutoPostBack="true" Font-Size="Medium" BackColor="#FDF9EE" style="border:0px; outline:0px;" runat="server" >
-                        </asp:DropDownList></td>
+                     <td>Time spent:</td>
+                    <td><asp:Label ID="Label1" runat="server" Text=""></asp:Label></td>
+                    
                 </tr>
                 <tr>
                     <td>Client name:</td>
