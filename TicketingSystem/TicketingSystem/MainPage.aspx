@@ -75,7 +75,7 @@
                         <asp:CheckBox ID="chkClosed" Visible="true" Text="Close ticket" runat="server" />
                     </td>--%>
                     <td>
-                         <asp:Button ID="btnPost" runat="server" Visible="true" Text="Post" Height="23px" Width="70px" />
+                         <asp:Button ID="btnPost" CommandName="Post" runat="server" Visible="true" Text="Post" Height="23px" Width="70px" />
                     </td>
                 </tr>
             </table>

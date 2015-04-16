@@ -54,7 +54,6 @@ namespace EmulationGroupProject
             {
                 panelActivity.Visible = false;
             }
-            
         }
         private void RefreshSortedTicketToGrid()
         {
@@ -107,28 +106,36 @@ namespace EmulationGroupProject
             if (e.CommandName != "Sort")
             {
                 gvTicket.SelectedIndex = Convert.ToInt32(e.CommandArgument);
-                if (e.CommandName == "SelectTicket")
-                {
-                    gvTicket.SelectedIndex = Convert.ToInt32(e.CommandArgument);
-                    string ticketID = gvTicket.SelectedDataKey.Value.ToString();
+            if (e.CommandName == "SelectTicket")
+            {
+                gvTicket.SelectedIndex = Convert.ToInt32(e.CommandArgument);
+                string ticketID = gvTicket.SelectedDataKey.Value.ToString();
                     ViewState["TicketID"] = ticketID;
                     
-                    DAL d = new DAL(connString);
-                    DataSet ds = new DataSet();
-                    d.AddParam("@TicketID", ticketID);
-                    ds = d.ExecuteProcedure("spTicketIdAndSummary");
+                DAL d = new DAL(connString);
+                DataSet ds = new DataSet();
+                d.AddParam("@TicketID", ticketID);
+                ds = d.ExecuteProcedure("spTicketIdAndSummary");
 
-                    dlTicketInfo.DataSource = ds;
-                    dlTicketInfo.DataBind();
+                dlTicketInfo.DataSource = ds;
+                dlTicketInfo.DataBind();
 
-                    BindRepeater();
-                    GetAttachment();
 
-                }
+                BindRepeater();
+                GetAttachment();
+                //GetTicketDetailsForRightSideBar();
             }
         }
+        }
+        //private void GetTicketDetailsForRightSideBar()
+        //{
+        //    DAL d = new DAL(connString);
+        //    d.AddParam("TicketID", gvTicket.SelectedValue);
+        //    DataSet ds = d.ExecuteProcedure("spGetTimeSpentOnTicket");
 
-       
+
+        //}
+
         protected void gvTicket_Sorting(object sender, GridViewSortEventArgs e)
         {
             if (e.SortExpression == Session["SortColumn"].ToString())
@@ -200,21 +207,44 @@ namespace EmulationGroupProject
 
         protected void dlTicketInfo_ItemCommand(object source, DataListCommandEventArgs e)
         {
-                Button btn = (Button)e.Item.FindControl("btnPost");
-                TextBox txt = (TextBox)e.Item.FindControl("txtPost");
+            Button btn2 = (Button)e.Item.FindControl("btnAddTime");
+            Button btn = (Button)e.Item.FindControl("btnPost");
+            TextBox txt = (TextBox)e.Item.FindControl("txtPost");
+            Label lblTime = (Label)e.Item.FindControl("lblTime");
+            TextBox txtTime = (TextBox)e.Item.FindControl("txtTime");
+            Button btn3 = (Button)e.Item.FindControl("btnAddIt");
 
-                DAL d = new DAL(connString);
-                d.AddParam("Comments", txt.Text);
-                d.AddParam("DateOfComments", DateTime.Now);
+            if (e.CommandName == btn2.CommandName)
+            {
+                lblTime.Visible = false;
+                txtTime.Visible = true;
+                btn3.Visible = true;
+                btn2.Visible = false;
+            }
+            else if(e.CommandName == btn3.CommandName)
+            {
+                lblTime.Visible = true;
+                txtTime.Visible = false;
+                btn3.Visible = false;
+                btn2.Visible = true;
+
+
+            }
+            else if(e.CommandName == btn.CommandName)
+            {
+            DAL d = new DAL(connString);
+            d.AddParam("Comments", txt.Text);
+            d.AddParam("DateOfComments", DateTime.Now);
                 d.AddParam("AssigneeID", Session["UserID"]);
-                d.AddParam("TicketID", gvTicket.SelectedValue);
-                DataSet ds = d.ExecuteProcedure("spInsertTicketComment");
+            d.AddParam("TicketID", gvTicket.SelectedValue);
+            DataSet ds = d.ExecuteProcedure("spInsertTicketComment");
 
-                BindRepeater();
+            BindRepeater();
 
-                GetAttachment();
+            GetAttachment();
 
-                txt.Text = "";
+            txt.Text = "";
+        }
         }
 
         private void GetAttachment()
@@ -260,16 +290,16 @@ namespace EmulationGroupProject
             ddAsignee.DataTextField = "FirstName";
             ddAsignee.DataValueField = "UserID";
             ddAsignee.DataBind();
-
+        
             d = new DAL(connString);
             ds = new DataSet();
             d.AddParam("@TicketID", ViewState["TicketID"]);
             ds = d.ExecuteProcedure("spTicketAssignee");
             ddAsignee.SelectedValue = ds.Tables[0].Rows[0]["AssigneeID"].ToString();
             ddAsignee.SelectedItem.Text = ds.Tables[0].Rows[0]["FirstName"].ToString();
-
+       
         }
-
+        
         protected void ddlAssign_SelectedIndexChanged(object sender, EventArgs e)
         {
             DropDownList ddAsignee = (DropDownList)sender;
