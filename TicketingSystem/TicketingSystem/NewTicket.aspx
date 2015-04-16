@@ -1,6 +1,6 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/FirstMaster.Master" AutoEventWireup="true" CodeBehind="NewTicket.aspx.cs" Inherits="TicketingSystem.NewTicket" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    <div style="border-color:red; border-style:solid; border-radius:7px; background-color:#E1DBC7; margin:auto; height: 400px; width: 600px; padding-left:40px; padding-top:5px; text-align:center;">
+    <div style="border-color:red; border-style:solid; border-radius:7px; background-color:#E1DBC7; margin:auto; height: 400px; width: 600px; padding-left:40px; padding-top:30px; text-align:center;">
         <br /><br /><div style="padding-right:40px;">
         <asp:Label ID="lblSubmitTicket" runat="server" Text="SUBMIT TICKET" Font-Bold="True" Font-Size="Large"></asp:Label><br />
         </div><br /><br />
