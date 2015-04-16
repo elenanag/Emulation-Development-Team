@@ -108,8 +108,11 @@
             <table>
                 <tr>
                      <td>Time spent:</td>
-                    <td><asp:Label ID="Label1" runat="server" Text=""></asp:Label></td>
-                    
+                    <td><asp:Label ID="lblTime" runat="server" Text="0"></asp:Label>
+                         <asp:TextBox ID="txtTime" Width="33px" BackColor="White" Visible="false" runat="server"></asp:TextBox> &nbsp minutes
+                        &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<asp:Button ID="btnAddTime" CommandName="AddTime" runat="server" Text="Add Time" />
+                        <asp:Button ID="btnAddIt" runat="server" Visible="false" Text="Add!" />
+                    </td>
                 </tr>
                 <tr>
                     <td>Client name:</td>
