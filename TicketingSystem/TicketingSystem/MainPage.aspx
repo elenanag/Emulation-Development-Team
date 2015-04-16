@@ -27,7 +27,7 @@
                 <HeaderStyle HorizontalAlign="Left" />
                 </asp:BoundField>
                 <asp:BoundField DataField="Email" HeaderText="Ticket Sender" SortExpression="Email" >
-                <HeaderStyle HorizontalAlign="Left" />
+                                    <HeaderStyle HorizontalAlign="Left" />
                 </asp:BoundField>
             </Columns>
             <FooterStyle BackColor="#EC3C2D" Font-Bold="True" ForeColor="White" />
