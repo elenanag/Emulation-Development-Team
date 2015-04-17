@@ -1239,6 +1239,20 @@ GO
 EXEC spGetPrintInfo @TicketID=7
 
 
+--Close ticket
+GO
+CREATE PROCEDURE spCloseTicket
+(
+	@TicketID INT,
+	@TicketStatusID INT = 3
+)
+AS
+BEGIN
+	UPDATE tbTicket SET TicketStatusID = @TicketStatusID WHERE TicketID = @TicketID
+END 
+--GO
+--EXEC spCloseTicket @TicketID = 2
+
 
 SELECT * FROM tbTicket
 
