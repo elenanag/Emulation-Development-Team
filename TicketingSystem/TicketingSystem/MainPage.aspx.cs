@@ -10,6 +10,7 @@ using DAL_Project;
 using System.Data.SqlClient;
 using System.Drawing;
 using ClassLibrary;
+using System.Net.Mail;
 
 namespace EmulationGroupProject
 {
@@ -308,6 +309,35 @@ namespace EmulationGroupProject
             d.AddParam("@AssigneeID", ddAsignee.SelectedValue);
             d.ExecuteProcedure("spUpdateTicketAssignee");
         }
-        
+
+        protected void ImgBtnClose_Click(object sender, ImageClickEventArgs e)
+        {
+            DAL d = new DAL(connString);
+            d.AddParam("@TicketID", ViewState["TicketID"]);
+            d.ExecuteProcedure("spCloseTicket");
+            PopulateTicketGrid();
+
+            //SendEmail();
+        }
+
+        //private void SendEmail()
+        //{
+        //    LoginInfo user = (LoginInfo)Session["user"];
+        //    int customerID = user.UserID;
+
+        //    MailMessage message = new MailMessage();
+        //    message.From = new MailAddress("elena.nagberi@robertsoncollege.net");
+        //    message.To.Add(new MailAddress(user.Email));
+        //    message.Subject = "Ticket Closed!";
+        //    message.Body = "Your ticket was closed! Robertson College Ticketing System";
+        //    SmtpClient client = new SmtpClient();
+        //    client.Host = "smtp.gmail.com";
+        //    client.Port = 587;
+        //    client.EnableSsl = true;
+        //    client.Credentials = new System.Net.NetworkCredential("elena.nagberi@robertsoncollege.net", "xxxxxxx");
+        //    client.DeliveryMethod = SmtpDeliveryMethod.Network;
+        //    client.Send(message);
+
+        //} 
     }
 }
