@@ -96,7 +96,9 @@ namespace EmulationGroupProject
             ds = d.ExecuteProcedure("spGetTicketByStatusName");
             gvTicket.DataSource = ds;
             gvTicket.DataBind();
-
+            gvTicket.SelectedIndex = -1;
+            dlTicketInfo.Visible = false;
+            panelActivity.Visible = false;
             if (ddlTicketStatus.SelectedItem.Text.ToString() == "Ticket Status")
             {
                 PopulateTicketGrid();
@@ -121,8 +123,8 @@ namespace EmulationGroupProject
 
                 dlTicketInfo.DataSource = ds;
                 dlTicketInfo.DataBind();
-
-
+                dlTicketInfo.Visible = true;
+                panelActivity.Visible = true;
                 BindRepeater();
                 GetAttachment();
             }
@@ -160,6 +162,8 @@ namespace EmulationGroupProject
 
             gvTicket.PageIndex = e.NewPageIndex;
             gvTicket.DataBind();
+            dlTicketInfo.Visible = false;
+            panelActivity.Visible = false;
         }
 
         protected void gvTicket_RowDataBound(object sender, GridViewRowEventArgs e)

@@ -202,6 +202,9 @@
          alert("The ticket was closed!")   
      }
 
+     $('html, body').animate({
+         scrollTop: $("#ContentPlaceHolder1_dlTicketInfo").offset().top
+     }, 1000);
      </script>
 
 </asp:Content>
