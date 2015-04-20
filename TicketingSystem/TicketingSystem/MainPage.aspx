@@ -1,4 +1,5 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/FirstMaster.Master" AutoEventWireup="true" CodeBehind="MainPage.aspx.cs" enableEventValidation="false" Inherits="EmulationGroupProject.MainPage" %>
+
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <div style="text-align:center" >
         <link href="StyleSheet2.css" rel="stylesheet" />
@@ -27,7 +28,7 @@
                 <HeaderStyle HorizontalAlign="Left" />
                 </asp:BoundField>
                 <asp:BoundField DataField="Email" HeaderText="Ticket Sender" SortExpression="Email" >
-                <HeaderStyle HorizontalAlign="Left" />
+                                    <HeaderStyle HorizontalAlign="Left" />
                 </asp:BoundField>
             </Columns>
             <FooterStyle BackColor="#EC3C2D" Font-Bold="True" ForeColor="White" />
@@ -48,7 +49,7 @@
             <ItemTemplate>   
             <div style="float:left; width:720px"> 
                 <p style="text-align:center;margin:0; color:black">
-                      
+                    Ticket #  <%#Eval("TicketID")%> :
                 <%#Eval("Summary")%>
                     <div><br />
             <table>
@@ -56,9 +57,9 @@
                    
 </div>
                    <td><a href='EditTicket.aspx?TicketID=<%# Eval("TicketID")%>'><img src="images/edit.jpg" Height="24px" Width="54px" /></a></td>
-                    <td><asp:ImageButton ID="ImgBtnClose" ImageUrl="images/Close.jpg" Height="24px" Width="54px" runat="server" /></td>
-                    <td><asp:ImageButton ID="ImgBtnCloseDupelicate" ImageUrl="images/Close as duplicate.jpg" Height="23px" Width="115px" runat="server" /></td>
-                    <td><asp:ImageButton ID="ImgBtnPrint" ImageUrl="images/print.jpg" Height="26px" Width="59px" runat="server" /></td>
+                    <td><asp:ImageButton ID="ImgBtnClose" ImageUrl="images/Close.jpg" Height="24px" Width="54px" runat="server" OnClientClick="return confirmation();" OnClick="ImgBtnClose_Click" /></td>
+                    <%--<td><asp:ImageButton ID="ImgBtnCloseDupelicate" ImageUrl="images/Close as duplicate.jpg" Height="23px" Width="115px" runat="server" /></td>--%>
+                    <td><a href='PrintTicket.aspx?TicketID=<%# Eval("TicketID")%>'><img src="images/print.jpg" Height="26px" Width="59px"  /></td>
                 </tr>
             </table>
                     </div>
@@ -141,8 +142,6 @@
      </ItemTemplate>    
     </asp:DataList>
 
-
-     
      <asp:DataList ID="dlAttachments" runat="server" RepeatColumns="1" Visible="False" >
         <ItemTemplate>
             <h3>Attachment:</h3> <br/>
@@ -199,5 +198,10 @@
          $("a.group1").fancybox();
      });
 
+     function confirmation() {
+         alert("The ticket was closed!")   
+     }
+
      </script>
+
 </asp:Content>

@@ -30,7 +30,8 @@ AccessLevelID INT FOREIGN KEY REFERENCES tbUserAccessLevel(AccessLevelID)
 )
 GO
 
-INSERT INTO tbUser VALUES('Elena','Nagberi', 'admin', '204-345-4567', 'elena.nagberi@robertsoncollege.net', 'elena', 1),
+INSERT INTO tbUser VALUES ('Unasigned','Unasigned', 'Unasigned', 'Unasigned', 'Unasigned@robertsoncollege.net', 'Unasigned', 2),
+						('Elena','Nagberi', 'admin', '204-345-4567', 'elena.nagberi@robertsoncollege.net', 'elena', 1),
 						('Kulwinder','Brar', 'admin', '204-999-4789', 'kulwinder.brar@robertsoncollege.net', 'brar', 1),
 						('Justine','Dela Cruz', 'admin', '204-345-4567', 'justine.dela_cruz@robertsoncollege.net', '12345', 1),
 						('Scott','Wachal', 'admin', '204-345-4567', 'scott.wachal@robertsoncollege.net', 'scott', 1),
@@ -460,7 +461,7 @@ CREATE PROCEDURE spInsertTicket
 	@TicketStatusID INT = 2,
 	@TicketCategoryID INT = NULL,
 	@ClientID INT = NULL,
-	@AssigneeID INT = NULL 
+	@AssigneeID INT = 1
 )
 AS
 BEGIN
@@ -666,7 +667,7 @@ BEGIN
 		BEGIN 
 			INSERT INTO tbTimeSpentOnTicket(TimeSpentOnTicket,DateWorkedOnTicket,AssigneeID,TicketID) VALUES 
 						(DATEADD(MINUTE, @TimeSpentOnTicket ,0),GETDATE(),@AssigneeID,@TicketID)
-		END
+END
 	ELSE 
 		BEGIN 
 			UPDATE tbTimeSpentOnTicket SET TimeSpentOnTicket = DATEADD(MINUTE, @TimeSpentOnTicket ,TimeSpentOnTicket) WHERE AssigneeID = @AssigneeID AND TicketID = @TicketID
@@ -708,7 +709,7 @@ END
 --GO
 --EXEC spTimeSpentOnTicket @TimeSpentOnTicketID=1
 
------------------------------tbDevice---------------------------------------------------------------------
+　-----------------------------tbDevice---------------------------------------------------------------------
 
 
 
@@ -1088,7 +1089,7 @@ BEGIN
 		LEFT OUTER JOIN tbTimeSpentOnTicket ts ON t.TicketID = ts.TicketID AND t.AssigneeID = ts.AssigneeID
 		WHERE t.TicketID = @TicketID
 END
---GO	
+--GO 
 --EXEC spTicketIdAndSummary @TicketID=4
 GO
 SELECT * FROM tbTicket
@@ -1153,9 +1154,11 @@ BEGIN
 		JOIN tbTicket t ON ta.TicketID = t.TicketID
 		WHERE t.TicketID = @TicketID
 END
-GO
-EXEC spGetAttachment @TicketID = 13
+--GO
+--EXEC spGetAttachment @TicketID = 13
 
+
+--Get the image attachments
 GO
 CREATE PROCEDURE spGetImageAttachments
 (
@@ -1170,10 +1173,11 @@ BEGIN
 				OR ta.ImagePath like '%.bmp' OR ta.ImagePath like '%.jpeg'
 				OR ta.ImagePath like '%.gif'
 END
-GO
+--GO
+--EXEC spGetImageAttachments @TicketID=13
 
-EXEC spGetImageAttachments @TicketID=13
 
+--Get the attachments with no Image
 GO
 CREATE PROCEDURE spGetNonImageAttachments
 (
@@ -1188,9 +1192,8 @@ BEGIN
 				AND ta.ImagePath NOT like '%.bmp' AND ta.ImagePath NOT like '%.jpeg'
 				AND ta.ImagePath NOT like '%.gif'
 END
-GO
-
-EXEC spGetNonImageAttachments @TicketID=13
+--GO
+--EXEC spGetNonImageAttachments @TicketID=13
 
 GO
 CREATE PROCEDURE spTicketAssignee
@@ -1204,7 +1207,7 @@ BEGIN
 	WHERE TicketID=@TicketID
 END
 GO
-	
+
 
 SELECT * FROM tbUser
 --Update ticket assignee
@@ -1220,6 +1223,43 @@ BEGIN
 END
 GO
 EXEC spUpdateTicketAssignee @TicketID = 3, @AssigneeID = 2
+
+
+--Print ticket info
+GO
+CREATE PROCEDURE spGetPrintInfo
+(
+	@TicketID INT
+)
+AS
+BEGIN
+	SELECT t.TicketID, t.Summary, t.Description, tp.TicketPriorityName, ts.TicketStatusName, 
+						tc.CategoryName, (u2.FirstName + ' ' + u2.LastName) AS [Assignee], (u.FirstName + ' ' + u.LastName) AS [Client], u.Email AS [Client Email], t.DateCreated FROM tbTicket t 
+	JOIN tbTicketPriority tp ON tp.TicketPriorityID = t.TicketPriorityID
+	JOIN tbTicketStatus ts ON t.TicketStatusID = ts.TicketStatusID
+	JOIN tbTicketCategory tc ON t.TicketCategoryID = tc.TicketCategoryID
+	JOIN tbUser u ON t.ClientID = u.UserID
+	JOIN tbUser u2 ON u2.UserID = t.AssigneeID
+	WHERE TicketID = @TicketID
+	
+END
+GO
+EXEC spGetPrintInfo @TicketID=7
+
+
+--Close ticket
+GO
+CREATE PROCEDURE spCloseTicket
+(
+	@TicketID INT,
+	@TicketStatusID INT = 3
+)
+AS
+BEGIN
+	UPDATE tbTicket SET TicketStatusID = @TicketStatusID WHERE TicketID = @TicketID
+END 
+--GO
+--EXEC spCloseTicket @TicketID = 2
 
 
 SELECT * FROM tbTicket
