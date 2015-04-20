@@ -30,8 +30,7 @@ AccessLevelID INT FOREIGN KEY REFERENCES tbUserAccessLevel(AccessLevelID)
 )
 GO
 
-INSERT INTO tbUser VALUES ('Unasigned','Unasigned', 'Unasigned', 'Unasigned', 'Unasigned@robertsoncollege.net', 'Unasigned', 2),
-						('Elena','Nagberi', 'admin', '204-345-4567', 'elena.nagberi@robertsoncollege.net', 'elena', 1),
+INSERT INTO tbUser VALUES('Elena','Nagberi', 'admin', '204-345-4567', 'elena.nagberi@robertsoncollege.net', 'elena', 1),
 						('Kulwinder','Brar', 'admin', '204-999-4789', 'kulwinder.brar@robertsoncollege.net', 'brar', 1),
 						('Justine','Dela Cruz', 'admin', '204-345-4567', 'justine.dela_cruz@robertsoncollege.net', '12345', 1),
 						('Scott','Wachal', 'admin', '204-345-4567', 'scott.wachal@robertsoncollege.net', 'scott', 1),
@@ -119,17 +118,17 @@ ClientID INT FOREIGN KEY REFERENCES tbUser(UserID),
 AssigneeID INT FOREIGN KEY REFERENCES tbUser(UserID)
 )
 GO
-INSERT INTO tbTicket VALUES ('Computer crashed', 'One of my students computer chrashed', GETDATE(), 2,2, 4, 7, 9),
-							('Password not working', 'One of my students password is not working', GETDATE(), 1,1, 2, 8, 10),
-							('E-mail not working', 'One of my students e-mail is not working', GETDATE(), 3,3, 1, 7, 10),
-							('Internet not working', 'Problem with the internet', GETDATE(), 1,1, 3, 8, 9),
-							('Computer will not start', 'Used laptop will not start', GETDATE(), 3,1, 4, 15, 9),
-							('Computer is running slow', 'All the computers in my class is slow', GETDATE(), 2,2, 4, 15, 9),
+INSERT INTO tbTicket VALUES ('Computer crashed', 'One of my students computer chrashed', GETDATE(), 2,2, 4, 7, 26),
+							('Password not working', 'One of my students password is not working', GETDATE(), 1,1, 2, 8, 27),
+							('E-mail not working', 'One of my students e-mail is not working', GETDATE(), 3,3, 1, 7, 27),
+							('Internet not working', 'Problem with the internet', GETDATE(), 1,1, 3, 8, 26),
+							('Computer will not start', 'Used laptop will not start', GETDATE(), 3,1, 4, 15, 26),
+							('Computer is running slow', 'All the computers in my class is slow', GETDATE(), 2,2, 4, 15, 26),
 							('student e-mail issue', 'I am unable to send or receive email?', GETDATE(), 3,2, 1, 19, 3),
-							('Email conflict', 'I can not receive any email attachments?', GETDATE(), 1,1, 1, 22, 10),
-							('email contact issue', 'Are spaces allowed in email addresses?', GETDATE(), 2,1, 1, 18, 10),
-							('Network reject user', 'I can not connect to my network drive anymore?', GETDATE(), 3,2, 4, 15, 9),
-							('Computer will not start', 'Used laptop will not start', GETDATE(), 3,1, 4, 15, 9)
+							('Email conflict', 'I can not receive any email attachments?', GETDATE(), 1,1, 1, 22, 27),
+							('email contact issue', 'Are spaces allowed in email addresses?', GETDATE(), 2,1, 1, 18, 27),
+							('Network reject user', 'I can not connect to my network drive anymore?', GETDATE(), 3,2, 4, 15, 26),
+							('Computer will not start', 'Used laptop will not start', GETDATE(), 3,1, 4, 15, 26)
 -----------------------------------
 GO 
 CREATE PROCEDURE spGetAssignee
@@ -461,7 +460,7 @@ CREATE PROCEDURE spInsertTicket
 	@TicketStatusID INT = 2,
 	@TicketCategoryID INT = NULL,
 	@ClientID INT = NULL,
-	@AssigneeID INT = 1
+	@AssigneeID INT = NULL 
 )
 AS
 BEGIN
@@ -641,34 +640,41 @@ END
 GO
 CREATE PROCEDURE spGetTimeSpentOnTicket
 (
-	@TimeSpentOnTicketID INT = NULL
+	@TicketID INT,
+	@AssigneeID INT
+	
 )
 AS
 BEGIN
 	SELECT * FROM tbTimeSpentOnTicket
-	WHERE TimeSpentOnTicketID = ISNULL(@TimeSpentOnTicketID,TimeSpentOnTicketID)
+	WHERE TicketID = @TicketID AND AssigneeID = @AssigneeID
 END
 --GO
---EXEC spGetTimeSpentOnTicket
+--EXEC spGetTimeSpentOnTicket @TicketID=4, @AssigneeID=9
 
 --Insert Time Spent On Ticket
 GO
 CREATE PROCEDURE spInsertTimeSpentOnTicket
 (
-	@TimeSpentOnTicket TIME,
-	@DateWorkedOnTicket DATE,
+	@TimeSpentOnTicket INT,
 	@AssigneeID INT,
 	@TicketID INT
 )
 AS
 BEGIN
-	INSERT INTO tbTimeSpentOnTicket VALUES (@TimeSpentOnTicket,@DateWorkedOnTicket,@AssigneeID,@TicketID)
+	IF NOT EXISTS (SELECT * FROM tbTimeSpentOnTicket WHERE AssigneeID = @AssigneeID AND TicketID = @TicketID)
+		BEGIN 
+			INSERT INTO tbTimeSpentOnTicket(TimeSpentOnTicket,DateWorkedOnTicket,AssigneeID,TicketID) VALUES 
+						(DATEADD(MINUTE, @TimeSpentOnTicket ,0),GETDATE(),@AssigneeID,@TicketID)
+		END
+	ELSE 
+		BEGIN 
+			UPDATE tbTimeSpentOnTicket SET TimeSpentOnTicket = DATEADD(MINUTE, @TimeSpentOnTicket ,TimeSpentOnTicket) WHERE AssigneeID = @AssigneeID AND TicketID = @TicketID
+		END
 END
---GO
---EXEC spInsertTimeSpentOnTicket @TimeSpentOnTicket='20:40', @DateWorkedOnTicket='8/26/15',@AssigneeID='8', @TicketID = 
-
-
---Update Time Spent On Ticket
+GO
+--EXEC spInsertTimeSpentOnTicket @TimeSpentOnTicket = 23, @AssigneeID = 2, @TicketID = 1
+--Update Time Spent On Ticket SELECT * FROM tbTimeSpentOnTicket
 GO
 CREATE PROCEDURE spUpdateTimeSpentOnTicket
 (
@@ -702,9 +708,7 @@ END
 --GO
 --EXEC spTimeSpentOnTicket @TimeSpentOnTicketID=1
 
-　
-
-　-----------------------------tbDevice---------------------------------------------------------------------
+-----------------------------tbDevice---------------------------------------------------------------------
 
 
 
@@ -717,7 +721,7 @@ CREATE PROCEDURE spGetDevice
 AS
 BEGIN
 	SELECT * FROM tbDevice
-	WHERE DeviceID = ISNULL(DeviceID ,@DeviceID)
+	WHERE DeviceID = ISNULL(@DeviceID ,DeviceID)
 END
 GO
 EXEC spGetDevice
@@ -789,7 +793,7 @@ CREATE PROCEDURE spGetDeviceBooking
 AS
 BEGIN
 	SELECT * FROM tbDeviceBooking
-	WHERE DeviceBookingID = ISNULL(DeviceBookingID ,@DeviceBookingID)
+	WHERE DeviceBookingID = ISNULL(@DeviceBookingID ,DeviceBookingID)
 END
 GO
 --EXEC spGetDeviceBooking
@@ -1080,11 +1084,15 @@ CREATE PROCEDURE spTicketIdAndSummary
 )
 AS
 BEGIN
-	SELECT TicketID, Summary FROM tbTicket WHERE TicketID = @TicketID
+	SELECT t.TicketID, t.Summary, ts.TimeSpentOnTicket, ts.AssigneeID FROM tbTicket t 
+		LEFT OUTER JOIN tbTimeSpentOnTicket ts ON t.TicketID = ts.TicketID AND t.AssigneeID = ts.AssigneeID
+		WHERE t.TicketID = @TicketID
 END
---GO 
---EXEC spTicketIdAndSummary @TicketID=3
-
+--GO	
+--EXEC spTicketIdAndSummary @TicketID=4
+GO
+SELECT * FROM tbTicket
+SELECT * FROM tbTimeSpentOnTicket
 
 --Ticket Sorting
 Go
@@ -1181,9 +1189,9 @@ BEGIN
 				AND ta.ImagePath NOT like '%.gif'
 END
 GO
+
 EXEC spGetNonImageAttachments @TicketID=13
 
---Get the assignee when ticket selected
 GO
 CREATE PROCEDURE spTicketAssignee
 (
@@ -1196,9 +1204,9 @@ BEGIN
 	WHERE TicketID=@TicketID
 END
 GO
-EXEC spTicketAssignee @TicketID = 1
+	
 
-
+SELECT * FROM tbUser
 --Update ticket assignee
 GO
 CREATE PROCEDURE spUpdateTicketAssignee
@@ -1215,4 +1223,5 @@ EXEC spUpdateTicketAssignee @TicketID = 3, @AssigneeID = 2
 
 
 SELECT * FROM tbTicket
+
 

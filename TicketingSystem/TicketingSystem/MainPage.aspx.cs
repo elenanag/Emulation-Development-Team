@@ -17,6 +17,7 @@ namespace EmulationGroupProject
     {
         string connString = ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString;
         LoginInfo login;
+        
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
@@ -123,18 +124,9 @@ namespace EmulationGroupProject
 
                 BindRepeater();
                 GetAttachment();
-                //GetTicketDetailsForRightSideBar();
             }
         }
         }
-        //private void GetTicketDetailsForRightSideBar()
-        //{
-        //    DAL d = new DAL(connString);
-        //    d.AddParam("TicketID", gvTicket.SelectedValue);
-        //    DataSet ds = d.ExecuteProcedure("spGetTimeSpentOnTicket");
-
-
-        //}
 
         protected void gvTicket_Sorting(object sender, GridViewSortEventArgs e)
         {
@@ -213,6 +205,7 @@ namespace EmulationGroupProject
             Label lblTime = (Label)e.Item.FindControl("lblTime");
             TextBox txtTime = (TextBox)e.Item.FindControl("txtTime");
             Button btn3 = (Button)e.Item.FindControl("btnAddIt");
+            DropDownList ddl = (DropDownList)e.Item.FindControl("ddlAssign");
 
             if (e.CommandName == btn2.CommandName)
             {
@@ -228,23 +221,30 @@ namespace EmulationGroupProject
                 btn3.Visible = false;
                 btn2.Visible = true;
 
+                DAL d = new DAL(connString);
+                d.AddParam("TimeSpentOnTicket", txtTime.Text);
+                d.AddParam("AssigneeID", ddl.SelectedValue);
+                d.AddParam("TicketID", gvTicket.SelectedValue);
+                DataSet ds = d.ExecuteProcedure("spInsertTimeSpentOnTicket");
 
+                int num = Convert.ToInt32(lblTime.Text);
+                lblTime.Text = (num + Convert.ToInt32(txtTime.Text)).ToString();
             }
             else if(e.CommandName == btn.CommandName)
             {
-            DAL d = new DAL(connString);
-            d.AddParam("Comments", txt.Text);
-            d.AddParam("DateOfComments", DateTime.Now);
+                DAL d = new DAL(connString);
+                d.AddParam("Comments", txt.Text);
+                d.AddParam("DateOfComments", DateTime.Now);
                 d.AddParam("AssigneeID", Session["UserID"]);
-            d.AddParam("TicketID", gvTicket.SelectedValue);
-            DataSet ds = d.ExecuteProcedure("spInsertTicketComment");
+                d.AddParam("TicketID", gvTicket.SelectedValue);
+                DataSet ds = d.ExecuteProcedure("spInsertTicketComment");
 
-            BindRepeater();
+                BindRepeater();
 
-            GetAttachment();
+                GetAttachment();
 
-            txt.Text = "";
-        }
+                txt.Text = "";
+            }
         }
 
         private void GetAttachment()
@@ -281,6 +281,8 @@ namespace EmulationGroupProject
 
         protected void dlTicketInfo_ItemDataBound(object sender, DataListItemEventArgs e)
         {
+            string ticketID = ViewState["TicketID"].ToString();
+
             DataList DataList = (DataList)sender;
             DAL d = new DAL(connString);
             DataSet ds = d.ExecuteProcedure("spGetAssignee");
@@ -293,19 +295,37 @@ namespace EmulationGroupProject
         
             d = new DAL(connString);
             ds = new DataSet();
-            d.AddParam("@TicketID", ViewState["TicketID"]);
+            d.AddParam("TicketID", ticketID);
             ds = d.ExecuteProcedure("spTicketAssignee");
-            ddAsignee.SelectedValue = ds.Tables[0].Rows[0]["AssigneeID"].ToString();
-            ddAsignee.SelectedItem.Text = ds.Tables[0].Rows[0]["FirstName"].ToString();
-       
+
+            string assigneeID = ds.Tables[0].Rows[0]["AssigneeID"].ToString();
+
+            ddAsignee.Items.FindByValue(assigneeID).Selected = true;
+
+            Label lblTime = (Label)e.Item.FindControl("lblTime");
+            PopulateTimeSpent(ticketID, assigneeID, lblTime);
         }
         
+        private void PopulateTimeSpent(string ticketID, string assigneeID, Label lbl)
+        {
+            DAL d = new DAL(connString);
+            d.AddParam("TicketID", ticketID);
+            d.AddParam("AssigneeID", assigneeID);
+            DataSet ds = d.ExecuteProcedure("spGetTimeSpentOnTicket");
+
+            if (ds.Tables[0].Rows.Count > 0)
+            {
+                lbl.Text = ds.Tables[0].Rows[0]["TimeSpentOnTicket"].ToString();
+            }
+            
+        }
+
         protected void ddlAssign_SelectedIndexChanged(object sender, EventArgs e)
         {
             DropDownList ddAsignee = (DropDownList)sender;
             DAL d = new DAL(connString);
-            d.AddParam("@TicketID", ViewState["TicketID"]);
-            d.AddParam("@AssigneeID", ddAsignee.SelectedValue);
+            d.AddParam("TicketID", ViewState["TicketID"]);
+            d.AddParam("AssigneeID", ddAsignee.SelectedValue);
             d.ExecuteProcedure("spUpdateTicketAssignee");
         }
         
