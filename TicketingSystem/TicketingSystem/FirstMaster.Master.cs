@@ -16,6 +16,7 @@ namespace EmulationGroupProject
             {
                 lblwelcome.Visible = false;
                 ImgBtnLogOut.Visible = false;
+                lbAdmin.Visible = false;
             }
 
             else
@@ -23,6 +24,11 @@ namespace EmulationGroupProject
                 LoginInfo user = (LoginInfo)Session["user"];
 
                 lblwelcome.Text = user.Email;
+
+                if (user.AccessLevelID == 1){
+                    lbAdmin.Visible = true;
+
+                }
             }
         }
 
@@ -41,6 +47,12 @@ namespace EmulationGroupProject
             Session.Abandon();
             Session.Clear();
             Response.Redirect("LoginPage.aspx");
+        }
+
+        protected void lbAdmin_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("AdminPage.aspx");
+
         }
     }
 }

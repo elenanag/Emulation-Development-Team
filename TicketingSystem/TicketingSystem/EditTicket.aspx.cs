@@ -58,7 +58,14 @@ namespace TicketingSystem
             ddlAssignee.DataValueField = "UserID";
             ddlAssignee.DataSource = ds;
             ddlAssignee.DataBind();
-            
+
+            string TicketID = Request.QueryString["TicketID"].ToString();
+            d = new DAL(connString);
+            ds = new DataSet();
+            d.AddParam("@TicketID", TicketID);
+            ds = d.ExecuteProcedure("spTicketAssignee");
+            ddlAssignee.SelectedValue = ds.Tables[0].Rows[0]["AssigneeID"].ToString();
+            ddlAssignee.SelectedItem.Text = ds.Tables[0].Rows[0]["FirstName"].ToString();
         }
 
         private void PopulatePriority()
