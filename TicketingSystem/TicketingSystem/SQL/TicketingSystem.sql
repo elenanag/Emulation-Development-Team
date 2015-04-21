@@ -1264,4 +1264,15 @@ END
 
 SELECT * FROM tbTicket
 
-
+GO
+CREATE PROCEDURE spGetPersonFromTicket
+(
+	@TicketID INT
+)
+AS
+BEGIN
+	SELECT * FROM tbTicket t
+		JOIN tbUser u ON t.ClientID = u.UserID 
+		WHERE t.TicketID = @TicketID
+END
+GO
