@@ -90,7 +90,6 @@
             <asp:Label ID="lblAccessLevelID" runat="server" Text="Access Level ID:" ForeColor="Black"></asp:Label>
             <asp:TextBox ID="txtAccessLevelID" runat="server" Width="95px"></asp:TextBox>
             <asp:RequiredFieldValidator ValidationGroup="UserGroup" ID="RequiredFieldValidatorAccessLevelID" runat="server" ControlToValidate="txtAccessLevelID" ErrorMessage="Access Level ID Required" Text="*" ForeColor="#990033"></asp:RequiredFieldValidator>
-            
         <br/><br/>
               <asp:Button ValidationGroup="UserGroup" ID="btnAddUser" runat="server" Text="Add User" Height="27px" Width="130px" Font-Bold="True" 
                                Font-Size="Medium" BackColor="Red" ForeColor="#CCCCCC" OnClick="btnAddUser_Click" /><br/>
