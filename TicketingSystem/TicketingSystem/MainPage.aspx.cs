@@ -113,13 +113,13 @@ namespace EmulationGroupProject
             {
                 gvTicket.SelectedIndex = Convert.ToInt32(e.CommandArgument);
                 string ticketID = gvTicket.SelectedDataKey.Value.ToString();
-                    ViewState["TicketID"] = ticketID;
-                    
+                ViewState["TicketID"] = ticketID;
+                
                 DAL d = new DAL(connString);
                 DataSet ds = new DataSet();
                 d.AddParam("@TicketID", ticketID);
                 ds = d.ExecuteProcedure("spTicketIdAndSummary");
-
+                ViewState["TicketStatusID"] = ds.Tables[0].Rows[0]["TicketStatusID"].ToString();
                 dlTicketInfo.DataSource = ds;
                 dlTicketInfo.DataBind();
                 dlTicketInfo.Visible = true;
@@ -218,7 +218,7 @@ namespace EmulationGroupProject
                 btn3.Visible = true;
                 btn2.Visible = false;
             }
-            else if(e.CommandName == btn3.CommandName)
+            else if (e.CommandName == "AddTime")
             {
                 lblTime.Visible = true;
                 txtTime.Visible = false;
@@ -309,6 +309,16 @@ namespace EmulationGroupProject
             Label lblTime = (Label)e.Item.FindControl("lblTime");
             PopulateTimeSpent(ticketID, assigneeID, lblTime);
 
+            Button btn = (Button)e.Item.FindControl("btnAddTime");
+            if (ViewState["TicketStatusID"].ToString() == "3")
+	        {
+                btn.Visible = false;
+	        }
+            else
+            {
+                btn.Visible = true;
+            }
+
             d = new DAL(connString);
             d.AddParam("TicketID", gvTicket.SelectedValue);
             ds = d.ExecuteProcedure("spGetPersonFromTicket");
@@ -349,6 +359,7 @@ namespace EmulationGroupProject
             d.ExecuteProcedure("spCloseTicket");
             PopulateTicketGrid();
 
+            Response.Redirect("MainPage.aspx");
             //SendEmail();
         }
 
