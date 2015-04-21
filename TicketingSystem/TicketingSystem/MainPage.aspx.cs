@@ -167,7 +167,6 @@ namespace EmulationGroupProject
 
         protected void gvTicket_RowDataBound(object sender, GridViewRowEventArgs e)
         {
-            
             try
             {
                 switch (e.Row.RowType)
