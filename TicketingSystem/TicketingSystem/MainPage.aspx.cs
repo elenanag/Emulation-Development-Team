@@ -211,6 +211,7 @@ namespace EmulationGroupProject
             Button btn3 = (Button)e.Item.FindControl("btnAddIt");
             DropDownList ddl = (DropDownList)e.Item.FindControl("ddlAssign");
 
+
             if (e.CommandName == btn2.CommandName)
             {
                 lblTime.Visible = false;
