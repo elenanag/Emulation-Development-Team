@@ -1,4 +1,5 @@
-﻿using DAL_Project;
+﻿using ClassLibrary;
+using DAL_Project;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
@@ -16,6 +17,17 @@ namespace TicketingSystem
         string connString = ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString;
         protected void Page_Load(object sender, EventArgs e)
         {
+
+            if (Session["user"] == null)
+            {
+                Response.Redirect("LoginPage.aspx?");
+            }
+            LoginInfo user = (LoginInfo)Session["user"];
+            if (user.AccessLevelID != 1)
+            {
+                Response.Redirect("LoginPage.aspx?");
+            }
+
             if (!IsPostBack)
             {
                 Refresh();

@@ -76,6 +76,7 @@ namespace EmulationGroupProject
             ddlTicketStatus.DataBind();
 
             ddlTicketStatus.Items.Insert(0, "Ticket Status");
+
         } 
         private void PopulateTicketGrid()
         {
