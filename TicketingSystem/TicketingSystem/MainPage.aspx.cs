@@ -84,7 +84,6 @@ namespace EmulationGroupProject
 
             gvTicket.DataSource = ds;
             gvTicket.DataBind();
-
         }
 
         protected void ddlTicketStatus_SelectedIndexChanged(object sender, EventArgs e) 
@@ -293,18 +292,27 @@ namespace EmulationGroupProject
             ddAsignee.DataTextField = "FirstName";
             ddAsignee.DataValueField = "UserID";
             ddAsignee.DataBind();
-        
+
             d = new DAL(connString);
             ds = new DataSet();
             d.AddParam("TicketID", ticketID);
             ds = d.ExecuteProcedure("spTicketAssignee");
 
             string assigneeID = ds.Tables[0].Rows[0]["AssigneeID"].ToString();
+            
 
             ddAsignee.Items.FindByValue(assigneeID).Selected = true;
-
             Label lblTime = (Label)e.Item.FindControl("lblTime");
             PopulateTimeSpent(ticketID, assigneeID, lblTime);
+
+            d = new DAL(connString);
+            d.AddParam("TicketID", gvTicket.SelectedValue);
+            ds = d.ExecuteProcedure("spGetPersonFromTicket");
+            
+            Label lbl = (Label)e.Item.FindControl("lblClientName");
+            string firstName = ds.Tables[0].Rows[0]["FirstName"].ToString();
+            string lastName = ds.Tables[0].Rows[0]["LastName"].ToString();
+            lbl.Text = firstName + " " + lastName;
         }
         
         private void PopulateTimeSpent(string ticketID, string assigneeID, Label lbl)

@@ -117,7 +117,7 @@
                 </tr>
                 <tr>
                     <td>Client name:</td>
-                    <td><asp:Label ID="Label3" runat="server" Text=""></asp:Label></td>
+                    <td><asp:Label ID="lblClientName" Font-Bold="true" runat="server" Text=""></asp:Label></td>
                 </tr>
             </table>
         </div>
