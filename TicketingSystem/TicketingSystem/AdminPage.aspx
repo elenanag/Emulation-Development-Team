@@ -1,14 +1,14 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/FirstMaster.Master" AutoEventWireup="true" CodeBehind="AdminPage.aspx.cs" Inherits="TicketingSystem.AdminPage" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <div style="text-align:center; ">
-    <asp:Label ID="lblUsers" runat="server" Text="Users" ForeColor="Red" Font-Size="Large" Font-Bold="True"></asp:Label><br />
+    <asp:Label ID="lblUsers" runat="server" Text="Users" ForeColor="Black" Font-Size="Large" Font-Bold="True"></asp:Label><br />
         <br />
     </div>
-    <asp:GridView ID="gvUsers" runat="server" AutoGenerateColumns="False" AllowSorting="True" OnPageIndexChanging="gvUsers_PageIndexChanging"
+    <asp:GridView ID="gvUsers" runat="server" AutoGenerateColumns="False" AllowSorting="True" OnSorting="gvUsers_Sorting" OnPageIndexChanging="gvUsers_PageIndexChanging" OnRowCommand="gvUsers_RowCommand"
                 AllowPaging="True" DataKeyNames="UserID" Font-Bold="True" FooterStyle-BackColor="White" HeaderStyle-BackColor="White" BackColor="#DEBA84" BorderColor="#DEBA84" 
                 GridLines="Horizontal"  BorderStyle="None" BorderWidth="1px" CellPadding="3" CellSpacing="2" Width="1200px" Height="270px">
             <Columns>
-                <asp:ButtonField HeaderText="Select" Text="Select" CommandName="SelectCustomer">
+                <asp:ButtonField HeaderText="Select" Text="Select" CommandName="SelectUser">
 <HeaderStyle ForeColor="White"></HeaderStyle>
                 <ItemStyle ForeColor="Red" />
                 </asp:ButtonField>
@@ -42,11 +42,11 @@
                 <asp:BoundField DataField="AccessLevelID" HeaderText="Access ID" >
                 <ItemStyle ForeColor="Black" HorizontalAlign="Center" />
                 </asp:BoundField>
-                <asp:ButtonField HeaderText="Update" CausesValidation="true" ValidationGroup="CustomerGroup" ShowHeader="True" CommandName="UpdateCustomer" Text="Update " >
+                <asp:ButtonField HeaderText="Update" CausesValidation="true" ValidationGroup="CustomerGroup" ShowHeader="True" CommandName="UpdateUser" Text="Update " >
 <HeaderStyle ForeColor="White"></HeaderStyle>
                 <ItemStyle ForeColor="Red" />
                 </asp:ButtonField>
-                <asp:ButtonField HeaderText="Delete " ShowHeader="True" CommandName="DeleteCustomer" Text="Delete " >
+                <asp:ButtonField HeaderText="Delete " ShowHeader="True" CommandName="DeleteUser" Text="Delete " >
 <HeaderStyle ForeColor="White"></HeaderStyle>
                 <ItemStyle ForeColor="Red" />
                 </asp:ButtonField>
@@ -64,7 +64,7 @@
         </asp:GridView>
 
     <div style="text-align:center">
-         <asp:Label ID="lblUpdate" runat="server" ForeColor="Red" Text="* To Delete or Update Select a row please!" Font-Bold="True"></asp:Label><br />
+         <asp:Label ID="lblUpdate" runat="server" ForeColor="Black" Text="* To Delete or Update Select a row please!" Font-Bold="True"></asp:Label><br />
         <br />
             <asp:Label ID="lblFirstName" runat="server" Text="FirstName:" ForeColor="Black"></asp:Label>
             <asp:TextBox ID="txtFirstName" runat="server" Width="110px"></asp:TextBox>
@@ -92,7 +92,7 @@
             
         <br/><br/>
               <asp:Button ValidationGroup="UserGroup" ID="btnAddUser" runat="server" Text="Add User" Height="27px" Width="130px" Font-Bold="True" 
-                               Font-Size="Medium" BackColor="Red" ForeColor="#CCCCCC" /><br/>
+                               Font-Size="Medium" BackColor="Red" ForeColor="#CCCCCC" OnClick="btnAddUser_Click" /><br/>
         <br />
              <asp:Label ID="lblResult" runat="server" Text="" ForeColor="#CC0000" Font-Bold="True"></asp:Label>
         <asp:ValidationSummary ValidationGroup="UserGroup" ID="ValidationSummary" runat="server" ForeColor="Red" Font-Bold="True"/>

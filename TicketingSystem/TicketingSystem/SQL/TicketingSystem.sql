@@ -31,51 +31,51 @@ AccessLevelID INT FOREIGN KEY REFERENCES tbUserAccessLevel(AccessLevelID)
 GO
 
 INSERT INTO tbUser VALUES ('Unasigned','Unasigned', 'Unasigned', 'Unasigned', 'Unasigned@robertsoncollege.net', 'Unasigned', 2),
-						('Elena','Nagberi', 'admin', '204-345-4567', 'elena.nagberi@robertsoncollege.net', 'elena', 1),
-						('Kulwinder','Brar', 'admin', '204-999-4789', 'kulwinder.brar@robertsoncollege.net', 'brar', 1),
-						('Justine','Dela Cruz', 'admin', '204-345-4567', 'justine.dela_cruz@robertsoncollege.net', '12345', 1),
-						('Scott','Wachal', 'admin', '204-345-4567', 'scott.wachal@robertsoncollege.net', 'scott', 1),
-						('Mark','Remoto', 'admin', '204-345-4567', 'mark.remoto@robertsoncollege.net', '12345', 1),
-						('Rick','Monias', 'admin', '204-345-4567', 'rick.monias@robertsoncollege.net', '12345', 1),
-						('John','Smith', 'client', '204-345-4567', 'jsmith@robertsoncollege.net', '12345', 0),
-						('Martin','Johnson', 'client', '204-345-4567', 'mjohnson@robertsoncollege.net', '12345', 0),
-						('Jeremy','Cline', 'client', '204-230-1234', 'jCline@robertsoncollege.net', '12345', 0),
-						('laine','North', 'client', '204-345-4567', 'lnorth@robertsoncollege.net', '12345', 0),
-						('Paul','Clark', 'client', '204-575-3284', 'pclark@robertsoncollege.net', '12345', 0),
-						('Linda','Babe', 'client', '204-222-8763', 'lbabe@robertsoncollege.net', '12345', 0),
-						('Belinda','Cook', 'client', '204-232-9876', 'bcook@robertsoncollege.net', '12345', 0),
-					    ('Wendy','Ross', 'client', '204-898-2121', 'wross@robertsoncollege.net', '12345', 0),						
-						('Helen','Thomas', 'client', '204-212-3432', 'hthomas@robertsoncollege.net', '12345', 0),
-						('Selena','Clark', 'client', '204-243-2222', 'sclark@robertsoncollege.net', '12345', 0),
-						('Ralph','Black', 'client', '204-212-3245', 'rblack@robertsoncollege.net', '12345', 0),
-						('Ellen','Esteban', 'client', '204-230-3131', 'eesteban@robertsoncollege.net', '12345', 0),
-						('Emily','Mask', 'client', '204-989-0833', 'emask@robertsoncollege.net', '12345', 0),
-						('Ernest','Wolf', 'client', '204-962-3244', 'ewolf@robertsoncollege.net', '12345', 0),
-						('Trello','Works', 'client', '204-453-2736', 'tworks@robertsoncollege.net', '12345', 0),
-						('Robert','Son', 'client', '204-312-3232', 'rson@robertsoncollege.net', '12345', 0),
-						('Johanee','Paul', 'assignee', '204-345-4567', 'jpaul@robertsoncollege.net', '12345', 2),
-						('Ronald','Moris', 'assignee', '204-345-4567', 'rmoris@robertsoncollege.net', '12345', 2),
-						('Walter','Mckay','assignee','204-414-3123','wmckay@robertsoncollege.net','12345',2),
-						('Brian','Mcleod','assignee','204-583-8766','bmcleod@robertsoncollege.net','12345',2),
-						('Stacy','Ross','assignee','204-423-8765','sross@robertsoncollege.net','12345',2),
-						('Winston','Katch','assignee','204-676-2222','wkatch@robertsoncollege.net','12345',2),
-						('Quinton','Frost','assignee','204-898-2134','qfrost@robertsoncollege.net','12345',2),
-						('Trent','Spice','assignee','204-222-2345','tSpice@robertsoncollege.net','12345',2),
-						('Carl','Draft','assignee','204-211-2133','cdraft@robertsoncollege.net','12345',2),
-						('Alex','Blacksmith','assignee','204-222-3131','ablacksmith@robertsoncollege.net','12345',2),
-						('Erin','Mcintosh','assignee','204-414-2311','emcintosh@robertsoncollege.net','12345',2),
-						('Veverly','Wormly','assignee','204-989-4653','vwormly@robertsoncollege.net','12345',2),
-						('Tim','Smith','assignee','204-323-8764','tsmith@robertsoncollege.net','12345',2),
-						('Mark','Abigail','assignee','204-234-0983','mAbigail@robertsoncollege.net','12345',2),
-						('Fred','West','assignee','204-978-2133','fwest@robertsoncollege.net','12345',2),
-						('Tilly','Graham','assignee','204-898-2134','tgraham@robertsoncollege.net','12345',2),
-						('Disney','North','assignee','204-453-3261','dnorth@robertsoncollege.net','12345',2),
-						('Dugald','Drive','assignee','204-978-2133','ddrive@robertsoncollege.net','12345',2),
-						('Felix','Spence','assignee','204-414-3131','fspence@robertsoncollege.net','12345',2),
-						('Stacy','Traverse','assignee','204-898-3535','straverse@robertsoncollege.net','12345',2),
-						('Dinah','Michaels','assignee','204-999-2334','dmichaels@robertsoncollege.net','12345',2),
-						('Dredge','Reaper','assignee','204-241-3245','dreaper@robertsoncollege.net','12345',2),
-						('Tara','Young','assignee','204-898-2344','tyoung@robertsoncollege.net','12345',2)			
+						('Elena','Nagberi', 'admin', '(204) 345-4567', 'elena.nagberi@robertsoncollege.net', 'elena', 1),
+						('Kulwinder','Brar', 'admin', '(204) 345-4567', 'kulwinder.brar@robertsoncollege.net', 'brar', 1),
+						('Justine','Dela Cruz', 'admin', '(204) 345-4567', 'justine.dela_cruz@robertsoncollege.net', '12345', 1),
+						('Scott','Wachal', 'admin', '(204) 345-4567', 'scott.wachal@robertsoncollege.net', 'scott', 1),
+						('Mark','Remoto', 'admin', '(204) 345-4567', 'mark.remoto@robertsoncollege.net', '12345', 1),
+						('Rick','Monias', 'admin', '(204) 345-4567', 'rick.monias@robertsoncollege.net', '12345', 1),
+						('John','Smith', 'client', '(204) 345-4567', 'jsmith@robertsoncollege.net', '12345', 0),
+						('Martin','Johnson', 'client', '(204) 345-4567', 'mjohnson@robertsoncollege.net', '12345', 0),
+						('Jeremy','Cline', 'client', '(204) 345-1234', 'jCline@robertsoncollege.net', '12345', 0),
+						('laine','North', 'client', '(204) 345-1234', 'lnorth@robertsoncollege.net', '12345', 0),
+						('Paul','Clark', 'client', '(204) 345-1234', 'pclark@robertsoncollege.net', '12345', 0),
+						('Linda','Babe', 'client', '(204) 345-1234', 'lbabe@robertsoncollege.net', '12345', 0),
+						('Belinda','Cook', 'client', '(204) 345-1234', 'bcook@robertsoncollege.net', '12345', 0),
+					    ('Wendy','Ross', 'client', '(204) 345-2211', 'wross@robertsoncollege.net', '12345', 0),						
+						('Helen','Thomas', 'client', '(204) 345-2211', 'hthomas@robertsoncollege.net', '12345', 0),
+						('Selena','Clark', 'client', '(204) 345-2211', 'sclark@robertsoncollege.net', '12345', 0),
+						('Ralph','Black', 'client', '(204) 345-2211', 'rblack@robertsoncollege.net', '12345', 0),
+						('Ellen','Esteban', 'client', '(204) 345-2211', 'eesteban@robertsoncollege.net', '12345', 0),
+						('Emily','Mask', 'client', '(204) 345-2324', 'emask@robertsoncollege.net', '12345', 0),
+						('Ernest','Wolf', 'client', '(204) 345-2324', 'ewolf@robertsoncollege.net', '12345', 0),
+						('Trello','Works', 'client', '(204) 345-2324', 'tworks@robertsoncollege.net', '12345', 0),
+						('Robert','Son', 'client', '(204) 345-2324', 'rson@robertsoncollege.net', '12345', 0),
+						('Johanee','Paul', 'assignee', '(204) 345-2324', 'jpaul@robertsoncollege.net', '12345', 2),
+						('Ronald','Moris', 'assignee', '(204) 345-2324', 'rmoris@robertsoncollege.net', '12345', 2),
+						('Walter','Mckay','assignee','(204) 345-8765','wmckay@robertsoncollege.net','12345',2),
+						('Brian','Mcleod','assignee','(204) 345-8765','bmcleod@robertsoncollege.net','12345',2),
+						('Stacy','Ross','assignee','(204) 345-8765','sross@robertsoncollege.net','12345',2),
+						('Winston','Katch','assignee','(204) 345-8765','wkatch@robertsoncollege.net','12345',2),
+						('Quinton','Frost','assignee','(204) 345-4876','qfrost@robertsoncollege.net','12345',2),
+						('Trent','Spice','assignee','(204) 345-4876','tSpice@robertsoncollege.net','12345',2),
+						('Carl','Draft','assignee','(204) 345-4876','cdraft@robertsoncollege.net','12345',2),
+						('Alex','Blacksmith','assignee','(204) 345-4876','ablacksmith@robertsoncollege.net','12345',2),
+						('Erin','Mcintosh','assignee','(204) 345-4876','emcintosh@robertsoncollege.net','12345',2),
+						('Veverly','Wormly','assignee','(204) 345-4876','vwormly@robertsoncollege.net','12345',2),
+						('Tim','Smith','assignee','(204) 345-4876','tsmith@robertsoncollege.net','12345',2),
+						('Mark','Abigail','assignee','(204) 345-4876','mAbigail@robertsoncollege.net','12345',2),
+						('Fred','West','assignee','(204) 345-4876','fwest@robertsoncollege.net','12345',2),
+						('Tilly','Graham','assignee','(204) 345-2134','tgraham@robertsoncollege.net','12345',2),
+						('Disney','North','assignee','(204) 345-2134','dnorth@robertsoncollege.net','12345',2),
+						('Dugald','Drive','assignee','(204) 345-2134','ddrive@robertsoncollege.net','12345',2),
+						('Felix','Spence','assignee','(204) 345-2134','fspence@robertsoncollege.net','12345',2),
+						('Stacy','Traverse','assignee','(204) 345-2134','straverse@robertsoncollege.net','12345',2),
+						('Dinah','Michaels','assignee','(204) 345-8978','dmichaels@robertsoncollege.net','12345',2),
+						('Dredge','Reaper','assignee','(204) 345-8978','dreaper@robertsoncollege.net','12345',2),
+						('Tara','Young','assignee','(204) 345-8978','tyoung@robertsoncollege.net','12345',2)			
 
 GO
 CREATE TABLE tbTicketCategory
@@ -1261,6 +1261,39 @@ END
 --GO
 --EXEC spCloseTicket @TicketID = 2
 
+
+--Sorting user procedure---
+GO
+CREATE PROCEDURE spSortUser
+(
+	@Sort VARCHAR (20) = 'UserID',
+	@SortDirection VARCHAR (4) = 'ASC'
+)
+AS
+BEGIN
+	IF @SortDirection = 'ASC'
+		BEGIN
+			IF @Sort = 'UserID' 
+				SELECT * FROM tbUser ORDER BY UserID ASC
+			ELSE IF @Sort = 'FirstName' 
+				SELECT * FROM tbUser ORDER BY FirstName ASC
+			ELSE IF @Sort = 'LastName'
+				SELECT * FROM tbUser ORDER BY LastName ASC
+		END
+	ELSE 
+		BEGIN
+			IF @Sort = 'UserID' 
+				SELECT * FROM tbUser ORDER BY UserID DESC
+			ELSE IF @Sort = 'FirstName' 
+				SELECT * FROM tbUser ORDER BY FirstName DESC
+			ELSE IF @Sort = 'LastName'
+				SELECT * FROM tbUser ORDER BY LastName DESC
+		END
+END
+--GO
+--EXEC spSortUser @Sort = 'FirstName', @SortDirection = 'DESC'
+--EXEC spSortUser @Sort = 'LastName', @SortDirection = 'DESC'
+--EXEC spSortUser @Sort = 'UserID', @SortDirection = 'ASC'
 
 SELECT * FROM tbTicket
 
