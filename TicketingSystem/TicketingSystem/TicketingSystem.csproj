@@ -58,6 +58,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="AboutUs.aspx" />
+    <Content Include="AdminCategoryPage.aspx" />
     <Content Include="AdminPage.aspx" />
     <Content Include="EditTicket.aspx" />
     <Content Include="FAQs.aspx" />
@@ -138,6 +139,13 @@
     </Compile>
     <Compile Include="AboutUs.aspx.designer.cs">
       <DependentUpon>AboutUs.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="AdminCategoryPage.aspx.cs">
+      <DependentUpon>AdminCategoryPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AdminCategoryPage.aspx.designer.cs">
+      <DependentUpon>AdminCategoryPage.aspx</DependentUpon>
     </Compile>
     <Compile Include="AdminPage.aspx.cs">
       <DependentUpon>AdminPage.aspx</DependentUpon>

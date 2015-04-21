@@ -1,5 +1,6 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/FirstMaster.Master" AutoEventWireup="true" CodeBehind="AdminPage.aspx.cs" Inherits="TicketingSystem.AdminPage" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+        <div style="padding-left:1030px;"><asp:LinkButton ID="lbTicketCategory" runat="server" Text="Go To Ticket Category" ForeColor="#CC0000" Font-Bold="True" OnClick="lbTicketCategory_Click"></asp:LinkButton></div>
     <div style="text-align:center; ">
     <asp:Label ID="lblUsers" runat="server" Text="Users" ForeColor="Black" Font-Size="Large" Font-Bold="True"></asp:Label><br />
         <br />
@@ -94,7 +95,7 @@
               <asp:Button ValidationGroup="UserGroup" ID="btnAddUser" runat="server" Text="Add User" Height="27px" Width="130px" Font-Bold="True" 
                                Font-Size="Medium" BackColor="Red" ForeColor="#CCCCCC" OnClick="btnAddUser_Click" /><br/>
         <br />
-             <asp:Label ID="lblResult" runat="server" Text="" ForeColor="#CC0000" Font-Bold="True"></asp:Label>
+             <asp:Label ID="lblResult" runat="server" Text="" ForeColor="Red" Font-Bold="True"></asp:Label>
         <asp:ValidationSummary ValidationGroup="UserGroup" ID="ValidationSummary" runat="server" ForeColor="Red" Font-Bold="True"/>
       </div>
 </asp:Content>

@@ -16,6 +16,8 @@ namespace TicketingSystem
         string connString = ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString;
         protected void Page_Load(object sender, EventArgs e)
         {
+            lblResult.Text = "";
+
             if (!IsPostBack)
             {
                 ViewState["Sort"] = "UserID";
@@ -163,7 +165,6 @@ namespace TicketingSystem
 
         protected void btnAddUser_Click(object sender, EventArgs e)
         {
-            string userID = gvUsers.SelectedDataKey.Value.ToString();
             DAL d = new DAL(connString);
             DataSet ds = new DataSet();
       
@@ -178,6 +179,11 @@ namespace TicketingSystem
             ds = d.ExecuteProcedure("spInsertUser");
 
             Refresh();
+        }
+
+        protected void lbTicketCategory_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("AdminCategoryPage.aspx");
         }
     }
 }
