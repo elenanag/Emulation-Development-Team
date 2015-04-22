@@ -86,9 +86,9 @@
         <div id="rightSideBar">
         <table style="text-align:center; width:199px"">
             <tr>
-                <td><asp:Button ID="btnHigh" BackColor="White"  BorderStyle="None" runat="server" Text="High" /></td>
-                <td><asp:Button ID="btnMed"  BackColor="White" BorderStyle="None" runat="server" Text="Medium" /></td>
-                <td><asp:Button ID="btnLow"  BackColor="White" BorderStyle="None" runat="server" Text="Low" /></td>
+                <td><asp:Button ID="btnHigh" Width="70px" Height="30px" CommandName="High" BackColor="White" BorderStyle="Ridge" runat="server" Text="High" /></td>
+                <td><asp:Button ID="btnMed"  Width="70px" Height="30px" CommandName="Medium" BackColor="White" BorderStyle="Ridge" runat="server" Text="Medium" /></td>
+                <td><asp:Button ID="btnLow"  Width="70px" Height="30px" CommandName="Low" BackColor="White" BorderStyle="Ridge" runat="server" Text="Low" /></td>
             </tr>
         </table>
             <hr />
