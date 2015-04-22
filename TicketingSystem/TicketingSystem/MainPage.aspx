@@ -137,7 +137,7 @@
         </asp:DataList>
     </div>
  
-    <div style ="padding-left:750px;">
+    <div style ="float:right; padding-right:200px">
      <asp:DataList ID="dlImage" runat="server" RepeatColumns="5" Visible="False" >
         <ItemTemplate>
             <h4>Image:</h4>
