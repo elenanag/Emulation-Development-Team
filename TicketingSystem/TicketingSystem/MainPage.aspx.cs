@@ -351,6 +351,8 @@ namespace EmulationGroupProject
             d.AddParam("TicketID", ViewState["TicketID"]);
             d.AddParam("AssigneeID", ddAsignee.SelectedValue);
             d.ExecuteProcedure("spUpdateTicketAssignee");
+
+            PopulateTicketGrid();
         }
 
         protected void ImgBtnClose_Click(object sender, ImageClickEventArgs e)
@@ -362,6 +364,15 @@ namespace EmulationGroupProject
 
             Response.Redirect("MainPage.aspx");
             //SendEmail();
+        }
+
+        protected void ImageButtonSearch_Click(object sender, ImageClickEventArgs e)
+        {
+            DAL d = new DAL(connString);
+            d.AddParam("@Summary", txtSearch.Text);
+            gvTicket.DataSource = d.ExecuteProcedure("spSearchTicket"); 
+            gvTicket.DataBind();
+
         }
 
         //private void SendEmail()
