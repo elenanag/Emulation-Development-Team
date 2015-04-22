@@ -103,9 +103,9 @@ namespace TicketingSystem
             DataSet ds = new DataSet();
             d.AddParam("@TicketCategoryID", categoryID);
             d.AddParam("@CategoryName", txtTicketCategoryName.Text);
-
             ds = d.ExecuteProcedure("spUpdateTicketCategory");
 
+            txtTicketCategoryName.Text = "";
             Refresh();
         }
 
@@ -116,6 +116,7 @@ namespace TicketingSystem
             d.AddParam("@CategoryName", txtTicketCategoryName.Text);
             ds = d.ExecuteProcedure("spInsertTicketCategory");
 
+            txtTicketCategoryName.Text = "";
             Refresh();
         }
 

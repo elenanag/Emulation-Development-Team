@@ -172,6 +172,7 @@ namespace TicketingSystem
 
             ds = d.ExecuteProcedure("spUpdateUser");
 
+            BlankTextboxes();
             Refresh();
         }
 
@@ -190,7 +191,19 @@ namespace TicketingSystem
 
             ds = d.ExecuteProcedure("spInsertUser");
 
+            BlankTextboxes();
             Refresh();
+        }
+
+        private void BlankTextboxes()
+        {
+            txtFirstName.Text = "";
+            txtLastName.Text = "";
+            txtTitle.Text = "";
+            txtPhone.Text = "";
+            txtEmail.Text = "";
+            txtPassword.Text = "";
+            txtAccessLevelID.Text = "";
         }
 
         protected void lbTicketCategory_Click(object sender, EventArgs e)

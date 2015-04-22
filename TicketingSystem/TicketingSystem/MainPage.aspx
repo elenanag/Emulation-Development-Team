@@ -11,7 +11,7 @@
                             <asp:Button ID="btnNewTicket" runat="server" Text="New Ticket" Height="28px" Width="100px" Font-Bold="True" OnClick="btnNewTicket_Click" />&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
                              </td>
             <td>
-            <asp:TextBox ID="txtSearch" runat="server" placeholder="Search Tickets" Height="25px" Width="220px"></asp:TextBox>
+            <asp:TextBox ID="txtSearch" runat="server" placeholder="Search Tickets" Height="25px" Width="220px" onkeydown = "return (event.keyCode!=13);"></asp:TextBox>
                    </td><td>
                         <asp:ImageButton ID="ImageButtonSearch" runat="server" src="images/Search.png" Height="26px" Width="32px" OnClick="ImageButtonSearch_Click" />
                         </td></tr></table></div>
@@ -136,21 +136,16 @@
         </ItemTemplate>
         </asp:DataList>
     </div>
-  
- 
  
     <div style ="padding-left:750px;">
-     <asp:DataList ID="dlImage" runat="server" RepeatColumns="3" Visible="False" >
+     <asp:DataList ID="dlImage" runat="server" RepeatColumns="5" Visible="False" >
         <ItemTemplate>
-            <h3>Image:</h3>
+            <h4>Image:</h4>
              <a href='<%# Eval("ImagePath") %>' class="group1" rel="grouped">
-             <asp:Image ID="imagelightbox" runat="server" ImageUrl='<%# Eval("ImagePath") %>' Width="90" Height="60" />
-            </a>
-          
-             <br />    
+             <asp:Image ID="imagelightbox" runat="server" ImageUrl='<%# Eval("ImagePath") %>' Width="50" Height="30" />
+            </a> 
      </ItemTemplate>    
     </asp:DataList>
-
      <asp:DataList ID="dlAttachments" runat="server" RepeatColumns="1" Visible="False" >
         <ItemTemplate>
             <h3>Attachment:</h3> <br/>
@@ -158,7 +153,6 @@
               <br />    
      </ItemTemplate>    
     </asp:DataList>
-
     </div>
     
     <asp:Panel ID="panelActivity" Visible="false" runat="server">
