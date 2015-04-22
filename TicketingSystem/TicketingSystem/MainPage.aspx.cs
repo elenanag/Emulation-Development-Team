@@ -256,21 +256,22 @@ namespace EmulationGroupProject
             else if(e.CommandName == "High")
             {
                 BindPriority(e.CommandName);
-                btnHigh.Style.Add("Background-color", "red");
+                btnHigh.Style.Add("Background-color", "#EC3C2D");
                 btnMed.Style.Add("Background-color", "white");
                 btnLow.Style.Add("Background-color", "white");
             }
             else if (e.CommandName == "Medium")
             {
                 BindPriority(e.CommandName);
-                btnMed.Style.Add("Background-color", "yellow");
+                btnMed.Style.Add("Background-color", "#d9bd34");
                 btnHigh.Style.Add("Background-color", "white");
                 btnLow.Style.Add("Background-color", "white");
+                
             }
             else if (e.CommandName == "Low")
             {
                 BindPriority(e.CommandName);
-                btnLow.Style.Add("Background-color", "green");
+                btnLow.Style.Add("Background-color", "#42d934");
                 btnMed.Style.Add("Background-color", "white");
                 btnHigh.Style.Add("Background-color", "white");
             }
@@ -344,15 +345,15 @@ namespace EmulationGroupProject
             Button btnLow = (Button)e.Item.FindControl("btnLow");
             if(gvTicket.SelectedRow.Cells[3].Text == "High")
             {
-                btnHigh.Style.Add("Background-color", "red");
+                btnHigh.Style.Add("Background-color", "#EC3C2D");
             }
             else if(gvTicket.SelectedRow.Cells[3].Text == "Medium")
             {
-                btnMed.Style.Add("Background-color", "yellow");
+                btnMed.Style.Add("Background-color", "#d9bd34");
             }
             else if (gvTicket.SelectedRow.Cells[3].Text == "Low")
             {
-                btnLow.Style.Add("Background-color", "green");
+                btnLow.Style.Add("Background-color", "#42d934");
             }
             
             ddAsignee.Items.FindByValue(assigneeID).Selected = true;
