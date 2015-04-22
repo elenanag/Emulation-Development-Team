@@ -64,6 +64,8 @@ namespace TicketingSystem
             gvUsers.PageIndex = e.NewPageIndex;
             gvUsers.DataBind();
 
+            gvUsers.SelectedRowStyle.BackColor = ColorTranslator.FromHtml("#FFF7E7");
+                
             Refresh();
         }
 
@@ -152,7 +154,7 @@ namespace TicketingSystem
             {
                 lblResult.Text = "Cannot Delete selected User!";
             }
-
+            BlankTextboxes();
             Refresh();
         }
 

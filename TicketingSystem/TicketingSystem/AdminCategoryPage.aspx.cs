@@ -92,7 +92,7 @@ namespace TicketingSystem
             {
                 lblCategoryResult.Text = "Cannot Delete selected Category!";
             }
-
+            txtTicketCategoryName.Text = "";
             Refresh();
         }
 

@@ -25,9 +25,13 @@ namespace EmulationGroupProject
 
                 lblwelcome.Text = user.Email;
 
-                if (user.AccessLevelID == 1){
+                if (user.AccessLevelID == 1)
+                {
                     lbAdmin.Visible = true;
 
+                }
+                else {
+                    lbAdmin.Visible = false;
                 }
             }
         }
