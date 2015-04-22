@@ -1320,3 +1320,18 @@ END
 --EXEC spSortUser @Sort = 'FirstName', @SortDirection = 'DESC'
 --EXEC spSortUser @Sort = 'LastName', @SortDirection = 'DESC'
 --EXEC spSortUser @Sort = 'UserID', @SortDirection = 'ASC'
+GO
+CREATE PROCEDURE spChangePriority
+(
+	@TicketID INT,
+	@Priority VARCHAR(6)
+)
+AS
+BEGIN
+	IF @Priority = 'High'
+		UPDATE tbTicket SET TicketPriorityID = 1 WHERE TicketID = @TicketID
+	ELSE IF @Priority = 'Medium'
+		UPDATE tbTicket SET TicketPriorityID = 2 WHERE TicketID = @TicketID
+	ELSE IF @Priority = 'Low'
+		UPDATE tbTicket SET TicketPriorityID = 3 WHERE TicketID = @TicketID
+END

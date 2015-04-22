@@ -210,6 +210,9 @@ namespace EmulationGroupProject
             TextBox txtTime = (TextBox)e.Item.FindControl("txtTime");
             Button btn3 = (Button)e.Item.FindControl("btnAddIt");
             DropDownList ddl = (DropDownList)e.Item.FindControl("ddlAssign");
+            Button btnHigh = (Button)e.Item.FindControl("btnHigh");
+            Button btnMed = (Button)e.Item.FindControl("btnMed");
+            Button btnLow = (Button)e.Item.FindControl("btnLow");
 
 
             if (e.CommandName == btn2.CommandName)
@@ -250,6 +253,37 @@ namespace EmulationGroupProject
 
                 txt.Text = "";
             }
+            else if(e.CommandName == "High")
+            {
+                BindPriority(e.CommandName);
+                btnHigh.Style.Add("Background-color", "red");
+                btnMed.Style.Add("Background-color", "white");
+                btnLow.Style.Add("Background-color", "white");
+            }
+            else if (e.CommandName == "Medium")
+            {
+                BindPriority(e.CommandName);
+                btnMed.Style.Add("Background-color", "yellow");
+                btnHigh.Style.Add("Background-color", "white");
+                btnLow.Style.Add("Background-color", "white");
+            }
+            else if (e.CommandName == "Low")
+            {
+                BindPriority(e.CommandName);
+                btnLow.Style.Add("Background-color", "green");
+                btnMed.Style.Add("Background-color", "white");
+                btnHigh.Style.Add("Background-color", "white");
+            }
+        }
+
+        private void BindPriority(string name)
+        {
+            DAL d = new DAL(connString);
+            d.AddParam("TicketID", gvTicket.SelectedValue);
+            d.AddParam("Priority", name);
+            DataSet ds = d.ExecuteProcedure("spChangePriority");
+
+            PopulateTicketGrid();
         }
 
         private void GetAttachment()
@@ -304,8 +338,23 @@ namespace EmulationGroupProject
             ds = d.ExecuteProcedure("spTicketAssignee");
 
             string assigneeID = ds.Tables[0].Rows[0]["AssigneeID"].ToString();
-            
 
+            Button btnHigh = (Button)e.Item.FindControl("btnHigh");
+            Button btnMed = (Button)e.Item.FindControl("btnMed");
+            Button btnLow = (Button)e.Item.FindControl("btnLow");
+            if(gvTicket.SelectedRow.Cells[3].Text == "High")
+            {
+                btnHigh.Style.Add("Background-color", "red");
+            }
+            else if(gvTicket.SelectedRow.Cells[3].Text == "Medium")
+            {
+                btnMed.Style.Add("Background-color", "yellow");
+            }
+            else if (gvTicket.SelectedRow.Cells[3].Text == "Low")
+            {
+                btnLow.Style.Add("Background-color", "green");
+            }
+            
             ddAsignee.Items.FindByValue(assigneeID).Selected = true;
             Label lblTime = (Label)e.Item.FindControl("lblTime");
             PopulateTimeSpent(ticketID, assigneeID, lblTime);
