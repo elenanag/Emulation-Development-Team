@@ -544,14 +544,20 @@ END
 GO
 CREATE PROCEDURE spSearchTicket
 (
-	@Description VARCHAR(MAX)
+	@Summary VARCHAR(MAX)
 )
 AS
 BEGIN
-	SELECT * FROM tbTicket WHERE Description LIKE '%' + @Description + '%'
+	SELECT t.TicketID,t.Summary,ts.TicketStatusName, u.Email, tp.TicketPriorityName,t.DateCreated 
+	FROM tbTicket t JOIN tbTicketStatus ts ON ts.TicketStatusID = t.TicketStatusID
+	JOIN tbTicketPriority tp ON tp.TicketPriorityID = t.TicketPriorityID
+	JOIN tbUser u ON u.UserID = t.ClientID
+	WHERE t.Summary LIKE '%' + @Summary + '%' OR CONVERT (VARCHAR (MAX), t.TicketID) LIKE '%' + @Summary + '%' OR u.Email LIKE '%' + @Summary + '%'
+	OR ts.TicketStatusName LIKE '%' + @Summary + '%' OR tp.TicketPriorityName LIKE '%' + @Summary + '%' OR CONVERT(VARCHAR(100),t.DateCreated,101) LIKE '%' + @Summary + '%'
+
 END
 GO
-EXEC spSearchTicket @Description='com'
+EXEC spSearchTicket @Summary = '10'
 
 
 -----------------------------tbTicketComment---------------------------------------------------------------------
@@ -1218,11 +1224,15 @@ CREATE PROCEDURE spUpdateTicketAssignee
 )
 AS
 BEGIN
-	UPDATE tbTicket SET AssigneeID = @AssigneeID WHERE TicketID=@TicketID
+	
+	IF @AssigneeID = 1
+		UPDATE tbTicket SET AssigneeID = @AssigneeID, TicketStatusID = 2 WHERE TicketID=@TicketID 
+	ELSE
+		UPDATE tbTicket SET AssigneeID = @AssigneeID, TicketStatusID = 1 WHERE TicketID=@TicketID 
 END
 GO
-EXEC spUpdateTicketAssignee @TicketID = 3, @AssigneeID = 2
-
+EXEC spUpdateTicketAssignee @TicketID = 5, @AssigneeID = 1
+select * from tbTicket
 
 --Print ticket info
 GO
@@ -1320,6 +1330,8 @@ END
 --EXEC spSortUser @Sort = 'FirstName', @SortDirection = 'DESC'
 --EXEC spSortUser @Sort = 'LastName', @SortDirection = 'DESC'
 --EXEC spSortUser @Sort = 'UserID', @SortDirection = 'ASC'
+
+
 GO
 CREATE PROCEDURE spChangePriority
 (
