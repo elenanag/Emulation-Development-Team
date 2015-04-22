@@ -1,11 +1,20 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/FirstMaster.Master" AutoEventWireup="true" CodeBehind="MainPage.aspx.cs" enableEventValidation="false" Inherits="EmulationGroupProject.MainPage" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    <div style="text-align:center" >
+    <div style="padding-left:200px;" >
         <link href="StyleSheet2.css" rel="stylesheet" />
-        <asp:Label ID="lblBoard" runat="server" Font-Bold="true" Font-Names="Arial" Font-Size="Large" Text="Ticket Board"></asp:Label> &nbsp&nbsp 
-        <asp:DropDownList ID="ddlTicketStatus" runat="server" Height="28px" Width="135px" AutoPostBack="True" OnSelectedIndexChanged="ddlTicketStatus_SelectedIndexChanged"></asp:DropDownList>&nbsp&nbsp
-        <asp:Button ID="btnNewTicket" runat="server" Text="New Ticket" Height="28px" Width="100px" Font-Bold="True" OnClick="btnNewTicket_Click" />
+        <table><tr><td>
+            <asp:Label ID="lblBoard" runat="server" Font-Bold="true" Font-Names="Arial" Font-Size="XLarge" Text="Ticket Board"></asp:Label> &nbsp&nbsp 
+                   </td><td>
+                        <asp:DropDownList ID="ddlTicketStatus" runat="server" Height="28px" Width="135px" AutoPostBack="True" OnSelectedIndexChanged="ddlTicketStatus_SelectedIndexChanged"></asp:DropDownList>&nbsp&nbsp
+                        </td><td>
+                            <asp:Button ID="btnNewTicket" runat="server" Text="New Ticket" Height="28px" Width="100px" Font-Bold="True" OnClick="btnNewTicket_Click" />&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                             </td>
+            <td>
+            <asp:TextBox ID="txtSearch" runat="server" placeholder="Search Tickets" Height="25px" Width="220px"></asp:TextBox>
+                   </td><td>
+                        <asp:ImageButton ID="ImageButtonSearch" runat="server" src="images/Search.png" Height="26px" Width="32px" OnClick="ImageButtonSearch_Click" />
+                        </td></tr></table></div>
          <br /><br />
         <asp:GridView ID="gvTicket" BorderStyle="Solid" runat="server" CellPadding="4" ForeColor="#333333" GridLines="None" Height="134px" Width="1130px" 
                         AutoGenerateColumns="False" OnRowCommand="gvTicket_RowCommand" DataKeyNames="TicketID" AllowSorting="True"

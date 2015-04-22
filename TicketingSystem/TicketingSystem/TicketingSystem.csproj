@@ -115,6 +115,7 @@
     <Content Include="images\response.gif" />
     <Content Include="images\response.jpg" />
     <Content Include="images\robertson.jpeg" />
+    <Content Include="images\Search.png" />
     <Content Include="images\search_h2_bg.gif" />
     <Content Include="images\submit_bg.gif" />
     <Content Include="images\top_btn_h.gif" />
