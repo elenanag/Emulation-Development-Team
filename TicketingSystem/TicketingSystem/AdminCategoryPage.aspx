@@ -14,7 +14,7 @@
             <Columns>
                 <asp:ButtonField HeaderText="Select" Text="Select" CommandName="SelectCategory">
                 <HeaderStyle HorizontalAlign="Center" />
-                <ItemStyle ForeColor="Red" Font-Bold="True" HorizontalAlign="Center" />
+                <ItemStyle ForeColor="#EC3C2D" Font-Bold="True" HorizontalAlign="Center" />
                 </asp:ButtonField>
                 <asp:BoundField DataField="TicketCategoryID" HeaderText="Category ID" >
                 <ItemStyle Font-Bold="True" HorizontalAlign="Center" />
@@ -24,16 +24,16 @@
                 </asp:BoundField>
                 <asp:ButtonField HeaderText="Delete" CommandName="DeleteCategory" Text="Delete" >
                 <HeaderStyle HorizontalAlign="Center" />
-                <ItemStyle ForeColor="Red" Font-Bold="True" HorizontalAlign="Center" />
+                <ItemStyle ForeColor="#EC3C2D" Font-Bold="True" HorizontalAlign="Center" />
                 </asp:ButtonField>
                 <asp:ButtonField CausesValidation="true" HeaderText="Update" CommandName="UpdateCategory" Text="Update " >
                 <HeaderStyle HorizontalAlign="Center" />
-                <ItemStyle ForeColor="Red" Font-Bold="True" HorizontalAlign="Center" />
+                <ItemStyle ForeColor="#EC3C2D" Font-Bold="True" HorizontalAlign="Center" />
                 </asp:ButtonField>
             </Columns>
             <EditRowStyle BackColor="#2461BF" />
             <FooterStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
-            <HeaderStyle BackColor="Red" Font-Bold="True" ForeColor="White"  />
+            <HeaderStyle BackColor="#EC3C2D" Font-Bold="True" ForeColor="White"  />
             <PagerStyle BackColor="#2461BF" ForeColor="White" HorizontalAlign="Center" />
             <RowStyle BackColor="#FFF7E7" />
             <SelectedRowStyle BackColor="#D1DDF1" Font-Bold="True" ForeColor="#333333" />
@@ -47,8 +47,8 @@
         <asp:TextBox ID="txtTicketCategoryName" runat="server" Height="22px" Width="190px"></asp:TextBox>
         <asp:RequiredFieldValidator ValidationGroup="ValidationSummaryCategory" ID="RequiredFieldValidatorTicketCategoryName" runat="server" ControlToValidate="txtTicketCategoryName" Text="*" ErrorMessage="Ticket Category Name Required" ForeColor="Red"></asp:RequiredFieldValidator>
         <asp:Button ValidationGroup="ValidationSummaryCategory" ID="btnAddTicketCategoryName" runat="server" Text="Add Category" Height="25px" Width="134px" Font-Bold="True" 
-                               Font-Size="Medium" BackColor="Red" ForeColor="#CCCCCC" OnClick="btnAddTicketCategoryName_Click" /><br />
-        <asp:Label ID="lblCategoryResult" runat="server" Text="" ForeColor="Red" Font-Bold="True"></asp:Label><br/>
-         <asp:ValidationSummary ID="ValidationSummaryCategory" runat="server" ForeColor="Red" Font-Bold="True"/><br/>
+                               Font-Size="Medium" BackColor="#EC3C2D" ForeColor="#CCCCCC" OnClick="btnAddTicketCategoryName_Click" /><br />
+        <asp:Label ID="lblCategoryResult" runat="server" Text="" ForeColor="#EC3C2D" Font-Bold="True"></asp:Label><br/>
+         <asp:ValidationSummary ID="ValidationSummaryCategory" runat="server" ForeColor="#EC3C2D" Font-Bold="True"/><br/>
  </center>
 </asp:Content>

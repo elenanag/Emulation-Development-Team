@@ -11,7 +11,7 @@
             <Columns>
                 <asp:ButtonField HeaderText="Select" Text="Select" CommandName="SelectUser">
 <HeaderStyle ForeColor="White"></HeaderStyle>
-                <ItemStyle ForeColor="Red" />
+                <ItemStyle ForeColor="#EC3C2D" />
                 </asp:ButtonField>
                 <asp:BoundField DataField="UserID" HeaderText="User ID" SortExpression="UserID" >
 <HeaderStyle ForeColor="White"></HeaderStyle>
@@ -45,18 +45,18 @@
                 </asp:BoundField>
                 <asp:ButtonField HeaderText="Update" CausesValidation="true" ValidationGroup="CustomerGroup" ShowHeader="True" CommandName="UpdateUser" Text="Update " >
 <HeaderStyle ForeColor="White"></HeaderStyle>
-                <ItemStyle ForeColor="Red" />
+                <ItemStyle ForeColor="#EC3C2D" />
                 </asp:ButtonField>
                 <asp:ButtonField HeaderText="Delete " ShowHeader="True" CommandName="DeleteUser" Text="Delete " >
 <HeaderStyle ForeColor="White"></HeaderStyle>
-                <ItemStyle ForeColor="Red" />
+                <ItemStyle ForeColor="#EC3C2D" />
                 </asp:ButtonField>
             </Columns>
 
-<FooterStyle BackColor="Red" ForeColor="White"></FooterStyle>
+<FooterStyle BackColor="#EC3C2D" ForeColor="White"></FooterStyle>
 
-<HeaderStyle BackColor="Red" Font-Bold="True" ForeColor="White"></HeaderStyle>
-                <PagerStyle ForeColor="White" BackColor="Red" HorizontalAlign="Center" />
+<HeaderStyle BackColor="#EC3C2D" Font-Bold="True" ForeColor="White"></HeaderStyle>
+                <PagerStyle ForeColor="White" BackColor="#EC3C2D" HorizontalAlign="Center" />
                 <RowStyle BackColor="#FFF7E7" ForeColor="#8C4510" />
                 <SortedAscendingCellStyle BackColor="#FFF1D4" />
                 <SortedAscendingHeaderStyle BackColor="#B95C30" />
@@ -92,9 +92,9 @@
             <asp:RequiredFieldValidator ValidationGroup="UserGroup" ID="RequiredFieldValidatorAccessLevelID" runat="server" ControlToValidate="txtAccessLevelID" ErrorMessage="Access Level ID Required" Text="*" ForeColor="#990033"></asp:RequiredFieldValidator>
         <br/><br/>
               <asp:Button ValidationGroup="UserGroup" ID="btnAddUser" runat="server" Text="Add User" Height="27px" Width="130px" Font-Bold="True" 
-                               Font-Size="Medium" BackColor="Red" ForeColor="#CCCCCC" OnClick="btnAddUser_Click" /><br/>
+                               Font-Size="Medium" BackColor="#EC3C2D" ForeColor="#CCCCCC" OnClick="btnAddUser_Click" /><br/>
         <br />
-             <asp:Label ID="lblResult" runat="server" Text="" ForeColor="Red" Font-Bold="True"></asp:Label>
-        <asp:ValidationSummary ValidationGroup="UserGroup" ID="ValidationSummary" runat="server" ForeColor="Red" Font-Bold="True"/>
+             <asp:Label ID="lblResult" runat="server" Text="" ForeColor="#EC3C2D" Font-Bold="True"></asp:Label>
+        <asp:ValidationSummary ValidationGroup="UserGroup" ID="ValidationSummary" runat="server" ForeColor="#EC3C2D" Font-Bold="True"/>
       </div>
 </asp:Content>

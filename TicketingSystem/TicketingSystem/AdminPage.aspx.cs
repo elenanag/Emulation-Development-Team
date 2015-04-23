@@ -39,7 +39,7 @@ namespace TicketingSystem
 
             LinkButton lbAdmin = (LinkButton)Master.FindControl("lbAdmin");
             lbAdmin.Enabled = false;
-            lbAdmin.Attributes["style"] = "color:red; font-weight:bold; font-size:x-large;";
+            lbAdmin.Attributes["style"] = "color:#EC3C2D; font-weight:bold; font-size:x-large;";
         }
 
         private void Refresh()
