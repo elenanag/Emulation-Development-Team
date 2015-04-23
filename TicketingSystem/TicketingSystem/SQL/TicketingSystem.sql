@@ -626,13 +626,13 @@ END
 --Delete from tbTicket
 
 GO
-CREATE PROCEDURE spDeleteTicketComment
+Create PROCEDURE spDeleteTicketComment
 (
 	@TicketCommentID INT
 )
 AS
 BEGIN
-	DELETE FROM tbTicketComment WHERE @TicketCommentID=@TicketCommentID
+	DELETE FROM tbTicketComment WHERE TicketCommentID=@TicketCommentID
 END
 --GO
 --EXEC spDeleteTicket @TicketID=3

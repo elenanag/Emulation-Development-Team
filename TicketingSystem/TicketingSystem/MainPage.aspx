@@ -161,12 +161,14 @@
     <div style="width:650px" class="Scroll">
         <h2>Activity</h2>
         <br />
-        <asp:Repeater ID="Repeater1" runat="server">
+        <asp:Repeater ID="Repeater1" runat="server" OnItemCommand="Repeater1_ItemCommand">
             <ItemTemplate>
+                <asp:Label ID="lblNum" runat="server" Text='<%# Eval("TicketCommentID") %>' Visible="false"></asp:Label>
                 <asp:Label ID="lblComment" runat="server" Text='<%# Eval("Comments") %>'></asp:Label>
                 <br />
                 <asp:Label ID="lblDateAndTime" Font-Size="Small" ForeColor="Gray" runat="server" Text='<%# Eval("DateOfComments") %>'></asp:Label>
                 <asp:Label ID="lblClientName" Font-Bold="true" Font-Size="Small" ForeColor="Gray" runat="server" Text='<%# "by " + Eval("FirstName") + " " + Eval("LastName") %>'></asp:Label>
+                <asp:Button ID="btnRemove" runat="server" Text="Remove" BorderStyle="Solid" BorderWidth="2px" BackColor="White" />
                 <hr />
             </ItemTemplate>
         </asp:Repeater>

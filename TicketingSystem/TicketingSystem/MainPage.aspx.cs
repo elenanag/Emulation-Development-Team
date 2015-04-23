@@ -424,6 +424,18 @@ namespace EmulationGroupProject
             gvTicket.DataBind();
 
         }
+        protected void Repeater1_ItemCommand(object source, RepeaterCommandEventArgs e)
+        {
+            Label lblNum = (Label)e.Item.FindControl("lblNum");
+            Button btnRemove = (Button)e.Item.FindControl("btnRemove");
+            if (e.CommandName == btnRemove.CommandName)
+            {
+                DAL d = new DAL(connString);
+                d.AddParam("TicketCommentID", lblNum.Text);
+                d.ExecuteProcedure("spDeleteTicketComment");
+            }
+            BindRepeater();
+        }
 
         //private void SendEmail()
         //{
