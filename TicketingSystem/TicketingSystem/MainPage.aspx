@@ -121,7 +121,7 @@
                     <td><asp:Label ID="lblTime" runat="server" Text='<%# String.IsNullOrWhiteSpace(Eval("TimeSpentOnTicket").ToString()) ? "0" : Eval("TimeSpentOnTicket") %>'></asp:Label>
                          <asp:TextBox ID="txtTime" Width="33px" BackColor="White" Visible="false" runat="server"></asp:TextBox> &nbsp minutes
                         &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<asp:Button ID="btnAddTime" CommandName="AddTime" runat="server" Text="Add Time" />
-                        <asp:Button ID="btnAddIt" runat="server" Visible="false" Text="Add!" />
+                        <asp:Button ID="btnAddIt" CommandName="Add!" runat="server" Visible="false" Text="Add!" />
                     </td>
                 </tr>
                 <tr>

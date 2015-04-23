@@ -215,14 +215,14 @@ namespace EmulationGroupProject
             Button btnLow = (Button)e.Item.FindControl("btnLow");
 
 
-            if (e.CommandName == btn2.CommandName)
+            if (e.CommandName == "AddTime")
             {
                 lblTime.Visible = false;
                 txtTime.Visible = true;
                 btn3.Visible = true;
                 btn2.Visible = false;
             }
-            else if (e.CommandName == "AddTime")
+            else if (e.CommandName == "Add!")
             {
                 lblTime.Visible = true;
                 txtTime.Visible = false;
