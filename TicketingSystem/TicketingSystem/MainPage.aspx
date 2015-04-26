@@ -137,12 +137,12 @@
         </asp:DataList>
     </div>
  
-    <div style ="float:right; padding-right:380px">
-     <asp:DataList ID="dlImage" runat="server" RepeatColumns="1" Visible="False" >
+    <div style ="float:right; padding-right:170px">
+     <asp:DataList ID="dlImage" runat="server" RepeatColumns="5" Visible="False" >
         <ItemTemplate>
             <h4>Image:</h4>
              <a href='<%# Eval("ImagePath") %>' class="group1" rel="grouped">
-             <asp:Image ID="imagelightbox" runat="server" ImageUrl='<%# Eval("ImagePath") %>' Width="90" Height="60" />
+             <asp:Image ID="imagelightbox" runat="server" ImageUrl='<%# Eval("ImagePath") %>' Width="60" Height="40" />
             </a> 
      </ItemTemplate>    
     </asp:DataList>
